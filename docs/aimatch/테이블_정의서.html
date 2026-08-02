@@ -1,0 +1,2688 @@
+<html><head><meta charset="utf-8">
+    <style>
+    body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
+    h2 { color:#111; margin:32px 0 16px; font-size:20px; border-bottom:2px solid #222; padding-bottom:8px; display:inline-block; }
+    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:4px; overflow:hidden; }
+    th, td { border:1px solid #e0e0e0; padding:10px 14px; word-break:keep-all; vertical-align:middle; line-height:1.6; color:#333; }
+    tr:nth-child(even) { background:#fafafa; }
+    </style></head><body><h2>1.회원_인증</h2>
+<table>
+<colgroup>
+<col style="width: 183px;">
+<col style="width: 141px;">
+<col style="width: 120px;">
+<col style="width: 62px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 1831px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>users   회원</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">회원 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>login_id</b></td>
+<td rowspan="1" colspan="1">아이디</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">로그인 아이디 (영문+숫자, 20자 이내) / 탈퇴 시 deleted_<user_id>로 익명화</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>email</b></td>
+<td rowspan="1" colspan="1">이메일</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">이메일 주소 (중복 불가) / 탈퇴 시 deleted_<user_id>@deleted.com으로 익명화</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>password</b></td>
+<td rowspan="1" colspan="1">비밀번호</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">암호화된 비밀번호 / 소셜 전용 계정은 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>name</b></td>
+<td rowspan="1" colspan="1">이름</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">실명 (필수)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>nickname</b></td>
+<td rowspan="1" colspan="1">닉네임</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">20자 이내, 중복 불가 / 탈퇴 시 NULL 처리</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>phone</b></td>
+<td rowspan="1" colspan="1">전화번호</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">선택 입력, 자동 포맷 010-0000-0000</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>birth_date</b></td>
+<td rowspan="1" colspan="1">생년월일</td>
+<td rowspan="1" colspan="1">DATE</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">선택 입력</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>profile_image</b></td>
+<td rowspan="1" colspan="1">프로필 이미지</td>
+<td rowspan="1" colspan="1">VARCHAR(500)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">프로필 이미지 S3 object key 저장 / 전체 URL은 앱에서 {CDN_BASE_URL}/{key} 형태로 조합 (JPG/PNG, 최대 2MB)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>marketing_agreed</b></td>
+<td rowspan="1" colspan="1">마케팅 수신 동의</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">0: 미동의, 1: 동의</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_start_alert</b></td>
+<td rowspan="1" colspan="1">경기 시작 알림</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">0: 미수신, 1: 수신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>prediction_result_alert</b></td>
+<td rowspan="1" colspan="1">예측 결과 알림</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">0: 미수신, 1: 수신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>alert_before_minutes</b></td>
+<td rowspan="1" colspan="1">알림 선행 시간(분)</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">30</td>
+<td rowspan="1" colspan="1">경기 시작 몇 분 전 알림 발송</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">가입일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">계정 생성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>deleted_at</b></td>
+<td rowspan="1" colspan="1">탈퇴일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">소프트 딜리트 / 탈퇴 시 email·nickname 익명화 필수 / 하드 딜리트 필요 시 순서 준수: ① board_like·news_scrap·match_fav·user_interest_team·social_login 삭제 ② prediction·comment·board·board_comm·report user_id NULL UPDATE ③ users 행 삭제</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>email_verify   이메일 인증</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>email_verify_id</b></td>
+<td rowspan="1" colspan="1">인증 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>email</b></td>
+<td rowspan="1" colspan="1">이메일</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">인증 대상 이메일</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>verify_code</b></td>
+<td rowspan="1" colspan="1">인증 코드</td>
+<td rowspan="1" colspan="1">VARCHAR(10)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">발송된 인증 코드</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>purpose</b></td>
+<td rowspan="1" colspan="1">인증 목적</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'signup' | 'find_id' | 'reset_pw' / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>attempt_count</b></td>
+<td rowspan="1" colspan="1">시도 횟수</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">인증 시도 횟수 (최대 5회)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_verified</b></td>
+<td rowspan="1" colspan="1">인증 성공 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">0: 미인증, 1: 인증 완료</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>expires_at</b></td>
+<td rowspan="1" colspan="1">만료 일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">발송 후 10분 뒤 만료</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">생성일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">인증 메일 발송 일시 / 만료(expires_at) 경과 후 배치로 주기적 삭제 (TTL 정리 대상)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>social_login   소셜 로그인</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>social_login_id</b></td>
+<td rowspan="1" colspan="1">소셜 로그인 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / ON DELETE RESTRICT / (user_id, provider) 복합 UK — 동일 provider 중복 연결 방지</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>provider</b></td>
+<td rowspan="1" colspan="1">소셜 제공자</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'kakao' | 'google' / (provider, provider_uid) 복합 UK + (user_id, provider) 복합 UK — 같은 유저의 동일 provider 중복 연결 방지</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>provider_uid</b></td>
+<td rowspan="1" colspan="1">소셜 고유 ID</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">provider와 (provider, provider_uid) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">연동일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">소셜 계정 연동 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>user_interest_team   관심 팀</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_interest_team_id</b></td>
+<td rowspan="1" colspan="1">관심팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / ON DELETE RESTRICT / team_id와 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE CASCADE / user_id와 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">등록일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">관심 팀 등록 일시</td>
+</tr>
+</table>
+<h2>2.스포츠_팀_선수</h2>
+<table>
+<colgroup>
+<col style="width: 448px;">
+<col style="width: 122px;">
+<col style="width: 120px;">
+<col style="width: 62px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 742px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>sport   종목</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sport_id</b></td>
+<td rowspan="1" colspan="1">종목 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>name</b></td>
+<td rowspan="1" colspan="1">종목명</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">표시용 종목명</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>code</b></td>
+<td rowspan="1" colspan="1">종목 코드</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'baseball' | 'soccer' | 'lol' / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>team   팀</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sport_id</b></td>
+<td rowspan="1" colspan="1">종목 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">sport.sport_id 참조 / ON DELETE RESTRICT</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>name</b></td>
+<td rowspan="1" colspan="1">팀명</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">팀 이름</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>location</b></td>
+<td rowspan="1" colspan="1">연고지</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">연고 지역</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>founded_year</b></td>
+<td rowspan="1" colspan="1">창단연도</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">창단 연도</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>emblem_url</b></td>
+<td rowspan="1" colspan="1">엠블럼 이미지</td>
+<td rowspan="1" colspan="1">VARCHAR(500)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">팀 엠블럼 S3 object key 저장 / 전체 URL은 앱에서 {CDN_BASE_URL}/{key} 형태로 조합</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>team_season_stat   팀 시즌 성적</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_season_stat_id</b></td>
+<td rowspan="1" colspan="1">시즌성적 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT / (team_id, sport_id, season) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sport_id</b></td>
+<td rowspan="1" colspan="1">종목 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">sport.sport_id 참조 / ON DELETE RESTRICT / (team_id, sport_id, season) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>season</b></td>
+<td rowspan="1" colspan="1">시즌</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">(team_id, sport_id, season) 복합 UK / 예: '2025'</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>wins</b></td>
+<td rowspan="1" colspan="1">승</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 승 수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>draws</b></td>
+<td rowspan="1" colspan="1">무</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 무 수 (야구는 0 고정)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>losses</b></td>
+<td rowspan="1" colspan="1">패</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 패 수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>points_for</b></td>
+<td rowspan="1" colspan="1">득점</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">축구: 골, 야구: 득점, LoL: 킬</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>points_against</b></td>
+<td rowspan="1" colspan="1">실점</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">축구: 실점, 야구: 실점, LoL: 데스</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>rank</b></td>
+<td rowspan="1" colspan="1">순위</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">시즌 현재 순위</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>win_rate</b></td>
+<td rowspan="1" colspan="1">승률</td>
+<td rowspan="1" colspan="1">DECIMAL(5,3)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">wins/(wins+draws+losses) / 경기 결과 반영 시 함께 UPDATE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>recent_form</b></td>
+<td rowspan="1" colspan="1">최근 5경기 성적</td>
+<td rowspan="1" colspan="1">VARCHAR(5)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">W·D·L 조합 예: 'WWDLW' / AI 예측 근거로 활용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>updated_at</b></td>
+<td rowspan="1" colspan="1">갱신일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">ON UPDATE CURRENT_TIMESTAMP 자동 갱신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>player   선수</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_id</b></td>
+<td rowspan="1" colspan="1">선수 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>source</b></td>
+<td rowspan="1" colspan="1">데이터 출처</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">크롤링 출처 사이트 예: 'statiz' | 'fbref' | 'gol.gg' / (source, external_player_id) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>external_player_id</b></td>
+<td rowspan="1" colspan="1">외부 선수 ID</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">출처 사이트의 고유 선수 ID / (source, external_player_id) 복합 UK — 동명이인 구분·재수집 중복 방지</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>name</b></td>
+<td rowspan="1" colspan="1">선수명</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">선수 이름</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>position</b></td>
+<td rowspan="1" colspan="1">포지션</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">포지션 (종목별 상이)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>jersey_number</b></td>
+<td rowspan="1" colspan="1">등번호</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">등번호</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>birth_date</b></td>
+<td rowspan="1" colspan="1">생년월일</td>
+<td rowspan="1" colspan="1">DATE</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">선수 생년월일</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>profile_image</b></td>
+<td rowspan="1" colspan="1">프로필 이미지</td>
+<td rowspan="1" colspan="1">VARCHAR(500)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">선수 사진 S3 object key 저장 / 전체 URL은 앱에서 {CDN_BASE_URL}/{key} 형태로 조합</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"><b>player_season_stat   선수 시즌 누적 기록 — 공통 베이스</b></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_season_stat_id</b></td>
+<td rowspan="1" colspan="1">기록 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_id</b></td>
+<td rowspan="1" colspan="1">선수 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player.player_id 참조 / (player_id, season) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>season</b></td>
+<td rowspan="1" colspan="1">시즌</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">예: '2025' / player_id와 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>games_played</b></td>
+<td rowspan="1" colspan="1">출전 경기 수</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">해당 시즌 출전 경기 수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>updated_at</b></td>
+<td rowspan="1" colspan="1">갱신일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">ON UPDATE CURRENT_TIMESTAMP 자동 갱신 / 경기 종료 후 배치 UPDATE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"><b>player_season_stat_baseball   선수 시즌 누적 기록 — 야구</b></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_season_stat_id</b></td>
+<td rowspan="1" colspan="1">기록 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK, FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player_season_stat.player_season_stat_id 참조 / ON DELETE CASCADE / 1:1</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>batting_avg</b></td>
+<td rowspan="1" colspan="1">타율</td>
+<td rowspan="1" colspan="1">DECIMAL(5,3)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 타율 / 타자 전용 (player.position 기준) — 투수는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>hits</b></td>
+<td rowspan="1" colspan="1">안타</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 안타 수 / 타자 전용 — 투수는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>home_runs</b></td>
+<td rowspan="1" colspan="1">홈런</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 홈런 수 / 타자 전용 — 투수는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>rbi</b></td>
+<td rowspan="1" colspan="1">타점</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 타점 / 타자 전용 — 투수는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>era</b></td>
+<td rowspan="1" colspan="1">방어율</td>
+<td rowspan="1" colspan="1">DECIMAL(5,2)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 평균 자책점 / 투수 전용 (player.position 기준) — 타자는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>wins</b></td>
+<td rowspan="1" colspan="1">승</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 승 수 / 투수 전용 — 타자는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>strikeouts</b></td>
+<td rowspan="1" colspan="1">탈삼진</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 탈삼진 / 투수 전용 — 타자는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>losses</b></td>
+<td rowspan="1" colspan="1">패</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 패 수 / 투수 전용 — 타자는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>saves</b></td>
+<td rowspan="1" colspan="1">세이브</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 세이브 수 / 투수 전용 — 타자는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>holds</b></td>
+<td rowspan="1" colspan="1">홀드</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 홀드 수 / 투수 전용 — 타자는 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"><b>player_season_stat_soccer   선수 시즌 누적 기록 — 축구</b></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_season_stat_id</b></td>
+<td rowspan="1" colspan="1">기록 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK, FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player_season_stat.player_season_stat_id 참조 / ON DELETE CASCADE / 1:1</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>goals</b></td>
+<td rowspan="1" colspan="1">골</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 득점 수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>assists</b></td>
+<td rowspan="1" colspan="1">어시스트</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 어시스트 수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>yellow_cards</b></td>
+<td rowspan="1" colspan="1">경고</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 경고 누적</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>red_cards</b></td>
+<td rowspan="1" colspan="1">퇴장</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 퇴장 누적</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>clean_sheets</b></td>
+<td rowspan="1" colspan="1">클린시트</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">시즌 무실점 경기 수 / 골키퍼 전용 — 비해당 포지션은 0</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"><b>player_season_stat_lol   선수 시즌 누적 기록 — LoL</b></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #2E3A59; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_season_stat_id</b></td>
+<td rowspan="1" colspan="1">기록 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK, FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player_season_stat.player_season_stat_id 참조 / ON DELETE CASCADE / 1:1</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>kda</b></td>
+<td rowspan="1" colspan="1">KDA</td>
+<td rowspan="1" colspan="1">DECIMAL(6,2)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">(킬+어시스트)/데스 / 경기 종료 후 재계산 / 데스=0인 경우 NULL 처리 (무한대 방지)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>avg_kills</b></td>
+<td rowspan="1" colspan="1">평균 킬</td>
+<td rowspan="1" colspan="1">DECIMAL(5,2)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">경기당 평균 킬</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>avg_deaths</b></td>
+<td rowspan="1" colspan="1">평균 데스</td>
+<td rowspan="1" colspan="1">DECIMAL(5,2)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">경기당 평균 데스</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>avg_assists</b></td>
+<td rowspan="1" colspan="1">평균 어시스트</td>
+<td rowspan="1" colspan="1">DECIMAL(5,2)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">경기당 평균 어시스트</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>cs_per_min</b></td>
+<td rowspan="1" colspan="1">분당 CS</td>
+<td rowspan="1" colspan="1">DECIMAL(5,2)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">분당 미니언 처치 수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>win_rate</b></td>
+<td rowspan="1" colspan="1">승률</td>
+<td rowspan="1" colspan="1">DECIMAL(5,3)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">시즌 승률 0.0~1.0 / 경기 종료 후 재계산</td>
+</tr>
+</table>
+<h2>3.경기</h2>
+<table>
+<colgroup>
+<col style="width: 169px;">
+<col style="width: 109px;">
+<col style="width: 120px;">
+<col style="width: 62px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 1040px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>match   경기</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sport_id</b></td>
+<td rowspan="1" colspan="1">종목 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">sport.sport_id 참조 / ON DELETE RESTRICT</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>home_team_id</b></td>
+<td rowspan="1" colspan="1">홈팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>away_team_id</b></td>
+<td rowspan="1" colspan="1">원정팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / home_team_id와 동일 불가</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>scheduled_at</b></td>
+<td rowspan="1" colspan="1">경기 예정일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">경기 시작 예정 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>status</b></td>
+<td rowspan="1" colspan="1">경기 상태</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">'scheduled'</td>
+<td rowspan="1" colspan="1">'scheduled'|'in_progress'|'paused'|'finished'|'cancelled' / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용 (스키마 변경 유연성 확보)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>home_score</b></td>
+<td rowspan="1" colspan="1">홈팀 점수</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">홈팀 현재 점수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>away_score</b></td>
+<td rowspan="1" colspan="1">원정팀 점수</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">원정팀 현재 점수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>season</b></td>
+<td rowspan="1" colspan="1">시즌</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">시즌 정보 (예: 2025)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>venue</b></td>
+<td rowspan="1" colspan="1">경기 장소</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">경기가 열리는 장소명</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">등록일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">경기 등록 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>updated_at</b></td>
+<td rowspan="1" colspan="1">수정일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">ON UPDATE CURRENT_TIMESTAMP 자동 갱신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>match_event   경기 이벤트</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_event_id</b></td>
+<td rowspan="1" colspan="1">이벤트 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_id</b></td>
+<td rowspan="1" colspan="1">선수 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player.player_id 참조 / 선수 없는 이벤트 시 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE SET NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>event_type</b></td>
+<td rowspan="1" colspan="1">이벤트 유형</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'goal'|'card'|'substitution'|'hit'|'kill' 등 / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>event_time</b></td>
+<td rowspan="1" colspan="1">발생 시간</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">경기 내 경과 시간 (축구: 분, LoL: 초, 야구: 이닝 순서 정수)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>event_period</b></td>
+<td rowspan="1" colspan="1">표시용 구간</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">야구: '9회초', 축구: '75\'', LoL: '30:20'</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>description</b></td>
+<td rowspan="1" colspan="1">설명</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">이벤트 상세 설명</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">등록일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">이벤트 등록 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>match_team_stat   경기 팀 통계</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_team_stat_id</b></td>
+<td rowspan="1" colspan="1">팀통계 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE / (match_id, team_id, stat_key) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT / (match_id, team_id, stat_key) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>stat_key</b></td>
+<td rowspan="1" colspan="1">통계 항목</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'possession'|'shots'|'corners' 등 / (match_id, team_id, stat_key) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>stat_value</b></td>
+<td rowspan="1" colspan="1">통계 값</td>
+<td rowspan="1" colspan="1">DECIMAL(10,4)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">통계 수치 값</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>updated_at</b></td>
+<td rowspan="1" colspan="1">갱신일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">ON UPDATE CURRENT_TIMESTAMP 자동 갱신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>match_player_stat   경기 선수 통계</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_player_stat_id</b></td>
+<td rowspan="1" colspan="1">선수통계 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE / (match_id, player_id, stat_key) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_id</b></td>
+<td rowspan="1" colspan="1">선수 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player.player_id 참조 / ON DELETE RESTRICT / (match_id, player_id, stat_key) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT / 복합 UK 구성원 아님 — 경기 내 소속팀 참조용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>stat_key</b></td>
+<td rowspan="1" colspan="1">통계 항목</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'kda'|'cs'|'hits'|'era' 등 / (match_id, player_id, stat_key) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>stat_value</b></td>
+<td rowspan="1" colspan="1">통계 값</td>
+<td rowspan="1" colspan="1">DECIMAL(10,4)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">통계 수치 값</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>updated_at</b></td>
+<td rowspan="1" colspan="1">갱신일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">ON UPDATE CURRENT_TIMESTAMP 자동 갱신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>match_lineup   경기 라인업</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_lineup_id</b></td>
+<td rowspan="1" colspan="1">라인업 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE / (match_id, team_id, player_id) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT / (match_id, team_id, player_id) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_id</b></td>
+<td rowspan="1" colspan="1">선수 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player.player_id 참조 / (match_id, team_id, player_id) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_starter</b></td>
+<td rowspan="1" colspan="1">선발 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">0: 교체, 1: 선발</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>order_num</b></td>
+<td rowspan="1" colspan="1">순번</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">야구 타순, LoL 라인 순서 등</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>position</b></td>
+<td rowspan="1" colspan="1">포지션</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">해당 경기 포지션</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>match_fav   경기 즐겨찾기</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_fav_id</b></td>
+<td rowspan="1" colspan="1">즐겨찾기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / ON DELETE RESTRICT / 탈퇴 처리 시 앱에서 명시적 삭제</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE / user_id와 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">등록일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">즐겨찾기 등록 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>lol_pick_ban   LoL 픽/밴</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>lol_pick_ban_id</b></td>
+<td rowspan="1" colspan="1">픽밴 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE / (match_id, team_id, phase, sequence) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>team_id</b></td>
+<td rowspan="1" colspan="1">팀 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">team.team_id 참조 / ON DELETE RESTRICT / (match_id, team_id, phase, sequence) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>phase</b></td>
+<td rowspan="1" colspan="1">구분</td>
+<td rowspan="1" colspan="1">VARCHAR(10)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'pick'|'ban' / (match_id, team_id, phase, sequence) 복합 UK — 같은 팀의 같은 순서에 pick·ban 중복 방지 / 허용값은 앱 레벨 Enum 상수로 강제</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sequence</b></td>
+<td rowspan="1" colspan="1">순서</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">픽/밴 진행 순서 (1~10) / (match_id, team_id, phase, sequence) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>champion_name</b></td>
+<td rowspan="1" colspan="1">챔피언명</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">선택/금지된 챔피언 이름</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>player_id</b></td>
+<td rowspan="1" colspan="1">선수 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">player.player_id 참조 / ON DELETE SET NULL / pick일 때 해당 선수</td>
+</tr>
+</table>
+<h2>4.예측</h2>
+<table>
+<colgroup>
+<col style="width: 134px;">
+<col style="width: 130px;">
+<col style="width: 111px;">
+<col style="width: 62px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 810px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>prediction   승부 예측</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>prediction_id</b></td>
+<td rowspan="1" colspan="1">예측 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / 탈퇴 시 NULL UPDATE / 중복 예측 방지는 앱 레벨에서 처리 (NULL 허용으로 DB UK 불가)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>predicted_result</b></td>
+<td rowspan="1" colspan="1">예측 결과</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'home' | 'draw' | 'away' / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_correct</b></td>
+<td rowspan="1" colspan="1">적중 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">NULL: 미정, 0: 실패, 1: 성공 (경기 종료 후 산출)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">예측일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">예측 제출 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>ai_pred   AI 예측</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>ai_pred_id</b></td>
+<td rowspan="1" colspan="1">AI예측 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE / 경기당 1행</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>home_win_prob</b></td>
+<td rowspan="1" colspan="1">홈팀 승리 확률</td>
+<td rowspan="1" colspan="1">DECIMAL(5,4)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">0.0000 ~ 1.0000 / CHECK (home_win_prob + draw_prob + away_win_prob = 1.0) 앱 레벨 강제</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>draw_prob</b></td>
+<td rowspan="1" colspan="1">무승부 확률</td>
+<td rowspan="1" colspan="1">DECIMAL(5,4)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">0.0000 ~ 1.0000</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>away_win_prob</b></td>
+<td rowspan="1" colspan="1">원정팀 승리 확률</td>
+<td rowspan="1" colspan="1">DECIMAL(5,4)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">0.0000 ~ 1.0000 / 세 확률 합 = 1.0 보장</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>basis</b></td>
+<td rowspan="1" colspan="1">예측 근거</td>
+<td rowspan="1" colspan="1">JSON</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">AI 예측 입력 근거 (JSON) / home_season·away_season·head_to_head·home_advantage 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">생성일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">AI 예측 생성 일시</td>
+</tr>
+</table>
+<h2>5.실시간댓글</h2>
+<table>
+<colgroup>
+<col style="width: 99px;">
+<col style="width: 109px;">
+<col style="width: 84px;">
+<col style="width: 39px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 489px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>comment   경기 댓글</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>comment_id</b></td>
+<td rowspan="1" colspan="1">댓글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / 탈퇴 처리 시 앱에서 user_id NULL로 UPDATE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>match_id</b></td>
+<td rowspan="1" colspan="1">경기 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">match.match_id 참조 / ON DELETE CASCADE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>content</b></td>
+<td rowspan="1" colspan="1">내용</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">댓글 본문</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_blinded</b></td>
+<td rowspan="1" colspan="1">블라인드 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">0: 정상, 1: 블라인드 처리</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">작성일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">댓글 작성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>deleted_at</b></td>
+<td rowspan="1" colspan="1">삭제일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">소프트 딜리트</td>
+</tr>
+</table>
+<h2>6.게시판</h2>
+<table>
+<colgroup>
+<col style="width: 128px;">
+<col style="width: 113px;">
+<col style="width: 120px;">
+<col style="width: 62px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 1113px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>board   게시글</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_id</b></td>
+<td rowspan="1" colspan="1">게시글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">작성자 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / 탈퇴 처리 시 앱에서 user_id NULL로 UPDATE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>category</b></td>
+<td rowspan="1" colspan="1">카테고리</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'free'|'analysis'|'cheer'|'prediction_review'</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>title</b></td>
+<td rowspan="1" colspan="1">제목</td>
+<td rowspan="1" colspan="1">VARCHAR(200)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">게시글 제목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>content</b></td>
+<td rowspan="1" colspan="1">내용</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">게시글 본문</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>view_count</b></td>
+<td rowspan="1" colspan="1">조회수</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">게시글 조회 횟수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>like_count</b></td>
+<td rowspan="1" colspan="1">좋아요 수</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">board_like 행 수와 동기화 필요 / INSERT·DELETE 시 앱 레벨에서 함께 UPDATE (트리거 미사용) / 하드 딜리트로 board_like 삭제 시 차감 처리 필요</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_notice</b></td>
+<td rowspan="1" colspan="1">공지 고정 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">1: 공지 고정 (관리자 전용)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_blinded</b></td>
+<td rowspan="1" colspan="1">블라인드 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">0: 정상, 1: 블라인드 처리</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">작성일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">게시글 작성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>updated_at</b></td>
+<td rowspan="1" colspan="1">수정일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">ON UPDATE CURRENT_TIMESTAMP 자동 갱신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>deleted_at</b></td>
+<td rowspan="1" colspan="1">삭제일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">소프트 딜리트</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>board_img   게시글 이미지</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_img_id</b></td>
+<td rowspan="1" colspan="1">이미지 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_id</b></td>
+<td rowspan="1" colspan="1">게시글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">board.board_id 참조 / ON DELETE CASCADE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>image_url</b></td>
+<td rowspan="1" colspan="1">이미지 URL</td>
+<td rowspan="1" colspan="1">VARCHAR(500)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">이미지 S3 object key 저장 / 전체 URL은 앱에서 {CDN_BASE_URL}/{key} 형태로 조합 (최대 5장, 각 20MB)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sort_order</b></td>
+<td rowspan="1" colspan="1">정렬 순서</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">이미지 표시 순서</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>board_tag   게시글 태그</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_tag_id</b></td>
+<td rowspan="1" colspan="1">태그 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_id</b></td>
+<td rowspan="1" colspan="1">게시글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">board.board_id 참조 / ON DELETE CASCADE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>tag</b></td>
+<td rowspan="1" colspan="1">태그명</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">태그 텍스트 (20자 이내, 최대 10개)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>board_comm   게시글 댓글</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_comm_id</b></td>
+<td rowspan="1" colspan="1">댓글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_id</b></td>
+<td rowspan="1" colspan="1">게시글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">board.board_id 참조 / ON DELETE CASCADE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">작성자 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / 탈퇴 처리 시 앱에서 user_id NULL로 UPDATE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>parent_id</b></td>
+<td rowspan="1" colspan="1">부모 댓글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">NULL: 댓글, 값 있음: 대댓글 (1단계만 허용) / FK 미설정 — 자기참조 순환 방지 및 삭제된 부모 댓글 대댓글 유지 목적</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>content</b></td>
+<td rowspan="1" colspan="1">내용</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">댓글 본문</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>is_blinded</b></td>
+<td rowspan="1" colspan="1">블라인드 여부</td>
+<td rowspan="1" colspan="1">TINYINT(1)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">0</td>
+<td rowspan="1" colspan="1">0: 정상, 1: 블라인드</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">작성일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">댓글 작성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>deleted_at</b></td>
+<td rowspan="1" colspan="1">삭제일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">소프트 딜리트</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>board_like   게시글 좋아요</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_like_id</b></td>
+<td rowspan="1" colspan="1">좋아요 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>board_id</b></td>
+<td rowspan="1" colspan="1">게시글 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">board.board_id 참조 / ON DELETE CASCADE / user_id와 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / ON DELETE RESTRICT / board_id와 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">좋아요일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">좋아요 등록 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>report   신고 (통합)</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>report_id</b></td>
+<td rowspan="1" colspan="1">신고 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>target_type</b></td>
+<td rowspan="1" colspan="1">대상 유형</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"><b></b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'comment' | 'board_comm' / 중복 방지는 앱 레벨 처리 (user_id NULL 허용으로 DB UK 불가) / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>target_id</b></td>
+<td rowspan="1" colspan="1">대상 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b></b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">신고 대상 PK / FK 미설정 (다형성 참조) / 원본 소프트 딜리트 구조로 고아 행 발생 최소화 / 하드 딜리트 시 앱에서 선행 정제 필요</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">신고자 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / 탈퇴 시 NULL UPDATE / NULL 허용으로 DB UK 불가 — 중복 신고 방지는 앱 레벨에서 처리</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">신고일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">신고 접수 일시</td>
+</tr>
+</table>
+<h2>7.뉴스</h2>
+<table>
+<colgroup>
+<col style="width: 121px;">
+<col style="width: 109px;">
+<col style="width: 129px;">
+<col style="width: 62px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 960px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>news   뉴스</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>news_id</b></td>
+<td rowspan="1" colspan="1">뉴스 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>sport_id</b></td>
+<td rowspan="1" colspan="1">종목 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK</b></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">sport.sport_id 참조 / ON DELETE SET NULL / 종목 미분류 시 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>category</b></td>
+<td rowspan="1" colspan="1">뉴스 카테고리</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">뉴스 분류 (종목 | 팀)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>title</b></td>
+<td rowspan="1" colspan="1">제목</td>
+<td rowspan="1" colspan="1">VARCHAR(300)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">뉴스 제목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>summary</b></td>
+<td rowspan="1" colspan="1">요약</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">뉴스 요약문</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>source</b></td>
+<td rowspan="1" colspan="1">출처</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">뉴스 출처 매체명</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>news_url</b></td>
+<td rowspan="1" colspan="1">원문 URL</td>
+<td rowspan="1" colspan="1">VARCHAR(1000)</td>
+<td rowspan="1" colspan="1"><b>UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">뉴스 원문 링크 / UK — 크롤링 중복 수집 방지 / ON DUPLICATE KEY UPDATE로 갱신 / utf8mb4 기준 prefix index (255자) 적용 권장</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>published_at</b></td>
+<td rowspan="1" colspan="1">발행일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">뉴스 발행 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">등록일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">시스템 등록 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>news_scrap   뉴스 스크랩</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>news_scrap_id</b></td>
+<td rowspan="1" colspan="1">스크랩 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>user_id</b></td>
+<td rowspan="1" colspan="1">회원 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">users.user_id 참조 / ON DELETE RESTRICT / 탈퇴 처리 시 앱에서 명시적 삭제</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>news_id</b></td>
+<td rowspan="1" colspan="1">뉴스 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>FK, UK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">news.news_id 참조 / ON DELETE CASCADE / user_id와 (user_id, news_id) 복합 UK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">스크랩일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">스크랩 등록 일시</td>
+</tr>
+</table>
+<h2>8.관리자_필터링</h2>
+<table>
+<colgroup>
+<col style="width: 149px;">
+<col style="width: 92px;">
+<col style="width: 120px;">
+<col style="width: 39px;">
+<col style="width: 87px;">
+<col style="width: 184px;">
+<col style="width: 987px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="7" style="background-color: #2E3A59; font-weight:600;"><b>filter_log   필터링 로그</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>한글명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>Key</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>NULL 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>기본값</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D9D9D9; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>filter_log_id</b></td>
+<td rowspan="1" colspan="1">로그 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"><b>PK</b></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">AUTO_INCREMENT</td>
+<td rowspan="1" colspan="1">고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>target_type</b></td>
+<td rowspan="1" colspan="1">대상 유형</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'comment' | 'board' | 'board_comm' / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>target_id</b></td>
+<td rowspan="1" colspan="1">대상 ID</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">필터링된 레코드 ID / FK 미설정 (다형성 참조) / 원본 소프트 딜리트 구조로 고아 행 발생 최소화 / 하드 딜리트 시 앱에서 선행 정제 필요</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>detected_keyword</b></td>
+<td rowspan="1" colspan="1">감지 키워드</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">감지된 금칙어 (AI 필터 시 NULL 가능)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>action</b></td>
+<td rowspan="1" colspan="1">처리 유형</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">—</td>
+<td rowspan="1" colspan="1">'blind' | 'block' / 허용값은 앱 레벨 Enum 상수로 강제 — DB CHECK 미사용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"><b>created_at</b></td>
+<td rowspan="1" colspan="1">처리일시</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">NOT NULL</td>
+<td rowspan="1" colspan="1">CURRENT_TIMESTAMP</td>
+<td rowspan="1" colspan="1">필터링 처리 일시</td>
+</tr>
+</table>
+
+    <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (window.parent && window.parent.closeDocModal) {
+          window.parent.closeDocModal();
+        }
+      }
+    });
+    </script>
+    </body></html>

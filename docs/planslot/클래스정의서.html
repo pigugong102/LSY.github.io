@@ -1,0 +1,297 @@
+<html><head><meta charset="utf-8">
+    <style>
+    body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
+    h2 { color:#111; margin:32px 0 16px; font-size:20px; border-bottom:2px solid #222; padding-bottom:8px; display:inline-block; }
+    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:4px; overflow:hidden; }
+    th, td { border:1px solid #e0e0e0; padding:10px 14px; word-break:keep-all; vertical-align:middle; line-height:1.6; color:#333; }
+    tr:nth-child(even) { background:#fafafa; }
+    </style></head><body><h2>클래스 정의서</h2>
+<table>
+<colgroup>
+<col style="width: 176px;">
+<col style="width: 160px;">
+<col style="width: 176px;">
+<col style="width: 232px;">
+<col style="width: 205px;">
+<col style="width: 237px;">
+<col style="width: 208px;">
+<col style="width: 16px;">
+<col style="width: 144px;">
+<col style="width: 160px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>Entity</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>DTO</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>Repository</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>Service</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>ServiceImpl</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>Controller</b></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4472C4; font-weight:600;"><b>Response</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">회원 관련</td>
+<td rowspan="1" colspan="1">Member</td>
+<td rowspan="1" colspan="1">MemberRequestDTO, <br>MemberResponseDTO</td>
+<td rowspan="1" colspan="1">MemberRepository</td>
+<td rowspan="1" colspan="1">MemberService</td>
+<td rowspan="1" colspan="1">MemberServiceImpl</td>
+<td rowspan="1" colspan="1">MemberController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"><b>에러</b></td>
+<td rowspan="1" colspan="1"><b></b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">소셜 로그인 계정 관련</td>
+<td rowspan="1" colspan="1">SocialAccount</td>
+<td rowspan="1" colspan="1">SocialAccountDTO</td>
+<td rowspan="1" colspan="1">SocialAccountRepository</td>
+<td rowspan="1" colspan="1">AuthService</td>
+<td rowspan="1" colspan="1">AuthServiceImpl</td>
+<td rowspan="1" colspan="1">AuthController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">에러 응답</td>
+<td rowspan="1" colspan="1">ErrorResponse</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">이메일 인증 관련</td>
+<td rowspan="1" colspan="1">AuthEmail</td>
+<td rowspan="1" colspan="1">AuthEmailDTO</td>
+<td rowspan="1" colspan="1">AuthEmailRepository</td>
+<td rowspan="1" colspan="1">AuthService</td>
+<td rowspan="1" colspan="1">AuthServiceImpl</td>
+<td rowspan="1" colspan="1">AuthController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"><b>성공</b></td>
+<td rowspan="1" colspan="1"><b></b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">인증 토큰 관련</td>
+<td rowspan="1" colspan="1">AuthToken</td>
+<td rowspan="1" colspan="1">AuthTokenDTO</td>
+<td rowspan="1" colspan="1">AuthTokenRepository</td>
+<td rowspan="1" colspan="1">AuthService</td>
+<td rowspan="1" colspan="1">AuthServiceImpl</td>
+<td rowspan="1" colspan="1">AuthController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">성공 응답</td>
+<td rowspan="1" colspan="1">SuccessResponse</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">관리자 신고 목록 관련</td>
+<td rowspan="1" colspan="1">AdminReport</td>
+<td rowspan="1" colspan="1">AdminReportDTO</td>
+<td rowspan="1" colspan="1">AdminReportRepository</td>
+<td rowspan="1" colspan="1">AdminService</td>
+<td rowspan="1" colspan="1">AdminServiceImpl</td>
+<td rowspan="1" colspan="1">AdminController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">관리자 제재 목록 관련</td>
+<td rowspan="1" colspan="1">AdminSanction</td>
+<td rowspan="1" colspan="1">AdminSanctionDTO</td>
+<td rowspan="1" colspan="1">AdminSanctionRepository</td>
+<td rowspan="1" colspan="1">AdminService</td>
+<td rowspan="1" colspan="1">AdminServiceImpl</td>
+<td rowspan="1" colspan="1">AdminController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">구글 캘린더 동기화 관련</td>
+<td rowspan="1" colspan="1">GoogleCalendar</td>
+<td rowspan="1" colspan="1">GoogleCalendarDTO</td>
+<td rowspan="1" colspan="1">GoogleCalendarRepository</td>
+<td rowspan="1" colspan="1">GoogleCalendarService</td>
+<td rowspan="1" colspan="1">GoogleCalendarServiceImpl</td>
+<td rowspan="1" colspan="1">GoogleCalendarController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">일정 관련</td>
+<td rowspan="1" colspan="1">Schedule</td>
+<td rowspan="1" colspan="1">ScheduleDTO</td>
+<td rowspan="1" colspan="1">ScheduleRepository</td>
+<td rowspan="1" colspan="1">ScheduleService</td>
+<td rowspan="1" colspan="1">ScheduleServiceImpl</td>
+<td rowspan="1" colspan="1">ScheduleController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">일정 데드라인 관련</td>
+<td rowspan="1" colspan="1">ScheduleDeadline</td>
+<td rowspan="1" colspan="1">ScheduleDeadlineDTO</td>
+<td rowspan="1" colspan="1">ScheduleDeadlineRepository</td>
+<td rowspan="1" colspan="1">ScheduleService</td>
+<td rowspan="1" colspan="1">ScheduleServiceImpl</td>
+<td rowspan="1" colspan="1">ScheduleController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">AI 이미지 분석 관련</td>
+<td rowspan="1" colspan="1">AiImageSchedule</td>
+<td rowspan="1" colspan="1">AiImageScheduleDTO</td>
+<td rowspan="1" colspan="1">AiImageScheduleRepository</td>
+<td rowspan="1" colspan="1">AiImageScheduleService</td>
+<td rowspan="1" colspan="1">AiImageScheduleServiceImpl</td>
+<td rowspan="1" colspan="1">AiImageScheduleController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 관련</td>
+<td rowspan="1" colspan="1">Group</td>
+<td rowspan="1" colspan="1">GroupDTO</td>
+<td rowspan="1" colspan="1">GroupRepository</td>
+<td rowspan="1" colspan="1">GroupService</td>
+<td rowspan="1" colspan="1">GroupServiceImpl</td>
+<td rowspan="1" colspan="1">GroupController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 멤버 관련</td>
+<td rowspan="1" colspan="1">GroupMember</td>
+<td rowspan="1" colspan="1">GroupMemberDTO</td>
+<td rowspan="1" colspan="1">GroupMemberRepository</td>
+<td rowspan="1" colspan="1">GroupService</td>
+<td rowspan="1" colspan="1">GroupServiceImpl</td>
+<td rowspan="1" colspan="1">GroupController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 초대 관련</td>
+<td rowspan="1" colspan="1">GroupInvitation</td>
+<td rowspan="1" colspan="1">GroupInvitationDTO</td>
+<td rowspan="1" colspan="1">GroupInvitationRepository</td>
+<td rowspan="1" colspan="1">GroupService</td>
+<td rowspan="1" colspan="1">GroupServiceImpl</td>
+<td rowspan="1" colspan="1">GroupController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 일정 관련</td>
+<td rowspan="1" colspan="1">GroupSchedule</td>
+<td rowspan="1" colspan="1">GroupScheduleDTO</td>
+<td rowspan="1" colspan="1">GroupScheduleRepository</td>
+<td rowspan="1" colspan="1">GroupScheduleService</td>
+<td rowspan="1" colspan="1">GroupScheduleServiceImpl</td>
+<td rowspan="1" colspan="1">GroupScheduleController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 채팅방 관련</td>
+<td rowspan="1" colspan="1">GroupChatRoom</td>
+<td rowspan="1" colspan="1">GroupChatRoomDTO</td>
+<td rowspan="1" colspan="1">GroupChatRoomRepository</td>
+<td rowspan="1" colspan="1">ChatService</td>
+<td rowspan="1" colspan="1">ChatServiceImpl</td>
+<td rowspan="1" colspan="1">ChatController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">채팅 메시지 관련</td>
+<td rowspan="1" colspan="1">ChatMessage</td>
+<td rowspan="1" colspan="1">ChatMessageDTO</td>
+<td rowspan="1" colspan="1">ChatMessageRepository</td>
+<td rowspan="1" colspan="1">ChatService</td>
+<td rowspan="1" colspan="1">ChatServiceImpl</td>
+<td rowspan="1" colspan="1">ChatController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 게시판 관련</td>
+<td rowspan="1" colspan="1">Board</td>
+<td rowspan="1" colspan="1">BoardDTO</td>
+<td rowspan="1" colspan="1">BoardRepository</td>
+<td rowspan="1" colspan="1">BoardService</td>
+<td rowspan="1" colspan="1">BoardServiceImpl</td>
+<td rowspan="1" colspan="1">BoardController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">게시글 이미지 관련</td>
+<td rowspan="1" colspan="1">BoardImage</td>
+<td rowspan="1" colspan="1">BoardImageDTO</td>
+<td rowspan="1" colspan="1">BoardImageRepository</td>
+<td rowspan="1" colspan="1">BoardService</td>
+<td rowspan="1" colspan="1">BoardServiceImpl</td>
+<td rowspan="1" colspan="1">BoardController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">모임 게시판 댓글 관련</td>
+<td rowspan="1" colspan="1">BoardComment</td>
+<td rowspan="1" colspan="1">BoardCommentDTO</td>
+<td rowspan="1" colspan="1">BoardCommentRepository</td>
+<td rowspan="1" colspan="1">BoardCommentService</td>
+<td rowspan="1" colspan="1">BoardCommentServiceImpl</td>
+<td rowspan="1" colspan="1">BoardCommentController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">알림 관련</td>
+<td rowspan="1" colspan="1">Notification</td>
+<td rowspan="1" colspan="1">NotificationDTO</td>
+<td rowspan="1" colspan="1">NotificationRepository</td>
+<td rowspan="1" colspan="1">NotificationService</td>
+<td rowspan="1" colspan="1">NotificationServiceImpl</td>
+<td rowspan="1" colspan="1">NotificationController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">알림 설정 관련</td>
+<td rowspan="1" colspan="1">NotificationSetting</td>
+<td rowspan="1" colspan="1">NotificationSettingDTO</td>
+<td rowspan="1" colspan="1">NotificationSettingRepository</td>
+<td rowspan="1" colspan="1">NotificationService</td>
+<td rowspan="1" colspan="1">NotificationServiceImpl</td>
+<td rowspan="1" colspan="1">NotificationController</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+</table>
+
+    <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (window.parent && window.parent.closeDocModal) {
+          window.parent.closeDocModal();
+        }
+      }
+    });
+    </script>
+    </body></html>

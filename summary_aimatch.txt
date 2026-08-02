@@ -1,0 +1,121 @@
+
+--- API_정의서.xlsx ---
+  AI.MATCH — API 정의서    Unnamed: 1 Unnamed: 2
+0                 No           도메인      API 수
+1                  1       회원 · 인증         17
+2                  2  스포츠 · 팀 · 선수          7
+3                  3            경기         10
+4                  4            예측          4
+5                  5        실시간 댓글          3
+6                  6           게시판         11
+7                  7            뉴스          5
+8                  8     관리자 · 필터링          5
+9                NaN            합계         62
+
+--- WBS.xlsx ---
+   🏆  클러치 : 스포츠 중계 사이트  |  WBS (Work Breakdown Structure) Unnamed: 1   Unnamed: 2 Unnamed: 3 Unnamed: 4           Unnamed: 5           Unnamed: 6 Unnamed: 7 Unnamed: 8   Unnamed: 9  Unnamed: 10  Unnamed: 11  Unnamed: 12  Unnamed: 13  Unnamed: 14  Unnamed: 15  Unnamed: 16                           Unnamed: 17
+0                                                     NaN        NaN          NaN        NaN        NaN                  NaN                  NaN        NaN        NaN           5월          NaN          NaN          NaN           6월          NaN          NaN          NaN                                   NaN
+1                                                     대분류      기능 영역        상세 기능      담당 파트        담당자                  시작일                  종료일    기간\n(일)     진행\n상황  05.06~05.08  05.11~05.15  05.18~05.22  05.25~05.29  06.01~06.05  06.08~06.12  06.15~06.19  06.22~06.26                                    비고
+2                                                      분석     개발 계획서     개발 계획 수립         기획        이명균  2026-05-06 00:00:00  2026-05-13 00:00:00          8        진행중          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                     서비스 목적, 범위, 일정 계획
+3                                                      분석     기능 정의서     기능 목록 작성         기획        홍성찬           2026-05-06           2026-05-08          8        진행중          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                       기능 목록 및 우선순위 정의
+4                                                      분석        WBS    일정 계획표 작성         기획        고종엽           2026-05-06  2026-05-13 00:00:00          8        진행중          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                         업무 분류 및 일정 수립
+5                                                      분석   요구사항 정의서   기능 요구사항 정의         기획   이명균, 이상엽           2026-05-06           2026-05-13          8        진행중          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                      SR-01~SR-10 전 영역
+6                                                      설계     시스템 설계     ER 다이어그램         설계         전원           2026-05-13           2026-05-15          3         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                          DB 테이블 관계 설계
+7                                                      설계     시스템 설계      테이블 정의서         설계         전원           2026-05-13           2026-05-15          3         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                             데이터 구조 설계
+8                                                      설계      화면 설계    UI/UX 가이드         설계         전원           2026-05-13           2026-05-15          3         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                      와이어프레임 및 디자인 가이드
+9                                                      설계     시스템 설계    클래스 다이어그램         설계         전원  2026-05-15 00:00:00  2026-05-22 00:00:00          6         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                        시스템 로직 및 구조 설계
+10                                                     개발       회원가입   회원가입 기본 구현      BE/FE   이명균, 홍성찬           2026-05-15           2026-05-22          6         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN     아이디/이메일 중복확인, 약관동의\n(SR-01-01~03)
+11                                                     개발       회원가입     이메일 본인인증         BE        고종엽           2026-05-15           2026-05-22          6         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                이메일 인증 처리 \n(SR-01-04)
+12                                                     개발        로그인  일반 로그인/로그아웃      BE/FE   이상엽, 이명균           2026-05-15           2026-05-22          6         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN  아이디·패스워드 로그인, 로그인 유지 \n(SR-02-01~02)
+13                                                     개발        로그인       소셜 로그인      BE/FE   홍성찬, 고종엽           2026-05-19           2026-05-22          3         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN             카카오·구글 OAuth \n(SR-02-03)
+14                                                     개발       회원정보    아이디/비번 찾기      BE/FE   이상엽, 이명균           2026-05-19           2026-05-22          3         대기          NaN          NaN          NaN          NaN          NaN          NaN          NaN          NaN                이메일 인증 기반 \n(SR-02-04)
+
+--- 기능정의서.xlsx ---
+    Unnamed: 0 Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4      Unnamed: 5                                      Unnamed: 6                                                  Unnamed: 7
+0          NaN         ID  관련\n 요구사항         기능        NaN             NaN                                              내용                                                          비고
+1          NaN        NaN        NaN        대분류        중분류             소분류                                             NaN                                                         NaN
+2          NaN   FR-01-01   SR-01-01      회원/계정       회원가입      회원가입 정보 입력  사용자의 아이디, 패스워드, 이메일, 이름 등 회원가입에 필요한 정보를 입력받는다.  아이디 20자 이내, 영문+숫자 조합 / 패스워드 8~20자, \n영문+숫자+특수문자 조합 / 이름 필수
+3          NaN   FR-01-02   SR-01-02        NaN        NaN       아이디 중복 확인                           입력한 아이디의 중복 여부를 확인한다.                                       특수문자 허용 안 함, 중복 확인 필수
+4          NaN   FR-01-03   SR-01-02        NaN        NaN  이메일 중복 및 형식 검사                       입력한 이메일의 형식과 중복 여부를 검사한다.                                     이메일 형식 유효성 검사, 중복 여부 검사
+5          NaN   FR-01-04   SR-01-01        NaN        NaN      선택 개인정보 입력                   사용자의 전화번호와 생년월일을 선택적으로 입력받는다.    전화번호 숫자만 입력 및 자동 포맷(010-0000-0000),\n생년월일 달력 선택 또는 직접 입력
+6          NaN   FR-01-05   SR-01-03        NaN      약관 동의        필수 약관 동의            회원가입 시 이용약관과 개인정보 처리방침 동의 여부를 입력받는다.                                                    필수 동의 항목
+7          NaN   FR-01-06   SR-01-03        NaN        NaN       마케팅 수신 동의                            마케팅 수신 동의 여부를 입력받는다.                                                    선택 동의 항목
+8          NaN   FR-01-07   SR-01-04        NaN      본인 인증          이메일 인증               입력된 이메일로 인증 메일을 발송하고 인증 코드를 확인한다.   가입 완료 전 인증 필수, \n유효시간 10분, \n인증 시도횟수 최대 5회 (성공시 시도횟수 초기화)
+9          NaN   FR-02-01   SR-02-01        NaN        로그인          일반 로그인                   아이디와 패스워드를 입력받아 로그인 처리를 수행한다.                                   아이디/패스워드 필수, 패스워드 입력값 마스킹
+10         NaN   FR-02-02   SR-02-01        NaN        NaN            로그아웃                             로그인한 사용자의 세션을 종료한다.                                                    세션 기반 처리
+11         NaN   FR-02-03   SR-02-02        NaN        NaN          로그인 유지                 사용자가 로그인 유지 여부를 선택할 수 있도록 제공한다.                                                  체크박스 선택 기능
+12         NaN   FR-02-04   SR-02-03        NaN     소셜 로그인         카카오 로그인                     카카오 OAuth를 통해 로그인 기능을 제공한다.                                                         NaN
+13         NaN   FR-02-05   SR-02-03        NaN        NaN          구글 로그인                      구글 OAuth를 통해 로그인 기능을 제공한다.                                                         NaN
+14         NaN   FR-02-06   SR-02-04        NaN      계정 찾기          아이디 찾기              이메일 인증을 통해 사용자의 아이디를 확인할 수 있도록 한다.                                                 이메일 인증 후 제공
+
+--- 요구사항정의서.xlsx ---
+    Unnamed: 0 Unnamed: 1 Unnamed: 2                                         Unnamed: 3       Unnamed: 4
+0          NaN         ID         구분                                                 내용               비고
+1          NaN   SR-01-01       회원가입                  사용자는 서비스 이용을 위해 회원가입을 할 수 있어야 한다.              NaN
+2          NaN   SR-01-02       회원가입  시스템은 회원가입 시 아이디, 이메일의 계정 정보의 중복 여부를 확인할 수 있어야 한다.              NaN
+3          NaN   SR-01-03       회원가입           사용자는 서비스 이용에 필요한 약관 동의 여부를 선택할 수 있어야 한다.  필수 동의와 선택 동의 구분
+4          NaN   SR-01-04       회원가입          시스템은 이메일 인증을 통해 사용자의 본인 인증을 처리할 수 있어야 한다.              NaN
+5          NaN   SR-02-01        로그인         사용자는 아이디와 패스워드를 통해 로그인 및 로그아웃을 할 수 있어야 한다.              NaN
+6          NaN   SR-02-02        로그인                      사용자는 로그인 유지 기능을 선택할 수 있어야 한다.            선택 기능
+7          NaN   SR-02-03        로그인              사용자는 외부 계정을 이용한 소셜 로그인을 사용할 수 있어야 한다.          카카오, 구글
+8          NaN   SR-02-04       회원정보              사용자는 아이디 찾기 및 패스워드 재설정을 수행할 수 있어야 한다.        이메일 인증 기반
+9          NaN   SR-02-05       회원정보             로그인한 사용자는 자신의 회원정보를 조회하고 수정할 수 있어야 한다.              NaN
+10         NaN   SR-02-06       회원정보                    로그인한 사용자는 프로필 정보를 변경할 수 있어야 한다.     닉네임, 프로필 이미지
+11         NaN   SR-02-07       회원정보           로그인한 사용자는 관심 종목과 알림 수신 여부를 설정할 수 있어야 한다.              NaN
+12         NaN   SR-02-08       회원정보                     로그인한 사용자는 회원 탈퇴를 요청할 수 있어야 한다.         본인 확인 필요
+13         NaN   SR-03-01      경기 일정                      사용자는 종목별 경기 일정을 조회할 수 있어야 한다.      야구, 축구, LoL
+14         NaN   SR-03-02      경기 일정                       사용자는 팀별 경기 일정을 조회할 수 있어야 한다.              NaN
+
+--- 클래스_정의서.xlsx ---
+           AI.MATCH — 프로그램 목록         Unnamed: 1                                   Unnamed: 2                   Unnamed: 3                Unnamed: 4                                                 Unnamed: 5
+0                          설명             Entity                                          DTO                   Repository                   Service                                   ServiceImpl\n(다형성 필요 시만)
+1                  1. 회원 · 인증                NaN                                          NaN                          NaN                       NaN                                                        NaN
+2                       회원 관리               User    UserDTO / UserUpdateDTO / UserResponseDTO               UserRepository               UserService                                                          —
+3                   이메일 인증 관리        EmailVerify  EmailVerifyRequestDTO / EmailVerifyCheckDTO        EmailVerifyRepository        EmailVerifyService                                                          —
+4   소셜 로그인 관리\n(카카오 / 구글 다형성)        SocialLogin                               SocialLoginDTO        SocialLoginRepository        SocialLoginService  KakaoSocialLoginServiceImpl\nGoogleSocialLoginServiceImpl
+5                    관심 종목 관리  UserInterestSport                         UserInterestSportDTO  UserInterestSportRepository  UserInterestSportService                                                          —
+6             2. 스포츠 · 팀 · 선수                NaN                                          NaN                          NaN                       NaN                                                        NaN
+7                       종목 관리              Sport                                     SportDTO              SportRepository              SportService                                                          —
+8                        팀 관리               Team                      TeamDTO / TeamDetailDTO               TeamRepository               TeamService                                                          —
+9                  팀 시즌 성적 관리     TeamSeasonStat                            TeamSeasonStatDTO     TeamSeasonStatRepository     TeamSeasonStatService                                                          —
+10                      선수 관리             Player                  PlayerDTO / PlayerDetailDTO             PlayerRepository             PlayerService                                                          —
+11                      3. 경기                NaN                                          NaN                          NaN                       NaN                                                        NaN
+12                      경기 관리              Match     MatchDTO / MatchDetailDTO / MatchListDTO              MatchRepository              MatchService                                                          —
+13                  경기 이벤트 관리         MatchEvent                                MatchEventDTO         MatchEventRepository         MatchEventService                                                          —
+14                 경기 팀 통계 관리      MatchTeamStat                             MatchTeamStatDTO      MatchTeamStatRepository      MatchTeamStatService                                                          —
+
+--- 테스트케이스.xlsx ---
+    No    대분류           시트명                                                 설명               TC ID 범위
+0    1  회원/계정     회원_가입_로그인             회원가입·이메일 인증·로그인/아웃·토큰 재발급·소셜 로그인·계정 찾기  TC-01-001 ~ TC-01-020
+1    2  회원/계정       회원정보_수정                     비밀번호 변경·기본정보·닉네임·프로필 이미지·회원 탈퇴  TC-02-001 ~ TC-02-011
+2    3  회원/계정          개인설정                              관심 팀 등록/해제/조회·비로그인 차단  TC-03-001 ~ TC-03-005
+3    4  경기/중계       경기목록_일정   /api/games 경기 목록·상세·날짜/종목/상태 필터·/api/schedule 일정  TC-04-001 ~ TC-04-012
+4    5  경기/중계      경기상세_실시간                 야구/축구 실시간 상태·라인업·팀통계·선수통계·이벤트 타임라인  TC-05-001 ~ TC-05-020
+5    6   팀/선수           순위표                           /api/standings 종목별 순위 조회  TC-06-001 ~ TC-06-004
+6    7   팀/선수          팀_정보                           /api/teams 팀 상세·성적·선수 목록  TC-07-001 ~ TC-07-008
+7    8   팀/선수         선수_기록          /api/players 선수 목록·상세, /api/records 시즌 기록  TC-08-001 ~ TC-08-008
+8    9     예측          승부예측                        예측 제출·중복 방지·마감·LoL 예측·통계·랭킹  TC-09-001 ~ TC-09-014
+9   10     예측          AI예측                       야구/축구/LoL AI 예측·근거·통계·레거시 호환  TC-10-001 ~ TC-10-006
+10  11   커뮤니티     경기_실시간_댓글  /api/games/{id}/comments 작성·조회·삭제·신고·AI 필터링·사칭 방지  TC-11-001 ~ TC-11-011
+11  12   커뮤니티           게시판              게시글 CRUD·카테고리·이미지·대댓글·좋아요·신고·관리자 블라인드  TC-12-001 ~ TC-12-025
+12  13    콘텐츠            뉴스                               종목별/카테고리 뉴스·스크랩 CRUD  TC-13-001 ~ TC-13-010
+13  14    관리자  관리자_야구_시뮬레이터                   야구 경기 목록·상태 조회·커맨드·이벤트 삭제·라인업 관리  TC-14-001 ~ TC-14-013
+14  15    관리자  관리자_축구_시뮬레이터                   축구 경기 목록·상태 조회·커맨드·이벤트 삭제·라인업 관리  TC-15-001 ~ TC-15-012
+
+--- 테이블_정의서.xlsx ---
+                 users   회원   Unnamed: 1    Unnamed: 2 Unnamed: 3 Unnamed: 4         Unnamed: 5                                                                            Unnamed: 6
+0                       컬럼명          한글명            타입        Key    NULL 여부                기본값                                                                                    설명
+1                   user_id        회원 ID        BIGINT         PK   NOT NULL     AUTO_INCREMENT                                                                             회원 고유 식별자
+2                  login_id          아이디   VARCHAR(20)         UK   NOT NULL                  —                                 로그인 아이디 (영문+숫자, 20자 이내) / 탈퇴 시 deleted_<user_id>로 익명화
+3                     email          이메일  VARCHAR(255)         UK   NOT NULL                  —                             이메일 주소 (중복 불가) / 탈퇴 시 deleted_<user_id>@deleted.com으로 익명화
+4                  password         비밀번호  VARCHAR(255)        NaN        NaN                  —                                                            암호화된 비밀번호 / 소셜 전용 계정은 NULL
+5                      name           이름   VARCHAR(20)        NaN   NOT NULL                  —                                                                               실명 (필수)
+6                  nickname          닉네임   VARCHAR(20)         UK        NaN                  —                                                          20자 이내, 중복 불가 / 탈퇴 시 NULL 처리
+7                     phone         전화번호   VARCHAR(20)        NaN        NaN                  —                                                            선택 입력, 자동 포맷 010-0000-0000
+8                birth_date         생년월일          DATE        NaN        NaN                  —                                                                                 선택 입력
+9             profile_image      프로필 이미지  VARCHAR(500)        NaN        NaN                  —  프로필 이미지 S3 object key 저장 / 전체 URL은 앱에서 {CDN_BASE_URL}/{key} 형태로 조합 (JPG/PNG, 최대 2MB)
+10         marketing_agreed    마케팅 수신 동의    TINYINT(1)        NaN   NOT NULL                  0                                                                         0: 미동의, 1: 동의
+11        match_start_alert     경기 시작 알림    TINYINT(1)        NaN   NOT NULL                  1                                                                         0: 미수신, 1: 수신
+12  prediction_result_alert     예측 결과 알림    TINYINT(1)        NaN   NOT NULL                  1                                                                         0: 미수신, 1: 수신
+13     alert_before_minutes  알림 선행 시간(분)           INT        NaN   NOT NULL                 30                                                                     경기 시작 몇 분 전 알림 발송
+14               created_at         가입일시      DATETIME        NaN   NOT NULL  CURRENT_TIMESTAMP                                                                              계정 생성 일시

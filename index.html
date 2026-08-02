@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이상엽 — Backend Developer</title>
+  <meta name="description" content="백엔드 개발자 이상엽의 포트폴리오 · PlanSlot · Sports-predict-live">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --bg:      #f7f6f2;
+      --surface: #ffffff;
+      --ink:     #111110;
+      --ink2:    #3a3935;
+      --sub:     #6b6a65;
+      --muted:   #9e9d97;
+      --line:    #e2e0d9;
+      --accent:  #d4501a;      /* burnt orange — bold & distinctive */
+      --accent2: #1a4fd4;      /* electric blue */
+      --accent-light: #fdf0eb;
+      --accent2-light: #eef2fd;
+      --sans: 'Pretendard Variable', Pretendard, 'DM Sans', -apple-system, sans-serif;
+      --mono: 'DM Mono', monospace;
+      --ease: cubic-bezier(.22,1,.36,1);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      word-break: keep-all;
+    }
+    a { color:inherit; text-decoration:none; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky; top:0; z-index:200;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247,246,242,.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-in {
+      max-width: 1200px; margin:0 auto;
+      height: 56px;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 32px;
+    }
+    .nav-logo {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-right { display:flex; align-items:center; gap:8px; }
+    .nav-link {
+      padding: 8px 16px; border-radius: 6px;
+      font-size: 13px; font-weight: 500; color: var(--sub);
+      transition: color .2s, background .2s;
+    }
+    .nav-link:hover { color: var(--ink); background: var(--line); }
+    @media(max-width:600px) { .nav-link { display:none; } }
+
+    /* ─── REVEAL ──────────────────────────────────────────── */
+    .rv {
+      opacity:0; transform:translateY(28px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+    }
+    .rv.on { opacity:1; transform:none; }
+    .rv.d1 { transition-delay:.08s; }
+    .rv.d2 { transition-delay:.16s; }
+    .rv.d3 { transition-delay:.24s; }
+    .rv.d4 { transition-delay:.32s; }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      max-width: 1200px; margin: 0 auto;
+      padding: 96px 32px 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: flex-end;
+    }
+    @media(max-width:760px) { .hero { grid-template-columns:1fr; padding:64px 24px 48px; } }
+
+    .hero-left {}
+    .hero-tag {
+      display:inline-flex; align-items:center;
+      padding:6px 14px; border-radius:100px;
+      font-size:11px; font-weight:700; letter-spacing:.08em;
+      text-transform:uppercase; color:var(--ink);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      margin-bottom: 24px;
+    }
+    .hero-tag-dot {
+      width:6px; height:6px; border-radius:50%;
+      background: #ef4444;
+      margin-right:8px;
+      animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-dot { 0% { box-shadow:0 0 0 0 rgba(239,68,68,.4); } 70% { box-shadow:0 0 0 6px rgba(239,68,68,0); } 100% { box-shadow:0 0 0 0 rgba(239,68,68,0); } }
+
+    .hero h1 {
+      font-size: clamp(64px, 12vw, 140px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: .92;
+      color: var(--ink);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-desc {
+      margin-top: 28px;
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--sub);
+      font-weight: 400;
+      max-width: 44ch;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      margin-top: 36px;
+      display: flex; gap:12px; flex-wrap:wrap;
+    }
+    .btn {
+      display:inline-flex; align-items:center; gap:7px;
+      padding: 11px 22px; border-radius: 6px;
+      font-size: 14px; font-weight: 600; font-family: var(--sans);
+      cursor:pointer; border:none;
+      transition: transform .2s var(--ease), box-shadow .2s;
+      letter-spacing: -.01em;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-fill { background:var(--ink); color:#fff; box-shadow:0 2px 12px rgba(0,0,0,.15); }
+    .btn-fill:hover { box-shadow:0 6px 20px rgba(0,0,0,.2); }
+    .btn-ghost { background:transparent; color:var(--ink); border:1.5px solid var(--line) !important; border:none; }
+    .btn-ghost:hover { background: var(--line); }
+
+    .hero-right {
+      text-align: right;
+      padding-bottom: 8px;
+    }
+    @media(max-width:760px) { .hero-right { text-align:left; } }
+    .hero-stat { margin-bottom:20px; }
+    .hero-stat-num {
+      font-size: 48px; font-weight: 800;
+      letter-spacing: -.04em; color: var(--ink);
+      line-height:1;
+    }
+    .hero-stat-num span { color: var(--accent); }
+    .hero-stat-label { font-size: 12px; color: var(--muted); font-weight:500; margin-top:4px; letter-spacing:.04em; }
+
+    /* ─── DIVIDER ─────────────────────────────────────────── */
+    .full-divider {
+      border:none; border-top: 1px solid var(--line);
+      margin: 0;
+    }
+
+    /* ─── SECTION BASE ────────────────────────────────────── */
+    .wrap { max-width:1200px; margin:0 auto; padding:0 32px; }
+    @media(max-width:600px) { .wrap { padding:0 20px; } }
+    section { padding: 96px 0; }
+    .s-label {
+      font-size:11px; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--accent);
+      margin-bottom: 14px;
+    }
+    .s-title {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight:800; letter-spacing:-.04em; line-height:1.0;
+    }
+    .s-desc {
+      margin-top:16px; font-size:17px; color:var(--sub);
+      max-width:50ch; line-height:1.7;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    .about-layout {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--line);
+    }
+    @media(max-width:860px) { .about-layout { grid-template-columns:1fr; } }
+
+    .about-cell {
+      background: var(--surface);
+      padding: 36px 32px;
+    }
+    .about-cell-label {
+      font-size:10px; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .about-name { font-size:22px; font-weight:800; letter-spacing:-.02em; }
+    .about-role {
+      margin-top: 6px;
+      font-size:14px; color:var(--sub); font-weight:500;
+    }
+    .about-bio {
+      margin-top: 20px;
+      font-size:14px; color:var(--sub); line-height:1.8;
+    }
+    .about-bio strong { color:var(--ink); font-weight:600; }
+
+    .contact-rows { display:flex; flex-direction:column; gap:14px; }
+    .contact-row { display:flex; flex-direction:column; gap:3px; }
+    .contact-row-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+    .contact-row-value { font-size:14px; font-weight:600; color:var(--ink); }
+    .contact-row-value a { color:var(--accent2); }
+    .contact-row-value a:hover { text-decoration:underline; }
+
+    .info-row {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-item-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+      width: 90px; flex: none;
+    }
+    .info-item-value {
+      font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.5;
+    }
+
+    /* ─── TECH STACK ──────────────────────────────────────── */
+    .tech-layout {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .tech-cell {
+      background: var(--surface);
+      padding: 28px 26px;
+      transition: background .2s;
+    }
+    .tech-cell:hover { background: var(--bg); }
+    .tech-cell-cat {
+      font-size:10px; font-weight:700; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--muted);
+      margin-bottom:14px;
+    }
+    .tech-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .tech-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 11px; border-radius:4px;
+      font-size: 12px; font-weight: 600;
+      background: var(--bg); color:var(--ink2);
+      border: 1px solid var(--line);
+      font-family: var(--mono);
+      transition: border-color .2s, color .2s;
+    }
+    .tech-tag.emp {
+      background: rgba(59, 130, 246, 0.05);
+      border-color: rgba(59, 130, 246, 0.4);
+      color: var(--ink);
+    }
+    .tech-tag:hover { border-color: var(--accent); color:var(--accent); }
+    .tech-tag img {
+      width: 14px; height: 14px;
+      object-fit: contain; flex: none;
+      display: inline-block;
+    }
+
+    /* ─── PROJECTS ────────────────────────────────────────── */
+    .project-block {
+      margin-top: 72px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--surface);
+      transition: box-shadow .3s;
+    }
+    .project-block:hover { box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+
+    .project-header {
+      padding: 40px 44px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    @media(max-width:640px) { .project-header { grid-template-columns:1fr; padding:28px 24px; } }
+
+    .proj-num {
+      font-size:11px; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--muted);
+      margin-bottom:10px;
+    }
+    .proj-title {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight:800; letter-spacing:-.05em; line-height:1.0;
+    }
+    .proj-subtitle {
+      margin-top: 8px;
+      font-size:15px; font-weight:600;
+      color: var(--accent);
+    }
+    .proj-badge {
+      display:inline-block;
+      padding: 6px 14px; border-radius:100px;
+      font-size:12px; font-weight:700;
+      background: var(--accent-light); color:var(--accent);
+      border: 1.5px solid var(--accent);
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+    .proj-badge.blue { background:var(--accent2-light); color:var(--accent2); border-color:var(--accent2); }
+
+    .project-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media(max-width:760px) { .project-body { grid-template-columns:1fr; } }
+
+    .proj-desc-cell {
+      padding: 36px 44px;
+      border-right: 1px solid var(--line);
+    }
+    @media(max-width:760px) { .proj-desc-cell { border-right:none; border-bottom:1px solid var(--line); padding:28px 24px; } }
+
+    .proj-desc {
+      font-size:15px; color:var(--sub); line-height:1.8; margin-bottom:28px;
+    }
+    .proj-desc strong { color:var(--ink); font-weight:600; }
+
+    .feature-list { display:flex; flex-direction:column; gap:12px; }
+    .feature-item {
+      display:flex; align-items:flex-start; gap:12px;
+      font-size:14px; color:var(--sub); line-height:1.6;
+    }
+    .fi-marker {
+      width: 20px; height: 20px; border-radius:4px;
+      background: var(--bg); border: 1.5px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      flex:none; margin-top:2px;
+    }
+    .fi-marker-inner {
+      width:7px; height:7px; border-radius:2px;
+      background: var(--accent);
+    }
+    .fi-marker.blue .fi-marker-inner { background: var(--accent2); }
+    .feature-item b { color:var(--ink); font-weight:600; }
+
+    .proj-stack-cell { padding:36px 44px; }
+    @media(max-width:760px) { .proj-stack-cell { padding:28px 24px; } }
+
+    .proj-stack-label {
+      font-size:10px; font-weight:700; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--muted);
+      margin-bottom:16px;
+    }
+    .proj-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:32px; }
+    .proj-tag {
+      padding: 5px 12px; border-radius:4px;
+      font-size:12px; font-weight:600;
+      background: var(--bg); color:var(--ink2);
+      border: 1px solid var(--line);
+      font-family: var(--mono);
+    }
+
+    .proj-link-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 10px 20px; border-radius:6px;
+      font-size:13px; font-weight:700; font-family:var(--sans);
+      background:var(--ink); color:#fff;
+      cursor:pointer; border: 1.5px solid transparent;
+      transition: background .2s, transform .2s;
+      text-decoration:none;
+    }
+    .proj-link-btn:hover { background:var(--accent); transform:translateY(-2px); }
+    .proj-link-btn.outline {
+      background: transparent; color:var(--ink);
+      border-color: var(--line);
+    }
+    .proj-link-btn.outline:hover { background:var(--bg); border-color:var(--ink); transform:translateY(-2px); }
+    .proj-link-btns { display:flex; gap:8px; flex-wrap:wrap; }
+
+    .proj-preview {
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--bg);
+      padding: 32px 32px 0 32px;
+    }
+    .browser-window {
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+      border: 1px solid var(--line);
+      border-bottom: none;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .browser-header {
+      background: #f5f5f7;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .bh-dots { display: flex; gap: 6px; position: absolute; }
+    .bh-dots span { width: 10px; height: 10px; border-radius: 50%; background: #e5e5e5; }
+    .bh-dots span:nth-child(1) { background: #ff5f56; }
+    .bh-dots span:nth-child(2) { background: #ffbd2e; }
+    .bh-dots span:nth-child(3) { background: #27c93f; }
+    .bh-url { flex: 1; text-align: center; }
+    .bh-url-inner {
+      display: inline-block;
+      background: #fff; border-radius: 4px; padding: 4px 16px; font-size: 11px;
+      color: #777; border: 1px solid #ddd; font-family: var(--mono); min-width: 200px;
+    }
+    .bh-url-inner a { color: inherit; text-decoration: none; }
+    .bh-url-inner a:hover { text-decoration: underline; }
+
+    .proj-preview img {
+      width: 100%; display: block; object-fit: cover; object-position: top; transition: transform .4s var(--ease);
+    }
+    .project-block:hover .proj-preview img { transform: translateY(-4px); }
+    @media print { .proj-preview { max-height: 180px; } }
+
+    /* ACCORDION (Details) */
+    .proj-details { border-top: 1px solid var(--line); }
+    .proj-details > summary {
+      padding: 20px 44px; font-size: 15px; font-weight: 600; color: var(--ink);
+      cursor: pointer; list-style: none; display: flex; justify-content: center; align-items: center; gap: 8px;
+      background: var(--surface); transition: background .2s, color .2s;
+    }
+    .proj-details > summary::-webkit-details-marker { display: none; }
+    .proj-details > summary:hover { background: var(--bg); color: var(--accent); }
+    .proj-details > summary::after { content: "▼"; font-size: 10px; transition: transform 0.3s; }
+    .proj-details[open] > summary::after { transform: rotate(180deg); }
+    .pd-content { padding: 36px 44px; background: var(--bg); border-top: 1px solid var(--line); }
+    .pd-section { 
+      padding-bottom: 48px; 
+      margin-bottom: 48px; 
+      border-bottom: 1px dashed var(--muted); 
+    }
+    .pd-section:last-child { 
+      padding-bottom: 0; 
+      margin-bottom: 0; 
+      border-bottom: none; 
+    }
+    .pd-section h3 { 
+      font-size: 20px; font-weight: 800; margin-bottom: 24px; color: var(--ink); 
+      display: inline-block;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--ink);
+    }
+    .pd-text { font-size: 15px; color: var(--sub); line-height: 1.6; }
+    
+    .dtable { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .drow { display: flex; flex-direction: column; gap: 12px; }
+    .drow .k { font-size: 15px; font-weight: 700; color: var(--ink); padding-bottom: 6px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+    .drow .v { font-size: 14.5px; color: var(--sub); line-height: 1.6; }
+    @media(min-width:640px) {
+      .drow { flex-direction: row; gap: 32px; border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 0; }
+      .drow:last-child { border-bottom: none; padding-bottom: 0; }
+      .drow .k { flex: 0 0 170px; padding-bottom: 0; border-bottom: none; margin-bottom: 0; padding-top: 4px; }
+      .drow .v { flex: 1; }
+    }
+    
+    .doc-btn {
+      display:inline-flex; align-items:center; border-radius:980px; padding:8px 18px; 
+      font-size:14px; font-weight:600; border:1px solid var(--line); background:#fff; 
+      color:var(--ink); transition:all 0.2s; cursor:pointer; justify-content:center;
+    }
+    .doc-btn:hover { background:#f5f5f7; border-color:var(--muted); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    
+    .zoom-img {
+      width:100%; max-width:800px; border-radius:8px; border:1px solid var(--line); 
+      display:block; margin:0; cursor:zoom-in; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .zoom-img:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    
+    .image-modal-overlay {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.7); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      z-index:9999; justify-content:center; align-items:center;
+      opacity:0; transition:opacity 0.3s; overflow:auto;
+    }
+    .image-modal-overlay.show { display:flex; opacity:1; }
+    .image-modal-content {
+      max-width:90%; max-height:90%; border-radius:8px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.3); transform:scale(0.95); transition:transform 0.3s, max-width 0.3s;
+      object-fit: contain; cursor: zoom-in; margin: auto;
+    }
+    .image-modal-overlay.show .image-modal-content { transform:scale(1); }
+    .image-modal-content.zoomed {
+      max-width:none; max-height:none; cursor: zoom-out;
+    }
+    .image-modal-close {
+      position:fixed; top:20px; right:24px; color:#fff; font-size:36px;
+      cursor:pointer; font-weight:300; line-height:1; font-family:sans-serif; z-index:10000;
+    }
+    .image-modal-close:hover { color:#ddd; }
+
+    /* ─── CONTACT FOOTER ──────────────────────────────────── */
+    .contact-footer {
+      background: var(--ink);
+      padding: 100px 32px;
+      text-align: center;
+    }
+    .contact-footer .s-label { color: rgba(255,255,255,.4); }
+    .contact-footer .s-title { color:#fff; }
+    .contact-footer .s-desc { color:rgba(255,255,255,.55); margin:16px auto 40px; }
+    .contact-mail {
+      display:inline-flex; align-items:center; gap:12px;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight:700; letter-spacing:-.02em;
+      color:#fff; padding: 18px 36px;
+      border: 1.5px solid rgba(255,255,255,.2);
+      border-radius:8px;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .contact-mail:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.4);
+      transform: translateY(-3px);
+    }
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,.07);
+      text-align:center; padding:24px;
+      font-size:12px; color:rgba(255,255,255,.25);
+    }
+
+    /* ─── PDF PRINT STYLES ────────────────────────────────── */
+    @media print {
+      @page { size: A4; margin: 18mm 18mm 18mm 18mm; }
+
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+      nav, .hero-actions, .nav-pdf, .contact-mail, .proj-link-btn,
+      .hero-scroll, footer .no-print { display:none !important; }
+
+      body { background:#fff; color:#111; font-size:10pt; }
+
+      .hero {
+        padding: 0 0 24pt;
+        display: block;
+      }
+      .hero h1 { font-size: 48pt; }
+      .hero-right { display:flex; gap:24pt; margin-top:12pt; }
+      .hero-stat-num { font-size:28pt; }
+
+      section { padding: 28pt 0; }
+      .wrap { padding: 0; max-width:100%; }
+
+      .about-layout, .tech-layout {
+        border-radius: 6px;
+      }
+      .project-block {
+        break-inside: avoid;
+        border-radius: 6px;
+        margin-top: 24pt;
+      }
+      .project-header, .proj-desc-cell, .proj-stack-cell { padding: 18pt 20pt; }
+      .proj-title { font-size:24pt; }
+      .proj-desc { font-size:10pt; }
+      .feature-item { font-size:10pt; }
+      .proj-tag, .tech-tag { font-size:8pt; }
+
+      .contact-footer { display:none; }
+      footer { display:none; }
+
+      /* print header */
+      .print-header {
+        display:flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12pt;
+        margin-bottom: 16pt;
+        border-bottom: 2px solid #111;
+      }
+      .print-header-name { font-size:18pt; font-weight:800; letter-spacing:-.04em; }
+      .print-header-contact { font-size:9pt; color:#555; text-align:right; line-height:1.6; }
+
+      .full-divider { border-color: #ddd; }
+      .s-title { font-size:20pt; }
+
+      /* page break hints */
+      #about { break-before: avoid; }
+      #projects { break-before: page; }
+    }
+
+    /* hide print header on screen */
+    .print-header { display:none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="#" class="nav-logo">이상엽 · 포트폴리오</a>
+    <div class="nav-right">
+      <a href="#about" class="nav-link">소개</a>
+      <a href="#skills" class="nav-link">기술 스택</a>
+      <a href="#projects" class="nav-link">프로젝트</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT HEADER (PDF only) -->
+<div class="print-header wrap">
+  <div class="print-header-name">이상엽</div>
+  <div class="print-header-contact">
+    yousung109@naver.com · 010-4189-4298<br>
+    Backend Developer
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag rv">
+      Backend Developer
+    </div>
+    <h1 class="rv d1">이상<em>엽</em></h1>
+    <p class="hero-desc rv d2">
+      Spring Boot 기반의 백엔드 시스템을 설계하고,
+      실시간 통신부터 AI 연동까지
+      안정적이고 확장 가능한 서비스를 만드는 개발자입니다.
+    </p>
+  </div>
+  <div class="hero-right rv d2">
+    <div class="hero-stat">
+      <div class="hero-stat-num">2<span>+</span></div>
+      <div class="hero-stat-label">프로젝트</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5<span>+</span></div>
+      <div class="hero-stat-label">핵심 기술</div>
+    </div>
+  </div>
+</div>
+
+<hr class="full-divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="rv">
+      <div class="s-label">ABOUT</div>
+      <h2 class="s-title">개발자 소개</h2>
+      <p class="s-desc">Java와 Spring 생태계를 중심으로 백엔드 서비스를 개발합니다.</p>
+    </div>
+
+    <div class="about-layout rv d1">
+      <div class="about-cell">
+        <div class="about-cell-label">이름</div>
+        <div class="about-name">이상엽 <span style="font-size:15px; font-weight:600; color:var(--sub); margin-left:4px; letter-spacing:0;">(LEE SANG YEOP)</span></div>
+        <div class="about-role">Backend Developer</div>
+        <div class="contact-rows" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line);">
+          <div class="contact-row">
+            <span class="contact-row-label">이메일</span>
+            <span class="contact-row-value"><a href="mailto:yousung109@naver.com">yousung109@naver.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">전화번호</span>
+            <span class="contact-row-value"><a href="tel:01041894298">010-4189-4298</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">GitHub</span>
+            <span class="contact-row-value"><a href="https://github.com/pigugong102" target="_blank" style="color:var(--accent2);">github.com/pigugong102</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="about-cell">
+        <div class="about-cell-label">개인 정보</div>
+        <div class="info-row" style="margin-top: 0; border-top: none;">
+          <div class="info-item">
+            <span class="info-item-label">생년월일</span>
+            <span class="info-item-value">2003.10.02</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item-label">지역</span>
+            <span class="info-item-value">서울시 노원구</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item-label">학력</span>
+            <span class="info-item-value">인덕대학교 컴퓨터전자공학과</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item-label">자격증</span>
+            <span class="info-item-value">정보처리산업기사 (필기)</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item-label">교육</span>
+            <span class="info-item-value">AI 에이전트 클라우드·보안코딩 개발자 양성</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item-label">대표 프로젝트</span>
+            <span class="info-item-value">PlanSlot<br>AI.MATCH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH STACK -->
+    <div id="skills" style="margin-top:56px; scroll-margin-top:80px;" class="rv d2">
+      <div class="s-label">SKILLS</div>
+      <h2 class="s-title">기술 스택</h2>
+      <p class="s-desc">프로젝트에 활용하는 핵심 기술과 도구들입니다.</p>
+    </div>
+    <div class="tech-layout rv d3">
+      <div class="tech-cell">
+        <div class="tech-cell-cat">Backend</div>
+        <div class="tech-tags">
+          <span class="tech-tag emp"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="">Java</span>
+          <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="">Spring Boot</span>
+          <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/springsecurity/6DB33F" alt="">Spring Security</span>
+          <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="">Spring AI</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="">WebFlux</span>
+          <span class="tech-tag">QueryDSL</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/jsonwebtokens/111110" alt="">JWT &middot; OAuth 2.0</span>
+        </div>
+      </div>
+      <div class="tech-cell">
+        <div class="tech-cell-cat">Database &amp; Infra</div>
+        <div class="tech-tags">
+          <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/mariadb/003545" alt="">MariaDB</span>
+          <span class="tech-tag emp"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="">AWS</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="">MySQL</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg" alt="">Oracle</span>
+          <span class="tech-tag">MyBatis</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/linux/FCC624" alt="">Linux</span>
+        </div>
+      </div>
+      <div class="tech-cell">
+        <div class="tech-cell-cat">Frontend &amp; Etc</div>
+        <div class="tech-tags">
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML / CSS</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">JavaScript</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/thymeleaf/005F0F" alt="">Thymeleaf</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/python/111110" alt="">Python</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/git/F05032" alt="">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="rv">
+      <div class="s-label">PROJECTS</div>
+      <h2 class="s-title">진행한 프로젝트</h2>
+      <p class="s-desc">직접 설계하고 개발한 프로젝트입니다.</p>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="project-block rv d1">
+      <div class="project-header">
+        <div>
+          <div class="proj-title">PlanSlot</div>
+          <div class="proj-subtitle">그룹 일정 관리 플랫폼 &nbsp;·&nbsp; 4인 팀</div>
+        </div>
+      </div>
+      <div class="proj-preview">
+        <div class="browser-window">
+          <div class="browser-header">
+            <div class="bh-dots"><span></span><span></span><span></span></div>
+            <div class="bh-url"><span class="bh-url-inner"><a href="http://13.209.22.21.nip.io:8181/planslot" target="_blank">13.209.22.21.nip.io:8181/planslot</a></span></div>
+          </div>
+          <img src="images/planslot.png" alt="PlanSlot 사이트 미리보기" loading="lazy">
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="proj-desc-cell">
+          <p class="proj-desc">
+            개인 및 그룹 단위의 <strong>일정 관리 서비스</strong>입니다.
+            소셜 로그인, 실시간 채팅, Google Calendar 연동, 알림 시스템까지 갖춘
+            통합 협업 플랫폼으로 설계·개발했습니다.
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="fi-marker blue"><div class="fi-marker-inner"></div></div>
+              <div><b>JWT + OAuth2</b> 기반 소셜 로그인 구현</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker blue"><div class="fi-marker-inner"></div></div>
+              <div><b>WebSocket</b>을 활용한 그룹 실시간 채팅 기능</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker blue"><div class="fi-marker-inner"></div></div>
+              <div><b>Google Calendar API</b> 연동으로 일정 동기화</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker blue"><div class="fi-marker-inner"></div></div>
+              <div><b>Claude API</b> 기반 챗봇 기능 구현</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker blue"><div class="fi-marker-inner"></div></div>
+              <div>이메일 인증 서비스 구현</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-stack-cell">
+          <div class="proj-stack-label">기술 스택</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Spring Boot 4.1</span>
+            <span class="proj-tag">Java 21</span>
+            <span class="proj-tag">Spring Security</span>
+            <span class="proj-tag">JPA</span>
+            <span class="proj-tag">MariaDB</span>
+            <span class="proj-tag">WebSocket</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">OAuth2</span>
+            <span class="proj-tag">Google Calendar API</span>
+            <span class="proj-tag">Claude API</span>
+            <span class="proj-tag">Thymeleaf</span>
+            <span class="proj-tag">Spring Mail</span>
+          </div>
+          <div class="proj-stack-label">링크</div>
+          <div class="proj-link-btns">
+            <a href="https://github.com/endy7540/PlanSlot/tree/develop" target="_blank" class="proj-link-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="http://13.209.22.21.nip.io:8181/planslot" target="_blank" class="proj-link-btn outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              바로가기
+            </a>
+          </div>
+        </div>
+      </div>
+      <details class="proj-details">
+        <summary>개발 세부사항 및 문제 해결 과정 보기</summary>
+        <div class="pd-content">
+
+          <div class="pd-section">
+            <h3>주요 구현 기능</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k">전체 기능 구성</div>
+                <div class="v">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">👤 회원 / 계정 관리</b>
+                      <span style="font-size:13.5px; color:var(--sub);">자체 회원가입, 이메일 본인 인증 (5분 제한), 구글/카카오 소셜 연동</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">📅 개인 일정 및 캘린더 연동</b>
+                      <span style="font-size:13.5px; color:var(--sub);">개인 일정 관리 및 구글 캘린더 API 양방향 데이터 동기화</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">🤖 AI 모임 일정 추천</b>
+                      <span style="font-size:13.5px; color:var(--sub);">모임 캘린더 내 사용자들의 캘린더 일정을 파악하여 최적의 모임 시간 추천</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">📝 AI 채팅 요약</b>
+                      <span style="font-size:13.5px; color:var(--sub);">그룹 채팅 내역을 AI가 분석하여 핵심 내용 요약 제공</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">💬 실시간 그룹 채팅</b>
+                      <span style="font-size:13.5px; color:var(--sub);">모임원 간의 실시간 채팅 및 소통 기능</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">💬 홈페이지 AI 챗봇</b>
+                      <span style="font-size:13.5px; color:var(--sub);">홈페이지 내에서 사용자의 질문에 실시간으로 답변하고 안내하는 챗봇 지원</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>분석 문서</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/요구사항_정의서.html', '요구사항 정의서')" class="doc-btn">요구사항 정의서</button></div>
+                <div class="v">프로젝트의 배경과 목표, 페르소나 및 핵심 유저 스토리를 바탕으로 시스템이 갖추어야 할 필수 및 부가 요구사항을 상세히 도출한 문서입니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/기능_정의서.html', '기능 정의서')" class="doc-btn">기능 정의서</button></div>
+                <div class="v">요구사항을 기반으로 실제 구현할 시스템의 기능들을 화면 및 모듈 단위로 구체화하여 명세했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/WBS.html', 'WBS')" class="doc-btn">WBS</button></div>
+                <div class="v">전체 개발 기간 동안 필요한 작업 단위를 세분화하고, 일정 산정 및 담당자를 배정하여 프로젝트 진행 상황을 관리하기 위한 작업 분업 구조도입니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/테스트케이스.html', '테스트케이스')" class="doc-btn">테스트케이스</button></div>
+                <div class="v">구현된 각 기능이 기획 의도대로 정상 동작하는지 검증하기 위해, 시나리오 및 예외 상황에 대한 구체적인 테스트 계획과 결과를 기록한 문서입니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k" style="padding-top:10px;">시스템 아키텍처</div>
+                <div class="v">
+                  <img src="docs/planslot/시스템아키텍처.png" alt="PlanSlot 시스템 아키텍처" class="zoom-img" onclick="openImageModal(this.src)">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>설계 문서</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/API_명세서.html', 'API 명세서')" class="doc-btn">API 명세서</button></div>
+                <div class="v">프론트엔드와의 통신을 위한 RESTful API의 엔드포인트, Request/Response 데이터 구조, 상태 코드 등을 상세하게 정의한 명세서입니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/테이블_정의서.html', '테이블 정의서')" class="doc-btn">테이블 정의서</button></div>
+                <div class="v">데이터베이스를 구성하는 각 테이블의 컬럼명, 데이터 타입, 제약 조건 등을 정규화 규칙에 맞춰 설계한 문서입니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/planslot/클래스정의서.html', '클래스 정의서')" class="doc-btn">클래스 정의서</button></div>
+                <div class="v">애플리케이션의 핵심 비즈니스 로직을 구성하는 주요 클래스와 메서드, 그리고 객체 간의 협력 관계를 정의했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k" style="padding-top:10px;">ERD</div>
+                <div class="v">
+                  <img src="docs/planslot/erd.png" alt="PlanSlot ERD" class="zoom-img" onclick="openImageModal(this.src)">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>🛠 개발 — 문제 해결 과정 (Troubleshooting)</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k">이슈 1<br><span style="font-size:12px; font-weight:normal; color:var(--muted);">(구글 소셜 연동)</span></div>
+                <div class="v">
+                  <div style="background:var(--gray); padding:16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--line);">
+                    <div style="color:#d9534f; font-weight:700; margin-bottom:6px; font-size:14px;">🚨 문제 상황</div>
+                    <p style="margin:0; font-size:14.5px; color:var(--sub);">구글 캘린더 연동을 위해 구글 소셜 로그인 시도시 실패 하는 문제 발생</p>
+                  </div>
+                  <div style="background:#f0f8ff; padding:16px; border-radius:12px; border:1px solid #cce5ff;">
+                    <div style="color:#0056b3; font-weight:700; margin-bottom:6px; font-size:14px;">💡 해결 방안</div>
+                    <p style="margin:0; font-size:14.5px; color:#333;">Google Cloud Platform OAuth에 테스트 사용자 목록에 해당 계정을 추가하여 문제 해결</p>
+                  </div>
+                </div>
+              </div>
+              <div class="drow">
+                <div class="k">이슈 2<br><span style="font-size:12px; font-weight:normal; color:var(--muted);">(AI 요약 오류)</span></div>
+                <div class="v">
+                  <div style="background:var(--gray); padding:16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--line);">
+                    <div style="color:#d9534f; font-weight:700; margin-bottom:6px; font-size:14px;">🚨 문제 상황</div>
+                    <p style="margin:0; font-size:14.5px; color:var(--sub);">채팅 요약 AI 일정 추출 시 상대적 날짜 기준 오류 발생</p>
+                  </div>
+                  <div style="background:#f0f8ff; padding:16px; border-radius:12px; border:1px solid #cce5ff;">
+                    <div style="color:#0056b3; font-weight:700; margin-bottom:6px; font-size:14px;">💡 해결 방안</div>
+                    <p style="margin:0; font-size:14.5px; color:#333;">각 채팅에 작성 시간 정보를 붙여 AI에게 정보를 보내도록 프롬프트 수정</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>담당 파트 (My Role)</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k">백엔드 구현 및 연동</div>
+                <div class="v">
+                  <ul style="padding-left:20px; margin:0; line-height:1.8; color:var(--ink);">
+                    <li style="margin-bottom:6px;"><b>회원가입 및 인증:</b> 이메일 본인 인증 및 보안 정책을 적용한 자체 회원가입 시스템 구현</li>
+                    <li style="margin-bottom:6px;"><b>구글 캘린더 API 양방향 동기화:</b> 사용자의 자체 스케줄과 구글 캘린더 간의 양방향 연동을 안정적으로 구현</li>
+                    <li style="margin-bottom:6px;"><b>AI 요약 및 추천:</b> 사용자 채팅 내역을 기반으로 내용 요약 및 일정 추천 기능 구현</li>
+                    <li><b>관리자(Admin) 기능:</b> 악성 유저 신고 접수 및 이용 정지(Ban) 처리를 위한 백오피스 API 개발</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-block rv d2">
+      <div class="project-header">
+        <div>
+          <div class="proj-title">AI.MATCH</div>
+          <div class="proj-subtitle">스포츠 실시간 예측 커뮤니티 &nbsp;·&nbsp; 4인 팀</div>
+        </div>
+      </div>
+      <div class="proj-preview">
+        <div class="browser-window">
+          <div class="browser-header">
+            <div class="bh-dots"><span></span><span></span><span></span></div>
+            <div class="bh-url"><span class="bh-url-inner"><a href="http://43.201.107.175:9090" target="_blank">43.201.107.175:9090</a></span></div>
+          </div>
+          <img src="images/sports.png" alt="AI.MATCH 사이트 미리보기" loading="lazy">
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="proj-desc-cell">
+          <p class="proj-desc">
+            <strong>KBO · K리그 · LCK</strong> 세 종목을 다루는 스포츠 예측 커뮤니티 플랫폼입니다.
+            Python 크롤러로 실시간 데이터를 수집하고,
+            <strong>OpenAI GPT 기반 AI 클린봇</strong>으로 자동 콘텐츠 모더레이션을 구현했습니다.
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="fi-marker"><div class="fi-marker-inner"></div></div>
+              <div><b>Python 크롤러</b>로 KBO / K리그 / LCK 경기 데이터 자동 수집</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker"><div class="fi-marker-inner"></div></div>
+              <div><b>WebSocket</b> 기반 실시간 경기 중계 및 예측 기능</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker"><div class="fi-marker-inner"></div></div>
+              <div><b>OpenAI GPT-4o-mini</b> 연동 비동기 AI 자동 클린봇 구현</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker"><div class="fi-marker-inner"></div></div>
+              <div><b>QueryDSL</b>로 종목별 다중 조건 검색 및 페이징 처리</div>
+            </div>
+            <div class="feature-item">
+              <div class="fi-marker"><div class="fi-marker-inner"></div></div>
+              <div>좋아요 · 신고 기반 게시판 관리 및 커뮤니티 운영</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-stack-cell">
+          <div class="proj-stack-label">기술 스택</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Spring Boot 3.5</span>
+            <span class="proj-tag">Java 21</span>
+            <span class="proj-tag">Spring Security</span>
+            <span class="proj-tag">QueryDSL</span>
+            <span class="proj-tag">MySQL</span>
+            <span class="proj-tag">WebSocket</span>
+            <span class="proj-tag">WebFlux</span>
+            <span class="proj-tag">OpenAI API</span>
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">OAuth2</span>
+            <span class="proj-tag">Jsoup</span>
+          </div>
+          <div class="proj-stack-label">링크</div>
+          <div class="proj-link-btns">
+            <a href="https://github.com/Clutch-team-project/Sports-predict-live/tree/develop" target="_blank" class="proj-link-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="http://43.201.107.175:9090" target="_blank" class="proj-link-btn outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              바로가기
+            </a>
+          </div>
+        </div>
+      </div>
+      <details class="proj-details">
+        <summary>개발 세부사항 및 문제 해결 과정 보기</summary>
+        <div class="pd-content">
+
+          <div class="pd-section">
+            <h3>주요 구현 기능</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k">전체 기능 구성</div>
+                <div class="v">
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">⚡ 비동기 실시간 서비스</b>
+                      <span style="font-size:13.5px; color:var(--sub);">WebSocket 및 WebFlux를 활용해 스포츠 실시간 댓글 및 중계 데이터 초저지연 스트리밍</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">🕸️ 데이터 수집 파이프라인</b>
+                      <span style="font-size:13.5px; color:var(--sub);">Python 크롤러 및 Jsoup을 통해 KBO, K리그 등 실시간 스코어 및 선수 스탯 자동 수집</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">🤖 AI 자동 모더레이션</b>
+                      <span style="font-size:13.5px; color:var(--sub);">OpenAI GPT-4o-mini API를 연동하여 실시간 경기 댓글의 욕설 등 유해 콘텐츠 자동 필터링</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">⚙️ 대규모 백엔드 아키텍처</b>
+                      <span style="font-size:13.5px; color:var(--sub);">회원, 스포츠/팀, 실시간 경기, 승부예측, 커뮤니티 등 총 62개 종합 REST API 설계</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">📊 스포츠 승부 예측 및 캐싱</b>
+                      <span style="font-size:13.5px; color:var(--sub);">Redis를 활용한 대규모 트래픽 대비 실시간 랭킹 및 승부예측 배당률 인메모리 캐싱</span>
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px;">
+                      <b style="display:block; color:var(--ink); font-size:14px; margin-bottom:4px;">🛡️ 커뮤니티 및 게시판 관리</b>
+                      <span style="font-size:13.5px; color:var(--sub);">Spring Security 기반 인증 및 좋아요/신고 기능이 포함된 게시판 커뮤니티 구현</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>분석 문서</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/요구사항정의서.html', '요구사항 정의서')" class="doc-btn">요구사항 정의서</button></div>
+                <div class="v">다종목 스포츠 데이터 수집 및 실시간 서비스라는 복잡한 요구사항을 구체화하고, 사용자 기능과 비기능적 요구사항을 정의했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/기능정의서.html', '기능 정의서')" class="doc-btn">기능 정의서</button></div>
+                <div class="v">정의된 요구사항에 맞춰 전체 시스템이 수행해야 할 세부 기능들을 모듈 단위로 상세히 명세했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/WBS.html', 'WBS')" class="doc-btn">WBS</button></div>
+                <div class="v">백엔드 아키텍처 설계부터 기능 구현, 테스트, 배포까지 전체 작업 일정을 분할하여 효율적인 진행을 관리했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/테스트케이스.html', '테스트케이스')" class="doc-btn">테스트케이스</button></div>
+                <div class="v">구현된 API가 다양한 예외 상황과 정상 케이스에서 어떻게 동작해야 하는지 꼼꼼하게 검증 계획을 수립한 문서입니다.</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>설계 문서</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/API_정의서.html', 'API 명세서')" class="doc-btn">API 명세서</button></div>
+                <div class="v">대용량 트래픽과 비동기 처리를 고려하여 설계된 총 60여 개의 종합 REST API 엔드포인트와 통신 규격을 정의했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/테이블_정의서.html', '테이블 정의서')" class="doc-btn">테이블 정의서</button></div>
+                <div class="v">다대다 관계를 효율적으로 풀어낸 정규화 기반의 데이터베이스 스키마와 인덱스 설계 등을 문서화했습니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k"><button onclick="openDocModal('docs/aimatch/클래스_정의서.html', '클래스 정의서')" class="doc-btn">클래스 정의서</button></div>
+                <div class="v">Spring Boot 애플리케이션의 핵심 도메인 모델과 서비스 클래스 간의 관계를 설계한 산출물입니다.</div>
+              </div>
+              <div class="drow">
+                <div class="k" style="padding-top:10px;">ERD</div>
+                <div class="v">
+                  <div style="margin-bottom:12px; font-size:14px; color:var(--sub);">User, Match, Team, Prediction, Comment 등 다종목 스포츠 처리를 위한 다대다 및 정규화 기반 핵심 테이블 설계</div>
+                  <img src="docs/aimatch/Project%20ERD.png" alt="AI.MATCH ERD" class="zoom-img" onclick="openImageModal(this.src)">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pd-section">
+            <h3>담당 파트 (My Role)</h3>
+            <div class="dtable">
+              <div class="drow">
+                <div class="k">백엔드 주요 개발</div>
+                <div class="v">
+                  <ul style="padding-left:20px; margin:0; line-height:1.8; color:var(--ink);">
+                    <li style="margin-bottom:12px;"><b>커뮤니티 및 게시판 관리:</b> Spring Security 기반 인증 처리와 좋아요, 신고 기능이 포함된 실시간 소통 게시판 커뮤니티 구현</li>
+                    <li style="margin-bottom:12px;"><b>AI 모더레이션 연동:</b> OpenAI API와 메시지 큐(Message Queue)를 활용하여 경기 실시간 댓글의 욕설 등 유해 콘텐츠 비동기 필터링 처리 최적화</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<footer style="background:var(--ink);border-top:1px solid rgba(255,255,255,.07);text-align:center;padding:24px;font-size:12px;color:rgba(255,255,255,.25);">
+  <p>© 2026 이상엽 &nbsp;&middot;&nbsp; Backend Developer</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const els = document.querySelectorAll('.rv');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+  // Ensure details are open on print
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details').forEach(d => d.setAttribute('open', 'true'));
+  });
+</script>
+
+<!-- Document Modal -->
+<div id="docModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; opacity:0; transition:opacity 0.2s;">
+  <div style="background:#fff; width:90%; max-width:1200px; height:85%; border-radius:16px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.2); transform:translateY(20px); transition:transform 0.2s;">
+    <div style="padding:16px 24px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; background:#fafafa;">
+      <h3 id="docModalTitle" style="margin:0; font-size:16px; font-weight:700; color:var(--ink);">문서 보기</h3>
+      <button onclick="closeDocModal()" style="background:none; border:none; font-size:28px; cursor:pointer; color:var(--muted); line-height:1; transition:color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='var(--muted)'">&times;</button>
+    </div>
+    <iframe id="docModalFrame" src="" style="width:100%; height:100%; border:none; flex:1; background:#f9f9f9;"></iframe>
+  </div>
+</div>
+
+<div class="image-modal-overlay" id="imageModalOverlay" onclick="closeImageModal()">
+  <div class="image-modal-close">&times;</div>
+  <img id="imageModalImg" class="image-modal-content" src="" alt="Zoomed Image" onclick="toggleZoom(event)">
+</div>
+
+<script>
+function openImageModal(src) {
+  const overlay = document.getElementById('imageModalOverlay');
+  const img = document.getElementById('imageModalImg');
+  img.src = src;
+  img.classList.remove('zoomed');
+  overlay.style.display = 'flex';
+  void overlay.offsetWidth;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeImageModal() {
+  const overlay = document.getElementById('imageModalOverlay');
+  overlay.classList.remove('show');
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 300);
+}
+function toggleZoom(event) {
+  event.stopPropagation();
+  const img = document.getElementById('imageModalImg');
+  img.classList.toggle('zoomed');
+  if (img.classList.contains('zoomed')) {
+    // Keep it centered or top-left depending on size, overflow will handle scroll
+    document.getElementById('imageModalOverlay').style.display = 'block'; 
+    document.getElementById('imageModalOverlay').style.padding = '40px'; 
+  } else {
+    document.getElementById('imageModalOverlay').style.display = 'flex';
+    document.getElementById('imageModalOverlay').style.padding = '0';
+  }
+}
+
+function openDocModal(url, title) {
+  document.getElementById('docModalTitle').innerText = title;
+  document.getElementById('docModalFrame').src = url;
+  const modal = document.getElementById('docModal');
+  modal.style.display = 'flex';
+  setTimeout(() => {
+    modal.style.opacity = '1';
+    modal.children[0].style.transform = 'translateY(0)';
+  }, 10);
+}
+function closeDocModal() {
+  const modal = document.getElementById('docModal');
+  modal.style.opacity = '0';
+  modal.children[0].style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    modal.style.display = 'none';
+    document.getElementById('docModalFrame').src = '';
+  }, 200);
+}
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    if (document.getElementById('docModal').style.display === 'flex') {
+      closeDocModal();
+    }
+    const overlay = document.getElementById('imageModalOverlay');
+    if (overlay.style.display === 'flex' || overlay.style.display === 'block') {
+      closeImageModal();
+    }
+  }
+});
+</script>
+
+</body>
+</html>

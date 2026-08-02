@@ -1,0 +1,315 @@
+<html><head><meta charset="utf-8">
+    <style>
+    body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
+    h2 { color:#111; margin:32px 0 16px; font-size:20px; border-bottom:2px solid #222; padding-bottom:8px; display:inline-block; }
+    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:4px; overflow:hidden; }
+    th, td { border:1px solid #e0e0e0; padding:10px 14px; word-break:keep-all; vertical-align:middle; line-height:1.6; color:#333; }
+    tr:nth-child(even) { background:#fafafa; }
+    </style></head><body><h2>프로그램 목록</h2>
+<table>
+<colgroup>
+<col style="width: 256px;">
+<col style="width: 176px;">
+<col style="width: 384px;">
+<col style="width: 240px;">
+<col style="width: 208px;">
+<col style="width: 368px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="6" style="background-color: #0F172A; font-weight:600;"><b>AI.MATCH — 프로그램 목록</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #C0392B; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #1E3A8A; font-weight:600;"><b>Entity</b></td>
+<td rowspan="1" colspan="1" style="background-color: #155724; font-weight:600;"><b>DTO</b></td>
+<td rowspan="1" colspan="1" style="background-color: #78350F; font-weight:600;"><b>Repository</b></td>
+<td rowspan="1" colspan="1" style="background-color: #4A044E; font-weight:600;"><b>Service</b></td>
+<td rowspan="1" colspan="1" style="background-color: #7F1D1D; font-weight:600;"><b>ServiceImpl<br>(다형성 필요 시만)</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>1. 회원 · 인증</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">회원 관리</td>
+<td rowspan="1" colspan="1"><b>User</b></td>
+<td rowspan="1" colspan="1">UserDTO / UserUpdateDTO / UserResponseDTO</td>
+<td rowspan="1" colspan="1">UserRepository</td>
+<td rowspan="1" colspan="1">UserService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">이메일 인증 관리</td>
+<td rowspan="1" colspan="1"><b>EmailVerify</b></td>
+<td rowspan="1" colspan="1">EmailVerifyRequestDTO / EmailVerifyCheckDTO</td>
+<td rowspan="1" colspan="1">EmailVerifyRepository</td>
+<td rowspan="1" colspan="1">EmailVerifyService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">소셜 로그인 관리<br>(카카오 / 구글 다형성)</td>
+<td rowspan="1" colspan="1"><b>SocialLogin</b></td>
+<td rowspan="1" colspan="1">SocialLoginDTO</td>
+<td rowspan="1" colspan="1">SocialLoginRepository</td>
+<td rowspan="1" colspan="1">SocialLoginService</td>
+<td rowspan="1" colspan="1">KakaoSocialLoginServiceImpl<br>GoogleSocialLoginServiceImpl</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">관심 종목 관리</td>
+<td rowspan="1" colspan="1"><b>UserInterestSport</b></td>
+<td rowspan="1" colspan="1">UserInterestSportDTO</td>
+<td rowspan="1" colspan="1">UserInterestSportRepository</td>
+<td rowspan="1" colspan="1">UserInterestSportService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>2. 스포츠 · 팀 · 선수</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">종목 관리</td>
+<td rowspan="1" colspan="1"><b>Sport</b></td>
+<td rowspan="1" colspan="1">SportDTO</td>
+<td rowspan="1" colspan="1">SportRepository</td>
+<td rowspan="1" colspan="1">SportService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">팀 관리</td>
+<td rowspan="1" colspan="1"><b>Team</b></td>
+<td rowspan="1" colspan="1">TeamDTO / TeamDetailDTO</td>
+<td rowspan="1" colspan="1">TeamRepository</td>
+<td rowspan="1" colspan="1">TeamService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">팀 시즌 성적 관리</td>
+<td rowspan="1" colspan="1"><b>TeamSeasonStat</b></td>
+<td rowspan="1" colspan="1">TeamSeasonStatDTO</td>
+<td rowspan="1" colspan="1">TeamSeasonStatRepository</td>
+<td rowspan="1" colspan="1">TeamSeasonStatService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">선수 관리</td>
+<td rowspan="1" colspan="1"><b>Player</b></td>
+<td rowspan="1" colspan="1">PlayerDTO / PlayerDetailDTO</td>
+<td rowspan="1" colspan="1">PlayerRepository</td>
+<td rowspan="1" colspan="1">PlayerService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>3. 경기</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 관리</td>
+<td rowspan="1" colspan="1"><b>Match</b></td>
+<td rowspan="1" colspan="1">MatchDTO / MatchDetailDTO / MatchListDTO</td>
+<td rowspan="1" colspan="1">MatchRepository</td>
+<td rowspan="1" colspan="1">MatchService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 이벤트 관리</td>
+<td rowspan="1" colspan="1"><b>MatchEvent</b></td>
+<td rowspan="1" colspan="1">MatchEventDTO</td>
+<td rowspan="1" colspan="1">MatchEventRepository</td>
+<td rowspan="1" colspan="1">MatchEventService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 팀 통계 관리</td>
+<td rowspan="1" colspan="1"><b>MatchTeamStat</b></td>
+<td rowspan="1" colspan="1">MatchTeamStatDTO</td>
+<td rowspan="1" colspan="1">MatchTeamStatRepository</td>
+<td rowspan="1" colspan="1">MatchTeamStatService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 선수 통계 관리</td>
+<td rowspan="1" colspan="1"><b>MatchPlayerStat</b></td>
+<td rowspan="1" colspan="1">MatchPlayerStatDTO</td>
+<td rowspan="1" colspan="1">MatchPlayerStatRepository</td>
+<td rowspan="1" colspan="1">MatchPlayerStatService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 라인업 관리</td>
+<td rowspan="1" colspan="1"><b>MatchLineup</b></td>
+<td rowspan="1" colspan="1">MatchLineupDTO</td>
+<td rowspan="1" colspan="1">MatchLineupRepository</td>
+<td rowspan="1" colspan="1">MatchLineupService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 즐겨찾기 관리</td>
+<td rowspan="1" colspan="1"><b>MatchFav</b></td>
+<td rowspan="1" colspan="1">MatchFavDTO</td>
+<td rowspan="1" colspan="1">MatchFavRepository</td>
+<td rowspan="1" colspan="1">MatchFavService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">LoL 픽/밴 관리</td>
+<td rowspan="1" colspan="1"><b>LolPickBan</b></td>
+<td rowspan="1" colspan="1">LolPickBanDTO</td>
+<td rowspan="1" colspan="1">LolPickBanRepository</td>
+<td rowspan="1" colspan="1">LolPickBanService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>4. 예측</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">승부 예측 관리</td>
+<td rowspan="1" colspan="1"><b>Prediction</b></td>
+<td rowspan="1" colspan="1">PredictionRequestDTO / PredictionResponseDTO</td>
+<td rowspan="1" colspan="1">PredictionRepository</td>
+<td rowspan="1" colspan="1">PredictionService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">AI 예측 관리</td>
+<td rowspan="1" colspan="1"><b>AiPred</b></td>
+<td rowspan="1" colspan="1">AiPredDTO / AiPredResponseDTO</td>
+<td rowspan="1" colspan="1">AiPredRepository</td>
+<td rowspan="1" colspan="1">AiPredService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>5. 실시간 댓글</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">경기 실시간 댓글 관리</td>
+<td rowspan="1" colspan="1"><b>Comment</b></td>
+<td rowspan="1" colspan="1">CommentRequestDTO / CommentResponseDTO</td>
+<td rowspan="1" colspan="1">CommentRepository</td>
+<td rowspan="1" colspan="1">CommentService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>6. 게시판</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">게시글 관리</td>
+<td rowspan="1" colspan="1"><b>Board</b></td>
+<td rowspan="1" colspan="1">BoardRequestDTO / BoardResponseDTO / BoardListDTO</td>
+<td rowspan="1" colspan="1">BoardRepository</td>
+<td rowspan="1" colspan="1">BoardService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">게시글 이미지 관리</td>
+<td rowspan="1" colspan="1"><b>BoardImg</b></td>
+<td rowspan="1" colspan="1">BoardImgDTO</td>
+<td rowspan="1" colspan="1">BoardImgRepository</td>
+<td rowspan="1" colspan="1">BoardImgService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">게시글 태그 관리</td>
+<td rowspan="1" colspan="1"><b>BoardTag</b></td>
+<td rowspan="1" colspan="1">BoardTagDTO</td>
+<td rowspan="1" colspan="1">BoardTagRepository</td>
+<td rowspan="1" colspan="1">BoardTagService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">게시글 댓글 관리</td>
+<td rowspan="1" colspan="1"><b>BoardComm</b></td>
+<td rowspan="1" colspan="1">BoardCommRequestDTO / BoardCommResponseDTO</td>
+<td rowspan="1" colspan="1">BoardCommRepository</td>
+<td rowspan="1" colspan="1">BoardCommService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">게시글 좋아요 관리</td>
+<td rowspan="1" colspan="1"><b>BoardLike</b></td>
+<td rowspan="1" colspan="1">BoardLikeDTO</td>
+<td rowspan="1" colspan="1">BoardLikeRepository</td>
+<td rowspan="1" colspan="1">BoardLikeService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">신고 관리 (통합)<br>(게시판댓글/경기댓글 다형성)</td>
+<td rowspan="1" colspan="1"><b>Report</b></td>
+<td rowspan="1" colspan="1">ReportRequestDTO</td>
+<td rowspan="1" colspan="1">ReportRepository</td>
+<td rowspan="1" colspan="1">ReportService</td>
+<td rowspan="1" colspan="1">BoardCommReportServiceImpl<br>CommentReportServiceImpl</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>7. 뉴스</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">뉴스 관리</td>
+<td rowspan="1" colspan="1"><b>News</b></td>
+<td rowspan="1" colspan="1">NewsDTO / NewsListDTO / NewsDetailDTO</td>
+<td rowspan="1" colspan="1">NewsRepository</td>
+<td rowspan="1" colspan="1">NewsService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">뉴스 스크랩 관리</td>
+<td rowspan="1" colspan="1"><b>NewsScrap</b></td>
+<td rowspan="1" colspan="1">NewsScrapDTO</td>
+<td rowspan="1" colspan="1">NewsScrapRepository</td>
+<td rowspan="1" colspan="1">NewsScrapService</td>
+<td rowspan="1" colspan="1">—</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="6"><b>8. 관리자 · 필터링</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">필터링 로그 관리<br>(게시글/댓글 다형성)</td>
+<td rowspan="1" colspan="1"><b>FilterLog</b></td>
+<td rowspan="1" colspan="1">FilterLogDTO</td>
+<td rowspan="1" colspan="1">FilterLogRepository</td>
+<td rowspan="1" colspan="1">FilterLogService</td>
+<td rowspan="1" colspan="1">BlindFilterLogServiceImpl<br>BlockFilterLogServiceImpl</td>
+</tr>
+</table>
+<h2>범례</h2>
+<table>
+<colgroup>
+<col style="width: 240px;">
+<col style="width: 400px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;"><b>구분</b></td>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;"><b>Entity</b></td>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;">DB 테이블과 매핑되는 JPA 엔티티 클래스</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #1E293B; font-weight:600;"><b>DTO</b></td>
+<td rowspan="1" colspan="1" style="background-color: #1E293B; font-weight:600;">Controller ↔ Service 간 데이터 전달 객체</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;"><b>Repository</b></td>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;">JPA Repository 인터페이스 (DB 접근)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #1E293B; font-weight:600;"><b>Service</b></td>
+<td rowspan="1" colspan="1" style="background-color: #1E293B; font-weight:600;">비즈니스 로직 인터페이스</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;"><b>ServiceImpl</b></td>
+<td rowspan="1" colspan="1" style="background-color: #0F172A; font-weight:600;">Service 구현체 — 다형성이 필요한 경우만 생성<br>(예: 소셜 로그인 카카오/구글, 신고 유형별 처리)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #1E293B; font-weight:600;"><b>— 표시</b></td>
+<td rowspan="1" colspan="1" style="background-color: #1E293B; font-weight:600;">해당 클래스 불필요 (단일 구현체로 충분)</td>
+</tr>
+</table>
+
+    <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (window.parent && window.parent.closeDocModal) {
+          window.parent.closeDocModal();
+        }
+      }
+    });
+    </script>
+    </body></html>

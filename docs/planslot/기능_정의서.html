@@ -1,0 +1,597 @@
+<html><head><meta charset="utf-8">
+    <style>
+    body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
+    h2 { color:#111; margin:32px 0 16px; font-size:20px; border-bottom:2px solid #222; padding-bottom:8px; display:inline-block; }
+    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:4px; overflow:hidden; }
+    th, td { border:1px solid #e0e0e0; padding:10px 14px; word-break:keep-all; vertical-align:middle; line-height:1.6; color:#333; }
+    tr:nth-child(even) { background:#fafafa; }
+    </style></head><body><h2>시트1</h2>
+<table>
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 156px;">
+<col style="width: 633px;">
+<col style="width: 489px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">기능 ID</td>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">요구사항 ID</td>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">대분류</td>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">중분류</td>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">소분류</td>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">내용</td>
+<td rowspan="1" colspan="1" style="background-color: #BDD7EE; font-weight:600;">비고</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-01</td>
+<td rowspan="12" colspan="1">SR-01</td>
+<td rowspan="12" colspan="1">회원</td>
+<td rowspan="6" colspan="1">회원가입</td>
+<td rowspan="1" colspan="1">회원가입</td>
+<td rowspan="1" colspan="1">아이디/비밀번호/닉네임/이메일/주소 입력 받아 회원가입</td>
+<td rowspan="1" colspan="1">필수 : 아이디/비밀번호/닉네임/이메일  |  선택 : 주소</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-02</td>
+<td rowspan="1" colspan="1">안내 메세지</td>
+<td rowspan="1" colspan="1">선택 정보를 안 넣을 경우, 공모전이나 주소나 나이에 따른 혜택의 필터링이 불가하다는 메세지 안내</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-03</td>
+<td rowspan="1" colspan="1">중복 확인</td>
+<td rowspan="1" colspan="1">아이디 및 이메일은 중복 확인</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-04</td>
+<td rowspan="1" colspan="1">이메일 본인 인증</td>
+<td rowspan="1" colspan="1">이메일에 보내진 인증 번호로 본인 확인</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-05</td>
+<td rowspan="1" colspan="1">소셜 로그인</td>
+<td rowspan="1" colspan="1">구글 & 카카오 소셜 로그인 시 추가 정보 입력</td>
+<td rowspan="1" colspan="1">소셜 정보 중 필수 입력이 필요한 정보가 있다면 추가 입력 (닉네임 등)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-06</td>
+<td rowspan="1" colspan="1">구글 계정 연동 여부</td>
+<td rowspan="1" colspan="1">개인 캘린더에 구글 캘린더 계정과 연동 확인</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-07</td>
+<td rowspan="4" colspan="1">로그인</td>
+<td rowspan="1" colspan="1">로그인</td>
+<td rowspan="1" colspan="1">아이디와 비밀번호로 로그인</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-08</td>
+<td rowspan="1" colspan="1">자동 로그인</td>
+<td rowspan="1" colspan="1">자동 로그인 체크 시 JWT 토큰 30일 유지</td>
+<td rowspan="1" colspan="1">default : 30분</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-09</td>
+<td rowspan="1" colspan="1">소셜 로그인</td>
+<td rowspan="1" colspan="1">구글 & 카카오 소셜 로그인</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-10</td>
+<td rowspan="1" colspan="1">아이디 찾기 및 패스워드 재설정</td>
+<td rowspan="1" colspan="1">아이디 찾기 및 패스워드 재설정 요청 및 처리</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-11</td>
+<td rowspan="2" colspan="1">개인 정보</td>
+<td rowspan="1" colspan="1">개인정보 조회 및 수정</td>
+<td rowspan="1" colspan="1">프로필 정보 조회 및 수정</td>
+<td rowspan="1" colspan="1"> 구글 캘린더 연동 여부 추가</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-01-12</td>
+<td rowspan="1" colspan="1">회원 탈퇴</td>
+<td rowspan="1" colspan="1">회원 탈퇴 요청 및 처리</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-02-01</td>
+<td rowspan="4" colspan="1">SR-02</td>
+<td rowspan="4" colspan="1">관리자</td>
+<td rowspan="2" colspan="1">신고 관리</td>
+<td rowspan="1" colspan="1">신고 목록 조회</td>
+<td rowspan="1" colspan="1">요청된 신고들의 목록 조회</td>
+<td rowspan="1" colspan="1">닉네임 / 해당 채팅방 이름 / 채팅 내용 / 신고 사유 확인 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-02-02</td>
+<td rowspan="1" colspan="1">신고 요청 처리</td>
+<td rowspan="1" colspan="1">해당 요청된 신고의 제재 및 유지 처리</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-02-03</td>
+<td rowspan="2" colspan="1">제재 회원 관리</td>
+<td rowspan="1" colspan="1">제재 회원 목록 조회</td>
+<td rowspan="1" colspan="1">제재를 가한 회원 목록 조회</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-02-04</td>
+<td rowspan="1" colspan="1">회원 제재 해제</td>
+<td rowspan="1" colspan="1">제재를 가한 회원 제재 해제 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-03-01</td>
+<td rowspan="5" colspan="1">SR-03</td>
+<td rowspan="5" colspan="1">구글 캘린더<br>연동</td>
+<td rowspan="2" colspan="1">계정 연동</td>
+<td rowspan="1" colspan="1">토큰 관리</td>
+<td rowspan="1" colspan="1">리프레시 토큰 제공</td>
+<td rowspan="1" colspan="1">엑세스 토큰 만료 시 제공하기 위함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-03-02</td>
+<td rowspan="1" colspan="1">연동 해제</td>
+<td rowspan="1" colspan="1">구글 캘린더 연동 해제</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-03-03</td>
+<td rowspan="3" colspan="1">동기화</td>
+<td rowspan="1" colspan="1">가져오기</td>
+<td rowspan="1" colspan="1">구글 캘린더 최초 연동 또는 유저 요청 시 기존 등록되어 있던 일정들을 가져오기 </td>
+<td rowspan="1" colspan="1">default : 비공개</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-03-04</td>
+<td rowspan="1" colspan="1">내보내기</td>
+<td rowspan="1" colspan="1">플랫폼에서 생성한 개인 일정 구글 캘린더에 동기화 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-03-05</td>
+<td rowspan="1" colspan="1">실시간 양방향</td>
+<td rowspan="1" colspan="1">동기화 되어 있는 일정 수정/삭제 시 양방향 반영</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-01</td>
+<td rowspan="9" colspan="1">SR-04</td>
+<td rowspan="9" colspan="1">개인 캘린더</td>
+<td rowspan="6" colspan="1">일정 등록</td>
+<td rowspan="1" colspan="1">일정 생성</td>
+<td rowspan="1" colspan="1">일정 등록</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-02</td>
+<td rowspan="1" colspan="1">공개 / 비공개 선택</td>
+<td rowspan="1" colspan="1">일정 등록 시 공개 / 비공개 선택</td>
+<td rowspan="1" colspan="1">default : 비공개  |  일정의 시간이 겹칠 시 안내 메세지</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-03</td>
+<td rowspan="1" colspan="1">구글 캘린더 동기화 여부</td>
+<td rowspan="1" colspan="1">일정 등록시 동기화/비동기화 선택</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-04</td>
+<td rowspan="1" colspan="1">일정 유형</td>
+<td rowspan="1" colspan="1">일정 등록 시 당일/주간/월간/연간 중 주기 선택</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-05</td>
+<td rowspan="1" colspan="1">주기 시작/종료</td>
+<td rowspan="1" colspan="1">당일이 아닌 주기 선택 시 시작 및 끝 날짜를 선택</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-06</td>
+<td rowspan="1" colspan="1">데드라인 설정</td>
+<td rowspan="1" colspan="1">일정 등록 시 데드라인 날짜 설정 여부 가능</td>
+<td rowspan="1" colspan="1">며칠 전부터 데드라인을 알려줄지는 사용자가 설정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-07</td>
+<td rowspan="3" colspan="1">일정 관리</td>
+<td rowspan="1" colspan="1">일정 조회 및 수정</td>
+<td rowspan="1" colspan="1">등록한 일정 조회 및 수정</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-08</td>
+<td rowspan="1" colspan="1">일정 삭제</td>
+<td rowspan="1" colspan="1">등록한 일정 삭제</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-04-09</td>
+<td rowspan="1" colspan="1">일정 공유</td>
+<td rowspan="1" colspan="1">등록한 일정을 모임 캘린더에 공유 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-05-01</td>
+<td rowspan="6" colspan="1">SR-05</td>
+<td rowspan="6" colspan="1">AI 이미지 <br>일정 업로드</td>
+<td rowspan="3" colspan="1">AI 이미지 분석</td>
+<td rowspan="1" colspan="1">이미지 업로드</td>
+<td rowspan="1" colspan="1">AI에게 이미지 업로드</td>
+<td rowspan="1" colspan="1">jpg, png, jpeg</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-05-02</td>
+<td rowspan="1" colspan="1">프롬프트 작성</td>
+<td rowspan="1" colspan="1">이미지 업로드 시 프롬프트 작성</td>
+<td rowspan="1" colspan="1">예시 프롬프트와 프롬프트 직접 작성 방식 제공</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-05-03</td>
+<td rowspan="1" colspan="1">이미지 분석</td>
+<td rowspan="1" colspan="1">이미지를 AI가 분석하여 데이터화</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-05-04</td>
+<td rowspan="3" colspan="1">일정 자동 등록</td>
+<td rowspan="1" colspan="1">분석 데이터 확인</td>
+<td rowspan="1" colspan="1">분석한 이미지에서 추출한 데이터를 사용자가 검토</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-05-05</td>
+<td rowspan="1" colspan="1">분석 데이터 수정</td>
+<td rowspan="1" colspan="1">검토한 데이터가 잘못되었을 경우를 대비해 AI 이미지 재분석 및 직접수정기능 제공</td>
+<td rowspan="1" colspan="1">직접 수정, 예시 프롬프트와 프롬프트 직접 작성 방식 제공</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-05-06</td>
+<td rowspan="1" colspan="1">캘린더 등록</td>
+<td rowspan="1" colspan="1">업로드 된 이미지를 통해 얻은 데이터는 캘린더 자동 등록</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-01</td>
+<td rowspan="22" colspan="1">SR-06</td>
+<td rowspan="22" colspan="1">모임 캘린더</td>
+<td rowspan="3" colspan="1">모임 생성</td>
+<td rowspan="1" colspan="1">모임 생성</td>
+<td rowspan="1" colspan="1">모임 캘린더 생성 가능</td>
+<td rowspan="1" colspan="1">모임 이름 설정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-02</td>
+<td rowspan="1" colspan="1">모임 이름 등록</td>
+<td rowspan="1" colspan="1">모임 캘린더를 생성할 때 이름 등록</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-03</td>
+<td rowspan="1" colspan="1">모임 이름 수정</td>
+<td rowspan="1" colspan="1">모임 캘린더의 이름 수정 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-04</td>
+<td rowspan="5" colspan="1">모임 인원 관리</td>
+<td rowspan="1" colspan="1">모임 초대</td>
+<td rowspan="1" colspan="1">다른 회원의 이메일로 모임 초대 메시지를 발송</td>
+<td rowspan="1" colspan="1">상대의 이메일로 초대</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-05</td>
+<td rowspan="1" colspan="1">모임 추방</td>
+<td rowspan="1" colspan="1">모임에 소속되어 있는 회원을 해당 모임의 생성자가 추방</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-06</td>
+<td rowspan="1" colspan="1">모임 삭제</td>
+<td rowspan="1" colspan="1">모임 캘린더를 삭제 버튼으로 삭제</td>
+<td rowspan="1" colspan="1">삭제 할 것인지를 확인하는 창을 띄운 다</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-07</td>
+<td rowspan="1" colspan="1">모임 수락/거절</td>
+<td rowspan="1" colspan="1">모임 캘린더를 생성한 생성자에게 온 초대 를 수락 혹은 거절</td>
+<td rowspan="1" colspan="1">알림을 통해 온 초대 를 수락 / 거절</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-08</td>
+<td rowspan="1" colspan="1">모임 탈퇴</td>
+<td rowspan="1" colspan="1">소속된 모임 캘린더를 탈퇴 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-09</td>
+<td rowspan="5" colspan="1">모임 일정 관리</td>
+<td rowspan="1" colspan="1">모임 일정 공유</td>
+<td rowspan="1" colspan="1">모임 캘린더에 자신의 일정을 공유</td>
+<td rowspan="1" colspan="1">설정을 통해 공유 여부 설정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-10</td>
+<td rowspan="1" colspan="1">일정 공유시 내용 수정</td>
+<td rowspan="1" colspan="1">자신이 올린 일정의 내용을 수정 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-11</td>
+<td rowspan="1" colspan="1">모임 일정 수정</td>
+<td rowspan="1" colspan="1">모임 켈린더의 일정을 수정</td>
+<td rowspan="1" colspan="1">자신이 공유한 일정만 수정 가능, 공유받은 인원에게 알림을 보냄</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-12</td>
+<td rowspan="1" colspan="1">모임 일정 공개/비공개</td>
+<td rowspan="1" colspan="1">자신의 일정을 모임 캘린더에 있는 인원 들에게 공유 할지 선택</td>
+<td rowspan="1" colspan="1">사용자는 일정을 공유 할지 선택 </td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-13</td>
+<td rowspan="1" colspan="1">모임 일정 불러오기</td>
+<td rowspan="1" colspan="1">자신이 소속된 모임 캘린더의 일정을 불러오기</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-14</td>
+<td rowspan="2" colspan="1">모임 채팅</td>
+<td rowspan="1" colspan="1">모임 채팅</td>
+<td rowspan="1" colspan="1">모임 캘린더에 소속된 인원은 채팅기능을 사용 가능</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-15</td>
+<td rowspan="1" colspan="1">채팅 신고</td>
+<td rowspan="1" colspan="1">부적절한 채팅을 친 회원을 신고</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-16</td>
+<td rowspan="2" colspan="1">모임 닉네임</td>
+<td rowspan="1" colspan="1">자신 닉네임 교체</td>
+<td rowspan="1" colspan="1">모임 캘린더에서 자신의 닉네임 수정 가능</td>
+<td rowspan="1" colspan="1">해당 모임 내에서만 수정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-17</td>
+<td rowspan="1" colspan="1">타인 닉네임 교체</td>
+<td rowspan="1" colspan="1">모임 캘린더에 소속된 다른 인원의 닉네임 수정 가능</td>
+<td rowspan="1" colspan="1">수정한 본인만 해당 닉네임으로 표시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-18</td>
+<td rowspan="5" colspan="1">모임 캘린더 AI</td>
+<td rowspan="1" colspan="1">사용자 일정 분석</td>
+<td rowspan="1" colspan="1">AI를 통한 사용자 일정 분석 및 빈 시간 파악</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-19</td>
+<td rowspan="1" colspan="1">공통 가능 시간 분석</td>
+<td rowspan="1" colspan="1">모임 구성원의 공유 일정을 기반으로 공통 가능 시간 파악</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-20</td>
+<td rowspan="1" colspan="1">전원 가능 시간 제공</td>
+<td rowspan="1" colspan="1">전원 가능 시간 기반 모임 시간 후보 나열</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-21</td>
+<td rowspan="1" colspan="1">최다 참여 가능 추천</td>
+<td rowspan="1" colspan="1">전원 가능 시간이 없을 경우 최다 인원 가능 시간 추천</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-06-22</td>
+<td rowspan="1" colspan="1">추천 일정 검토 및 수정</td>
+<td rowspan="1" colspan="1">AI 추천 일정 등록 전 검토 및 수정</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-01</td>
+<td rowspan="10" colspan="1">SR-07</td>
+<td rowspan="10" colspan="1">모임 게시판</td>
+<td rowspan="5" colspan="1">게시글</td>
+<td rowspan="1" colspan="1">게시글 등록</td>
+<td rowspan="1" colspan="1">게시판에 게시글 생성</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-02</td>
+<td rowspan="1" colspan="1">게시글 이미지</td>
+<td rowspan="1" colspan="1">게시글에 이미지 등록</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-03</td>
+<td rowspan="1" colspan="1">게시글 수정</td>
+<td rowspan="1" colspan="1">자신이 작성한 게시글에 한에 게시글 수정</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-04</td>
+<td rowspan="1" colspan="1">게시글 삭제</td>
+<td rowspan="1" colspan="1">자신이 작성한 게시글에 한에 게시글 삭제</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-05</td>
+<td rowspan="1" colspan="1">게시글 검색</td>
+<td rowspan="1" colspan="1">작성된 게시글을 제목 / 내용 / 작성자 로 검색</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-06</td>
+<td rowspan="3" colspan="1">댓글</td>
+<td rowspan="1" colspan="1">게시글 댓글 등록</td>
+<td rowspan="1" colspan="1">게시글에 댓글 등록</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-07</td>
+<td rowspan="1" colspan="1">댓글 수정</td>
+<td rowspan="1" colspan="1">본인이 작성한 댓글에 한에 댓글 수정</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-08</td>
+<td rowspan="1" colspan="1">댓글 삭제</td>
+<td rowspan="1" colspan="1">본인이 작성한 댓글에 한에 댓글 삭제</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-09</td>
+<td rowspan="2" colspan="1">신고</td>
+<td rowspan="1" colspan="1">게시글 신고</td>
+<td rowspan="1" colspan="1">부적절한 게시글 신고</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-07-10</td>
+<td rowspan="1" colspan="1">댓글 신고</td>
+<td rowspan="1" colspan="1">부적절한 댓글 신고</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+<td rowspan="1" colspan="1" style="background-color: #CCCCCC; font-weight:600;"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-01</td>
+<td rowspan="8" colspan="1">SR-08</td>
+<td rowspan="8" colspan="1">알림</td>
+<td rowspan="2" colspan="1">수신 여부</td>
+<td rowspan="1" colspan="1">알림 수신 설정</td>
+<td rowspan="1" colspan="1">전체 알림 수신 여부 설정</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-02</td>
+<td rowspan="1" colspan="1">캘린더별 알림 설정</td>
+<td rowspan="1" colspan="1">모임 캘린더별 알림 수신 여부 개별 설정</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-03</td>
+<td rowspan="2" colspan="1">기간 시작 및<br> 데드라인</td>
+<td rowspan="1" colspan="1">공모전 시작 알림</td>
+<td rowspan="1" colspan="1">캘린더에 등록한 공모전 시작 시 알림 발송</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-04</td>
+<td rowspan="1" colspan="1">데드라인 임박 알림</td>
+<td rowspan="1" colspan="1">일정 데드라인 임박 시 알림 메시지 발송</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-05</td>
+<td rowspan="4" colspan="1">모임 알림</td>
+<td rowspan="1" colspan="1">모임 캘린더 초대 알림</td>
+<td rowspan="1" colspan="1">모임 캘린더 초대 시 알림 발송</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-06</td>
+<td rowspan="1" colspan="1">모임 일정 등록 알림</td>
+<td rowspan="1" colspan="1">모임 캘린더에 새로운 일정 등록 시 알림 발송</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-07</td>
+<td rowspan="1" colspan="1">모임 일정 사전 알림</td>
+<td rowspan="1" colspan="1">모임 일정 시작 하루 전 알림 발송</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">FR-08-08</td>
+<td rowspan="1" colspan="1">모임 일정 수정 알림</td>
+<td rowspan="1" colspan="1">타인이 공유한 일정 수정 시 변경 알림 발송</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+</table>
+
+    <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (window.parent && window.parent.closeDocModal) {
+          window.parent.closeDocModal();
+        }
+      }
+    });
+    </script>
+    </body></html>

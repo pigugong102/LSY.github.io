@@ -1,0 +1,825 @@
+<html><head><meta charset="utf-8">
+    <style>
+    body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
+    h2 { color:#111; margin:32px 0 16px; font-size:20px; border-bottom:2px solid #222; padding-bottom:8px; display:inline-block; }
+    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:4px; overflow:hidden; }
+    th, td { border:1px solid #e0e0e0; padding:10px 14px; word-break:keep-all; vertical-align:middle; line-height:1.6; color:#333; }
+    tr:nth-child(even) { background:#fafafa; }
+    </style></head><body><h2>기능정의서</h2>
+<table>
+<colgroup>
+<col style="width: 72px;">
+<col style="width: 82px;">
+<col style="width: 171px;">
+<col style="width: 78px;">
+<col style="width: 143px;">
+<col style="width: 193px;">
+<col style="width: 638px;">
+<col style="width: 963px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="2" colspan="1">ID</td>
+<td rowspan="2" colspan="1">관련<br> 요구사항</td>
+<td rowspan="1" colspan="3">기능</td>
+<td rowspan="2" colspan="1">내용</td>
+<td rowspan="2" colspan="1">비고</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">대분류</td>
+<td rowspan="1" colspan="1">중분류</td>
+<td rowspan="1" colspan="1">소분류</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-01</td>
+<td rowspan="1" colspan="1">SR-01-01</td>
+<td rowspan="21" colspan="1">회원/계정</td>
+<td rowspan="4" colspan="1">회원가입</td>
+<td rowspan="1" colspan="1">회원가입 정보 입력</td>
+<td rowspan="1" colspan="1">사용자의 아이디, 패스워드, 이메일, 이름 등 회원가입에 필요한 정보를 입력받는다.</td>
+<td rowspan="1" colspan="1">아이디 20자 이내, 영문+숫자 조합 / 패스워드 8~20자, <br>영문+숫자+특수문자 조합 / 이름 필수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-02</td>
+<td rowspan="1" colspan="1">SR-01-02</td>
+<td rowspan="1" colspan="1">아이디 중복 확인</td>
+<td rowspan="1" colspan="1">입력한 아이디의 중복 여부를 확인한다.</td>
+<td rowspan="1" colspan="1">특수문자 허용 안 함, 중복 확인 필수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-03</td>
+<td rowspan="1" colspan="1">SR-01-02</td>
+<td rowspan="1" colspan="1">이메일 중복 및 형식 검사</td>
+<td rowspan="1" colspan="1">입력한 이메일의 형식과 중복 여부를 검사한다.</td>
+<td rowspan="1" colspan="1">이메일 형식 유효성 검사, 중복 여부 검사</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-04</td>
+<td rowspan="1" colspan="1">SR-01-01</td>
+<td rowspan="1" colspan="1">선택 개인정보 입력</td>
+<td rowspan="1" colspan="1">사용자의 전화번호와 생년월일을 선택적으로 입력받는다.</td>
+<td rowspan="1" colspan="1">전화번호 숫자만 입력 및 자동 포맷(010-0000-0000),<br>생년월일 달력 선택 또는 직접 입력</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-05</td>
+<td rowspan="1" colspan="1">SR-01-03</td>
+<td rowspan="2" colspan="1">약관 동의</td>
+<td rowspan="1" colspan="1">필수 약관 동의</td>
+<td rowspan="1" colspan="1">회원가입 시 이용약관과 개인정보 처리방침 동의 여부를 입력받는다.</td>
+<td rowspan="1" colspan="1">필수 동의 항목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-06</td>
+<td rowspan="1" colspan="1">SR-01-03</td>
+<td rowspan="1" colspan="1">마케팅 수신 동의</td>
+<td rowspan="1" colspan="1">마케팅 수신 동의 여부를 입력받는다.</td>
+<td rowspan="1" colspan="1">선택 동의 항목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-01-07</td>
+<td rowspan="1" colspan="1">SR-01-04</td>
+<td rowspan="1" colspan="1">본인 인증</td>
+<td rowspan="1" colspan="1">이메일 인증</td>
+<td rowspan="1" colspan="1">입력된 이메일로 인증 메일을 발송하고 인증 코드를 확인한다.</td>
+<td rowspan="1" colspan="1">가입 완료 전 인증 필수, <br>유효시간 10분, <br>인증 시도횟수 최대 5회 (성공시 시도횟수 초기화)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-01</td>
+<td rowspan="1" colspan="1">SR-02-01</td>
+<td rowspan="3" colspan="1">로그인</td>
+<td rowspan="1" colspan="1">일반 로그인</td>
+<td rowspan="1" colspan="1">아이디와 패스워드를 입력받아 로그인 처리를 수행한다.</td>
+<td rowspan="1" colspan="1">아이디/패스워드 필수, 패스워드 입력값 마스킹</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-02</td>
+<td rowspan="1" colspan="1">SR-02-01</td>
+<td rowspan="1" colspan="1">로그아웃</td>
+<td rowspan="1" colspan="1">로그인한 사용자의 세션을 종료한다.</td>
+<td rowspan="1" colspan="1">세션 기반 처리</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-03</td>
+<td rowspan="1" colspan="1">SR-02-02</td>
+<td rowspan="1" colspan="1">로그인 유지</td>
+<td rowspan="1" colspan="1">사용자가 로그인 유지 여부를 선택할 수 있도록 제공한다.</td>
+<td rowspan="1" colspan="1">체크박스 선택 기능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-04</td>
+<td rowspan="1" colspan="1">SR-02-03</td>
+<td rowspan="2" colspan="1">소셜 로그인</td>
+<td rowspan="1" colspan="1">카카오 로그인</td>
+<td rowspan="1" colspan="1">카카오 OAuth를 통해 로그인 기능을 제공한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-05</td>
+<td rowspan="1" colspan="1">SR-02-03</td>
+<td rowspan="1" colspan="1">구글 로그인</td>
+<td rowspan="1" colspan="1">구글 OAuth를 통해 로그인 기능을 제공한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-06</td>
+<td rowspan="1" colspan="1">SR-02-04</td>
+<td rowspan="2" colspan="1">계정 찾기</td>
+<td rowspan="1" colspan="1">아이디 찾기</td>
+<td rowspan="1" colspan="1">이메일 인증을 통해 사용자의 아이디를 확인할 수 있도록 한다.</td>
+<td rowspan="1" colspan="1">이메일 인증 후 제공</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-07</td>
+<td rowspan="1" colspan="1">SR-02-04</td>
+<td rowspan="1" colspan="1">패스워드 재설정</td>
+<td rowspan="1" colspan="1">이메일 인증 후 패스워드를 재설정할 수 있도록 한다.</td>
+<td rowspan="1" colspan="1">재설정 링크 메일 발송</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-08</td>
+<td rowspan="1" colspan="1">SR-02-05</td>
+<td rowspan="3" colspan="1">회원정보 수정</td>
+<td rowspan="1" colspan="1">패스워드 변경</td>
+<td rowspan="1" colspan="1">현재 패스워드 확인 후 새 패스워드로 변경한다.</td>
+<td rowspan="1" colspan="1">현재 패스워드 입력 필수</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-09</td>
+<td rowspan="1" colspan="1">SR-02-05</td>
+<td rowspan="1" colspan="1">기본 정보 수정</td>
+<td rowspan="1" colspan="1">사용자의 이름과 전화번호를 변경한다.</td>
+<td rowspan="1" colspan="1">이름 20자 이내, 전화번호 변경 시 인증 필요</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-10</td>
+<td rowspan="1" colspan="1">SR-02-08</td>
+<td rowspan="1" colspan="1">회원 탈퇴</td>
+<td rowspan="1" colspan="1">사용자의 계정을 탈퇴 처리한다.</td>
+<td rowspan="1" colspan="1">본인 확인 필수, '영구 삭제' 문구 입력 시 실행,<br> 개인정보 즉시 삭제 및 복구 불가</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-11</td>
+<td rowspan="1" colspan="1">SR-02-06</td>
+<td rowspan="2" colspan="1">프로필 수정</td>
+<td rowspan="1" colspan="1">닉네임 변경</td>
+<td rowspan="1" colspan="1">사용자의 닉네임을 변경한다.</td>
+<td rowspan="1" colspan="1">중복 확인 포함, 20자 이내</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-12</td>
+<td rowspan="1" colspan="1">SR-02-06</td>
+<td rowspan="1" colspan="1">프로필 이미지 변경</td>
+<td rowspan="1" colspan="1">프로필 이미지를 업로드하여 변경한다.</td>
+<td rowspan="1" colspan="1">JPG/JPEG/PNG, 최대 2MB</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-13</td>
+<td rowspan="1" colspan="1">SR-02-07</td>
+<td rowspan="2" colspan="1">개인 설정</td>
+<td rowspan="1" colspan="1">관심 종목 설정</td>
+<td rowspan="1" colspan="1">사용자의 관심 종목을 추가하거나 삭제한다.</td>
+<td rowspan="1" colspan="1">야구·축구·E스포츠(LoL) 중 다중 선택 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-02-14</td>
+<td rowspan="1" colspan="1">SR-02-07</td>
+<td rowspan="1" colspan="1">알림 설정</td>
+<td rowspan="1" colspan="1">경기 시작 알림 및 예측 결과 알림 수신 여부를 설정한다.</td>
+<td rowspan="1" colspan="1">경기 시작 전 알림 시간 설정 가능,<br>경기 종료 후 예측 적중 여부 알림</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-03-01</td>
+<td rowspan="1" colspan="1">SR-03-01</td>
+<td rowspan="19" colspan="1">경기/중계</td>
+<td rowspan="5" colspan="1">경기 일정</td>
+<td rowspan="1" colspan="1">종목별 일정 조회</td>
+<td rowspan="1" colspan="1">사용자가 선택한 종목의 경기 일정을 조회한다.</td>
+<td rowspan="1" colspan="1">야구·축구·LoL 탭 분리</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-03-02</td>
+<td rowspan="1" colspan="1">SR-03-02</td>
+<td rowspan="1" colspan="1">팀별 일정 조회</td>
+<td rowspan="1" colspan="1">특정 팀을 선택하여 해당 팀의 경기 일정을 조회한다.</td>
+<td rowspan="1" colspan="1">팀 검색 기능 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-03-03</td>
+<td rowspan="1" colspan="1">SR-03-03</td>
+<td rowspan="1" colspan="1">날짜별 일정 조회</td>
+<td rowspan="1" colspan="1">일/주/월 단위로 경기 일정을 조회한다.</td>
+<td rowspan="1" colspan="1">월별·주별 달력 뷰 전환 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-03-04</td>
+<td rowspan="1" colspan="1">SR-03-04</td>
+<td rowspan="1" colspan="1">경기 상태 표시</td>
+<td rowspan="1" colspan="1">경기 상태를 예정, 진행중, 종료로 구분하여 표시한다.</td>
+<td rowspan="1" colspan="1">상태별 구분 표시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-03-05</td>
+<td rowspan="1" colspan="1">SR-03-05</td>
+<td rowspan="1" colspan="1">경기 즐겨찾기</td>
+<td rowspan="1" colspan="1">로그인 사용자가 특정 경기를 즐겨찾기 등록하고 알림 대상으로 설정한다.</td>
+<td rowspan="1" colspan="1">로그인 사용자 전용,</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-01</td>
+<td rowspan="1" colspan="1">SR-04-01</td>
+<td rowspan="3" colspan="1">경기 상세</td>
+<td rowspan="1" colspan="1">경기 상세 이동</td>
+<td rowspan="1" colspan="1">경기 목록에서 선택한 경기의 상세 화면으로 이동한다.</td>
+<td rowspan="1" colspan="1">경기보기 버튼 또는 경기 카드 선택</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-02</td>
+<td rowspan="1" colspan="1">SR-04-02</td>
+<td rowspan="1" colspan="1">스코어 표시</td>
+<td rowspan="1" colspan="1">현재 스코어와 경기 진행 상태를 표시한다.</td>
+<td rowspan="1" colspan="1">시연 시 관리자 입력값 반영</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-03</td>
+<td rowspan="1" colspan="1">SR-04-02</td>
+<td rowspan="1" colspan="1">경기 상태 표시</td>
+<td rowspan="1" colspan="1">경기 전, 진행중, 일시정지, 종료 상태를 표시한다.</td>
+<td rowspan="1" colspan="1">관리자 시뮬레이터와 연동</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-04</td>
+<td rowspan="1" colspan="1">SR-04-03</td>
+<td rowspan="1" colspan="1">타임라인</td>
+<td rowspan="1" colspan="1">주요 이벤트 타임라인</td>
+<td rowspan="1" colspan="1">득점, 카드, 교체 등 경기 주요 이벤트를 시간순으로 표시한다.</td>
+<td rowspan="1" colspan="1">종목별 이벤트 항목 상이</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-05</td>
+<td rowspan="1" colspan="1">SR-04-04</td>
+<td rowspan="3" colspan="1">라인업</td>
+<td rowspan="1" colspan="1">축구 라인업</td>
+<td rowspan="1" colspan="1">축구 경기의 양 팀 선발 선수 및 교체 선수 정보를 표시한다.</td>
+<td rowspan="1" colspan="1">포지션, 등번호, 포메이션 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-06</td>
+<td rowspan="1" colspan="1">SR-04-04</td>
+<td rowspan="1" colspan="1">야구 라인업</td>
+<td rowspan="1" colspan="1">야구 경기의 선발 타순과 선발 투수 정보를 표시한다.</td>
+<td rowspan="1" colspan="1">타순, 포지션, 등판가능투수 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-07</td>
+<td rowspan="1" colspan="1">SR-04-04</td>
+<td rowspan="1" colspan="1">LoL 라인업</td>
+<td rowspan="1" colspan="1">LoL 경기의 양 팀 출전 선수 명단을 표시한다.</td>
+<td rowspan="1" colspan="1">포지션, 닉네임 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-08</td>
+<td rowspan="1" colspan="1">SR-04-05</td>
+<td rowspan="4" colspan="1">경기 기록</td>
+<td rowspan="1" colspan="1">축구 진행 중 통계</td>
+<td rowspan="1" colspan="1">축구 경기 진행 중 주요 팀 통계를 표시한다.</td>
+<td rowspan="1" colspan="1">점유율, 슈팅 수, 유효슈팅, 파울, 코너킥 등</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-09</td>
+<td rowspan="1" colspan="1">SR-04-05</td>
+<td rowspan="1" colspan="1">야구 진행 중 통계</td>
+<td rowspan="1" colspan="1">야구 경기 진행 중 주요 팀 통계를 표시한다.</td>
+<td rowspan="1" colspan="1">이닝, 득점, 안타, 실책, 볼넷, 삼진 등</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-10</td>
+<td rowspan="1" colspan="1">SR-04-05</td>
+<td rowspan="1" colspan="1">LoL 진행 중 통계</td>
+<td rowspan="1" colspan="1">LoL 경기 진행 중 주요 팀 통계를 표시한다.</td>
+<td rowspan="1" colspan="1">킬, 골드, 타워, 드래곤, 바론 등</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-11</td>
+<td rowspan="1" colspan="1">SR-04-06</td>
+<td rowspan="1" colspan="1">경기 종료 상세 기록</td>
+<td rowspan="1" colspan="1">경기 종료 후 최종 스탯 및 선수별 기록을 표시한다.</td>
+<td rowspan="1" colspan="1">경기 종료 후 제공</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-12</td>
+<td rowspan="1" colspan="1">SR-04-07</td>
+<td rowspan="3" colspan="1">LoL 전용 기록</td>
+<td rowspan="1" colspan="1">픽/밴 정보</td>
+<td rowspan="1" colspan="1">LoL 경기의 챔피언 픽·밴 순서와 결과를 표시한다.</td>
+<td rowspan="1" colspan="1">LoL 경기 한정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-13</td>
+<td rowspan="1" colspan="1">SR-04-07</td>
+<td rowspan="1" colspan="1">오브젝트 정보</td>
+<td rowspan="1" colspan="1">LoL 경기의 드래곤, 바론, 타워 등 오브젝트 획득 현황을 표시한다.</td>
+<td rowspan="1" colspan="1">LoL 경기 한정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-04-14</td>
+<td rowspan="1" colspan="1">SR-04-07</td>
+<td rowspan="1" colspan="1">개인 스탯</td>
+<td rowspan="1" colspan="1">LoL 선수별 KDA, CS, 딜량 등 개인 스탯을 표시한다.</td>
+<td rowspan="1" colspan="1">LoL 경기 한정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-05-01</td>
+<td rowspan="1" colspan="1">SR-05-01</td>
+<td rowspan="6" colspan="1">팀/선수</td>
+<td rowspan="1" colspan="1">팀 정보</td>
+<td rowspan="1" colspan="1">팀 기본 정보</td>
+<td rowspan="1" colspan="1">팀명, 연고지, 창단연도, 엠블럼 등 팀 기본 정보를 표시한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-05-02</td>
+<td rowspan="1" colspan="1">SR-05-02</td>
+<td rowspan="2" colspan="1">팀 성적</td>
+<td rowspan="1" colspan="1">시즌 성적</td>
+<td rowspan="1" colspan="1">해당 시즌의 승·무·패 기록 및 순위를 표시한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-05-03</td>
+<td rowspan="1" colspan="1">SR-05-02</td>
+<td rowspan="1" colspan="1">최근 경기 결과</td>
+<td rowspan="1" colspan="1">팀의 최근 경기 결과를 요약하여 표시한다.</td>
+<td rowspan="1" colspan="1">기본 5경기</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-05-04</td>
+<td rowspan="1" colspan="1">SR-05-03</td>
+<td rowspan="1" colspan="1">팀 통계</td>
+<td rowspan="1" colspan="1">주요 통계</td>
+<td rowspan="1" colspan="1">득점, 실점, 승률 등 주요 통계 지표를 표시한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-05-05</td>
+<td rowspan="1" colspan="1">SR-05-04</td>
+<td rowspan="2" colspan="1">선수 정보</td>
+<td rowspan="1" colspan="1">소속 선수 목록</td>
+<td rowspan="1" colspan="1">해당 팀의 소속 선수 목록을 표시한다.</td>
+<td rowspan="1" colspan="1">이름, 포지션, 등번호 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-05-06</td>
+<td rowspan="1" colspan="1">SR-05-04</td>
+<td rowspan="1" colspan="1">선수 상세 정보</td>
+<td rowspan="1" colspan="1">선수 개인 프로필 및 시즌 스탯을 표시한다.</td>
+<td rowspan="1" colspan="1">선수별 상세 페이지(받아온 데이터 범위 내에서 해결하는 걸로)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-01</td>
+<td rowspan="1" colspan="1">SR-06-01</td>
+<td rowspan="12" colspan="1">예측</td>
+<td rowspan="4" colspan="1">승부 예측</td>
+<td rowspan="1" colspan="1">예측 참여 진입</td>
+<td rowspan="1" colspan="1">로그인 사용자가 경기 시작 전 승부 예측에 참여할 수 있도록 한다.</td>
+<td rowspan="1" colspan="1">로그인 사용자 전용, 경기 시작 전 마감</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-02</td>
+<td rowspan="1" colspan="1">SR-06-02</td>
+<td rowspan="1" colspan="1">예측 경기 선택</td>
+<td rowspan="1" colspan="1">예측 가능한 경기 목록을 조회하고 예측 대상을 선택한다.</td>
+<td rowspan="1" colspan="1">경기 시작 전 마감 기준 목록 표시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-03</td>
+<td rowspan="1" colspan="1">SR-06-03</td>
+<td rowspan="1" colspan="1">예측 결과 선택</td>
+<td rowspan="1" colspan="1">경기 유형에 맞는 예측 결과를 선택한다.</td>
+<td rowspan="1" colspan="1">승·무·패 또는 특정 팀 승리, 경기 유형별 선택지 상이</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-04</td>
+<td rowspan="1" colspan="1">SR-06-03</td>
+<td rowspan="1" colspan="1">예측 제출</td>
+<td rowspan="1" colspan="1">선택한 예측을 최종 제출한다.</td>
+<td rowspan="1" colspan="1">마감 시간 안내 포함</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-05</td>
+<td rowspan="1" colspan="1">SR-06-04</td>
+<td rowspan="2" colspan="1">예측 제한</td>
+<td rowspan="1" colspan="1">중복 예측 방지</td>
+<td rowspan="1" colspan="1">동일 경기에 대한 중복 예측을 제한한다.</td>
+<td rowspan="1" colspan="1">이미 예측한 경기 표시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-06</td>
+<td rowspan="1" colspan="1">SR-06-04</td>
+<td rowspan="1" colspan="1">마감 시간 처리</td>
+<td rowspan="1" colspan="1">경기 시작 시간을 기준으로 예측 참여를 마감한다.</td>
+<td rowspan="1" colspan="1">마감 이후 예측 불가</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-07</td>
+<td rowspan="1" colspan="1">SR-06-05</td>
+<td rowspan="1" colspan="1">예측 결과</td>
+<td rowspan="1" colspan="1">결과 확인</td>
+<td rowspan="1" colspan="1">경기 종료 후 예측 결과를 확인한다.</td>
+<td rowspan="1" colspan="1">예측 성공/실패 자동 산출</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-08</td>
+<td rowspan="1" colspan="1">SR-06-06</td>
+<td rowspan="1" colspan="1">예측 통계</td>
+<td rowspan="1" colspan="1">나의 예측 통계</td>
+<td rowspan="1" colspan="1">사용자의 전체 예측 적중률 통계를 조회한다.</td>
+<td rowspan="1" colspan="1">종목별 분류 제공</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-06-09</td>
+<td rowspan="1" colspan="1">SR-06-06</td>
+<td rowspan="1" colspan="1">예측 랭킹</td>
+<td rowspan="1" colspan="1">예측 랭킹</td>
+<td rowspan="1" colspan="1">전체 사용자 예측 랭킹을 조회한다.</td>
+<td rowspan="1" colspan="1">주간/월간/전체 기간 선택</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-07-01</td>
+<td rowspan="1" colspan="1">SR-07-01</td>
+<td rowspan="3" colspan="1">AI 예측</td>
+<td rowspan="1" colspan="1">AI 예측 결과 조회</td>
+<td rowspan="1" colspan="1">AI가 분석한 경기 예측 결과를 조회한다.</td>
+<td rowspan="1" colspan="1">승/무/패 확률 표시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-07-02</td>
+<td rowspan="1" colspan="1">SR-07-02</td>
+<td rowspan="1" colspan="1">AI 예측 근거 조회</td>
+<td rowspan="1" colspan="1">AI 예측의 상세 근거를 조회한다.</td>
+<td rowspan="1" colspan="1">팀 통계, 최근 성적, 상대 전적</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-07-03</td>
+<td rowspan="1" colspan="1">SR-07-03</td>
+<td rowspan="1" colspan="1">AI 예측 결과 제공</td>
+<td rowspan="1" colspan="1">경기 시작 전 AI 예측 결과를 사용자에게 제공한다.</td>
+<td rowspan="1" colspan="1">모델 결과 또는 사전 생성 데이터 활용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-08-01</td>
+<td rowspan="1" colspan="1">SR-08-01</td>
+<td rowspan="20" colspan="1">커뮤니티</td>
+<td rowspan="4" colspan="1">실시간 댓글</td>
+<td rowspan="1" colspan="1">댓글 작성</td>
+<td rowspan="1" colspan="1">로그인 사용자가 경기 상세 화면에서 댓글을 작성한다.</td>
+<td rowspan="1" colspan="1">로그인 사용자만 작성 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-08-02</td>
+<td rowspan="1" colspan="1">SR-08-02</td>
+<td rowspan="1" colspan="1">댓글 조회</td>
+<td rowspan="1" colspan="1">경기별 댓글 목록을 조회한다.</td>
+<td rowspan="1" colspan="1">최신순 정렬, 실시간 또는 주기적 갱신</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-08-03</td>
+<td rowspan="1" colspan="1">SR-08-03</td>
+<td rowspan="1" colspan="1">댓글 삭제</td>
+<td rowspan="1" colspan="1">사용자가 자신이 작성한 댓글을 삭제한다.</td>
+<td rowspan="1" colspan="1">본인 및 관리자 삭제 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-08-04</td>
+<td rowspan="1" colspan="1">SR-08-04</td>
+<td rowspan="1" colspan="1">댓글 신고</td>
+<td rowspan="1" colspan="1">부적절한 댓글을 신고한다.</td>
+<td rowspan="1" colspan="1">누적 신고 시 자동 블라인드 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-08-05</td>
+<td rowspan="1" colspan="1">SR-08-05</td>
+<td rowspan="2" colspan="1">댓글 필터링</td>
+<td rowspan="1" colspan="1">자동 필터링</td>
+<td rowspan="1" colspan="1">욕설·비속어를 감지하여 댓글을 자동 차단 또는 블라인드 처리한다.</td>
+<td rowspan="1" colspan="1">AI 또는 키워드 기반</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-08-06</td>
+<td rowspan="1" colspan="1">SR-08-05</td>
+<td rowspan="1" colspan="1">필터링 로그</td>
+<td rowspan="1" colspan="1">필터링된 댓글 내역을 관리자 페이지에서 조회한다.</td>
+<td rowspan="1" colspan="1">관리자 전용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-01</td>
+<td rowspan="1" colspan="1">SR-08-06</td>
+<td rowspan="5" colspan="1">게시판</td>
+<td rowspan="1" colspan="1">게시글 작성</td>
+<td rowspan="1" colspan="1">제목과 본문을 입력하여 게시글을 작성한다.</td>
+<td rowspan="1" colspan="1">이미지 첨부 최대 5장, 각 이미지당 최대 20MB, 로그인 사용자만 작성 가능,<br>태그 최대 10개 제한, 태그당 20자 이내, 특수문자 제한</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-02</td>
+<td rowspan="1" colspan="1">SR-08-08</td>
+<td rowspan="1" colspan="1">게시글 수정</td>
+<td rowspan="1" colspan="1">작성자가 자신이 작성한 게시글을 수정한다.</td>
+<td rowspan="1" colspan="1">작성자 본인만 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-03</td>
+<td rowspan="1" colspan="1">SR-08-08</td>
+<td rowspan="1" colspan="1">게시글 삭제</td>
+<td rowspan="1" colspan="1">게시글을 삭제한다.</td>
+<td rowspan="1" colspan="1">작성자 및 관리자 삭제 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-04</td>
+<td rowspan="1" colspan="1">SR-08-07</td>
+<td rowspan="1" colspan="1">게시글 조회</td>
+<td rowspan="1" colspan="1">게시글 목록과 상세 내용을 조회한다.</td>
+<td rowspan="1" colspan="1">조회수 표시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-05</td>
+<td rowspan="1" colspan="1">SR-08-06</td>
+<td rowspan="1" colspan="1">카테고리 분류</td>
+<td rowspan="1" colspan="1">게시글 작성 시 카테고리를 선택한다.</td>
+<td rowspan="1" colspan="1">자유·분석·응원·예측후기</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-06</td>
+<td rowspan="1" colspan="1">SR-08-06</td>
+<td rowspan="3" colspan="1">게시판 댓글</td>
+<td rowspan="1" colspan="1">게시글 댓글 작성</td>
+<td rowspan="1" colspan="1">게시글에 댓글을 작성한다.</td>
+<td rowspan="1" colspan="1">로그인 사용자만 작성 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-07</td>
+<td rowspan="1" colspan="1">SR-08-06</td>
+<td rowspan="1" colspan="1">대댓글 작성</td>
+<td rowspan="1" colspan="1">댓글에 답글을 작성한다.</td>
+<td rowspan="1" colspan="1">1단계 답글만 허용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-08</td>
+<td rowspan="1" colspan="1">SR-08-08</td>
+<td rowspan="1" colspan="1">댓글 삭제/신고</td>
+<td rowspan="1" colspan="1">댓글을 삭제하거나 신고한다.</td>
+<td rowspan="1" colspan="1">작성자 삭제, 신고 기능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-09</td>
+<td rowspan="1" colspan="1">SR-08-09</td>
+<td rowspan="3" colspan="1">상호작용</td>
+<td rowspan="1" colspan="1">좋아요</td>
+<td rowspan="1" colspan="1">게시글에 좋아요를 누르거나 취소한다.</td>
+<td rowspan="1" colspan="1">중복 불가, 취소 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-10</td>
+<td rowspan="1" colspan="1">SR-08-09</td>
+<td rowspan="1" colspan="1">게시글 검색</td>
+<td rowspan="1" colspan="1">제목, 내용, 작성자 키워드로 게시글을 검색한다.</td>
+<td rowspan="1" colspan="1">검색 조건 확장 가능</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-11</td>
+<td rowspan="1" colspan="1">SR-08-09</td>
+<td rowspan="1" colspan="1">게시글 정렬</td>
+<td rowspan="1" colspan="1">게시글 목록을 정렬 기준에 따라 정렬한다.</td>
+<td rowspan="1" colspan="1">최신순·인기순·조회순</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-12</td>
+<td rowspan="1" colspan="1">SR-08-10</td>
+<td rowspan="3" colspan="1">게시판 관리</td>
+<td rowspan="1" colspan="1">공지사항 고정</td>
+<td rowspan="1" colspan="1">관리자가 공지사항을 게시글 목록 상단에 고정한다.</td>
+<td rowspan="1" colspan="1">관리자 전용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-13</td>
+<td rowspan="1" colspan="1">SR-08-10</td>
+<td rowspan="1" colspan="1">게시판 관리</td>
+<td rowspan="1" colspan="1">관리자가 게시판 및 댓글 내역을 관리한다.</td>
+<td rowspan="1" colspan="1">관리자 전용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-09-14</td>
+<td rowspan="1" colspan="1">SR-08-05, SR-08-10</td>
+<td rowspan="1" colspan="1">게시판 AI 필터링</td>
+<td rowspan="1" colspan="1">욕설·비속어가 포함된 게시글 또는 댓글을 차단 또는 블라인드 처리한다.</td>
+<td rowspan="1" colspan="1">AI 또는 키워드 기반, 관리자 로그 조회</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-01</td>
+<td rowspan="1" colspan="1">SR-09-01</td>
+<td rowspan="7" colspan="1">콘텐츠</td>
+<td rowspan="7" colspan="1">스포츠 뉴스</td>
+<td rowspan="1" colspan="1">종목별 뉴스 필터</td>
+<td rowspan="1" colspan="1">야구, 축구, LoL 카테고리별 뉴스를 분류하여 조회한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-02</td>
+<td rowspan="1" colspan="1">SR-09-01</td>
+<td rowspan="1" colspan="1">최신 뉴스 목록</td>
+<td rowspan="1" colspan="1">제목, 요약, 날짜, 출처를 포함한 뉴스 목록을 표시한다.</td>
+<td rowspan="1" colspan="1">최신순 정렬</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-03</td>
+<td rowspan="1" colspan="1">SR-09-02</td>
+<td rowspan="1" colspan="1">뉴스 상세 보기</td>
+<td rowspan="1" colspan="1">선택한 뉴스의 상세 내용을 표시한다.</td>
+<td rowspan="1" colspan="1">원문 링크 또는 앱 내 뷰어</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-04</td>
+<td rowspan="1" colspan="1">SR-09-03</td>
+<td rowspan="1" colspan="1">팀/선수 연관 뉴스</td>
+<td rowspan="1" colspan="1">특정 팀 또는 선수와 관련된 뉴스를 필터링하여 표시한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-05</td>
+<td rowspan="1" colspan="1">SR-09-04</td>
+<td rowspan="1" colspan="1">뉴스 스크랩 등록 / 취소</td>
+<td rowspan="1" colspan="1">로그인 사용자가 관심 뉴스를 자신의 스크랩 목록에 저장하거나 취소한다</td>
+<td rowspan="1" colspan="1">중복 스크랩 방지</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-06</td>
+<td rowspan="1" colspan="1">SR-09-04</td>
+<td rowspan="1" colspan="1">스크랩 뉴스 조회</td>
+<td rowspan="1" colspan="1">로그인 사용자가 자신이 스크랩한 뉴스 목록을 조회한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-10-07</td>
+<td rowspan="1" colspan="1">SR-09-05</td>
+<td rowspan="1" colspan="1">뉴스 공유</td>
+<td rowspan="1" colspan="1">뉴스를 SNS 또는 링크로 공유한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-11-01</td>
+<td rowspan="1" colspan="1">SR-10-01</td>
+<td rowspan="6" colspan="1">관리자</td>
+<td rowspan="1" colspan="1">경기 데이터 관리</td>
+<td rowspan="1" colspan="1">경기 기본 정보 관리</td>
+<td rowspan="1" colspan="1">관리자가 경기 일정과 경기 기본 정보를 등록, 수정, 삭제한다.</td>
+<td rowspan="1" colspan="1">API 연동 데이터 관리, 필요 시 수동 보정</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-11-02</td>
+<td rowspan="1" colspan="1">SR-10-02</td>
+<td rowspan="4" colspan="1">관리자 시뮬레이터</td>
+<td rowspan="1" colspan="1">경기 상태 제어</td>
+<td rowspan="1" colspan="1">관리자가 경기 상태를 시작, 일시정지, 종료로 변경한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-11-03</td>
+<td rowspan="1" colspan="1">SR-10-03</td>
+<td rowspan="1" colspan="1">스코어 갱신</td>
+<td rowspan="1" colspan="1">관리자가 홈/어웨이 스코어를 갱신한다.</td>
+<td rowspan="1" colspan="1">실시간 API 대체, 시연 중 수동 송출</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-11-04</td>
+<td rowspan="1" colspan="1">SR-10-04</td>
+<td rowspan="1" colspan="1">경기 이벤트 등록</td>
+<td rowspan="1" colspan="1">관리자가 득점, 카드, 교체 등 경기 이벤트를 등록한다.</td>
+<td rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-11-05</td>
+<td rowspan="1" colspan="1">SR-10-05</td>
+<td rowspan="1" colspan="1">중계 화면 반영</td>
+<td rowspan="1" colspan="1">관리자가 입력한 경기 상태, 스코어, 이벤트 정보를 사용자 경기 중계 화면에 반영된다</td>
+<td rowspan="1" colspan="1">WebSocket 방식으로 구현</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">FR-11-06</td>
+<td rowspan="1" colspan="1">SR-10-06</td>
+<td rowspan="1" colspan="1">운영 관리</td>
+<td rowspan="1" colspan="1">댓글/게시판 관리</td>
+<td rowspan="1" colspan="1">관리자가 댓글, 게시글, 신고 및 필터링 내역을 조회하고 관리한다.</td>
+<td rowspan="1" colspan="1">관리자 전용</td>
+</tr>
+</table>
+
+    <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (window.parent && window.parent.closeDocModal) {
+          window.parent.closeDocModal();
+        }
+      }
+    });
+    </script>
+    </body></html>
