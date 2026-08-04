@@ -255,12 +255,18 @@
     .tech-layout {
       margin-top: 60px;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 2px;
       background: var(--line);
       border: 1px solid var(--line);
       border-radius: 16px;
       overflow: hidden;
+    }
+    @media(max-width: 900px) {
+      .tech-layout { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 500px) {
+      .tech-layout { grid-template-columns: 1fr; }
     }
     .tech-cell {
       background: var(--surface);
@@ -580,18 +586,21 @@
       .hero-right { display:flex; gap:24pt; margin-top:12pt; }
       .hero-stat-num { font-size:28pt; }
 
-      section { padding: 28pt 0; }
+      section { padding: 16pt 0; }
       .wrap { padding: 0; max-width:100%; }
 
       .about-layout, .tech-layout {
         border-radius: 6px;
       }
       .project-block {
-        break-inside: avoid;
+        break-inside: auto;
         border-radius: 6px;
-        margin-top: 24pt;
+        margin-top: 16pt;
       }
-      .project-header, .proj-desc-cell, .proj-stack-cell { padding: 18pt 20pt; }
+      .project-header, .proj-preview, .proj-desc-cell, .proj-stack-cell { 
+        break-inside: avoid; 
+      }
+      .project-header, .proj-desc-cell, .proj-stack-cell { padding: 12pt 20pt; }
       .proj-title { font-size:24pt; }
       .proj-desc { font-size:10pt; }
       .feature-item { font-size:10pt; }
@@ -599,6 +608,11 @@
 
       .contact-footer { display:none; }
       footer { display:none; }
+
+      /* Force details to closed state in PDF */
+      .proj-details > summary { padding: 12pt 20pt !important; }
+      .proj-details > summary::after { display: none !important; }
+      .pd-content { display: none !important; }
 
       /* print header */
       .print-header {
@@ -617,7 +631,6 @@
 
       /* page break hints */
       #about { break-before: avoid; }
-      #projects { break-before: page; }
     }
 
     /* hide print header on screen */
@@ -747,7 +760,6 @@
           <span class="tech-tag emp"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="">Java</span>
           <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="">Spring Boot</span>
           <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/springsecurity/6DB33F" alt="">Spring Security</span>
-          <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="">Spring AI</span>
           <span class="tech-tag"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="">WebFlux</span>
           <span class="tech-tag">QueryDSL</span>
           <span class="tech-tag"><img src="https://cdn.simpleicons.org/jsonwebtokens/111110" alt="">JWT &middot; OAuth 2.0</span>
@@ -765,9 +777,22 @@
         </div>
       </div>
       <div class="tech-cell">
+        <div class="tech-cell-cat">AI &amp; LLM</div>
+        <div class="tech-tags">
+          <span class="tech-tag emp"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="">Spring AI</span>
+          <span class="tech-tag emp"><img src="images/claude.svg" alt="">Claude API</span>
+          <span class="tech-tag">RAG</span>
+          <span class="tech-tag">MCP</span>
+          <span class="tech-tag"><img src="images/chatgpt.svg" alt="">ChatGPT API</span>
+          <span class="tech-tag">Vector DB</span>
+          <span class="tech-tag">Embedding &amp; Search</span>
+        </div>
+      </div>
+      <div class="tech-cell">
         <div class="tech-cell-cat">Frontend &amp; Etc</div>
         <div class="tech-tags">
-          <span class="tech-tag"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML / CSS</span>
+          <span class="tech-tag"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML5</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="">CSS3</span>
           <span class="tech-tag"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">JavaScript</span>
           <span class="tech-tag"><img src="https://cdn.simpleicons.org/thymeleaf/005F0F" alt="">Thymeleaf</span>
           <span class="tech-tag"><img src="https://cdn.simpleicons.org/python/111110" alt="">Python</span>
@@ -796,13 +821,14 @@
           <div class="proj-title">PlanSlot</div>
           <div class="proj-subtitle">그룹 일정 관리 플랫폼 &nbsp;·&nbsp; 4인 팀</div>
         </div>
+        <div style="text-align: right; font-size: 13.5px; color: var(--sub); line-height: 1.6;">
+          <div style="margin-bottom: 6px;"><a href="http://13.209.22.21.nip.io:8181/planslot" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">http://13.209.22.21.nip.io:8181/planslot</a></div>
+          <div>관리자 : [ ID : admin / PW : admin ]</div>
+          <div>일반 사용자 : [ ID : user01 / PW : Qwer1234! ]</div>
+        </div>
       </div>
       <div class="proj-preview">
-        <div class="browser-window">
-          <div class="browser-header">
-            <div class="bh-dots"><span></span><span></span><span></span></div>
-            <div class="bh-url"><span class="bh-url-inner"><a href="http://13.209.22.21.nip.io:8181/planslot" target="_blank">13.209.22.21.nip.io:8181/planslot</a></span></div>
-          </div>
+        <div class="browser-window" style="padding-top: 0;">
           <img src="images/planslot.png" alt="PlanSlot 사이트 미리보기" loading="lazy">
         </div>
       </div>
@@ -1017,13 +1043,14 @@
           <div class="proj-title">AI.MATCH</div>
           <div class="proj-subtitle">스포츠 실시간 예측 커뮤니티 &nbsp;·&nbsp; 4인 팀</div>
         </div>
+        <div style="text-align: right; font-size: 13.5px; color: var(--sub); line-height: 1.6;">
+          <div style="margin-bottom: 6px;"><a href="http://43.201.107.175:9090" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">http://43.201.107.175:9090</a></div>
+          <div>관리자 : [ ID : admin / PW : asdf1234 ]</div>
+          <div>일반 사용자 : [ ID : user01 / PW : asdf1234 ]</div>
+        </div>
       </div>
       <div class="proj-preview">
-        <div class="browser-window">
-          <div class="browser-header">
-            <div class="bh-dots"><span></span><span></span><span></span></div>
-            <div class="bh-url"><span class="bh-url-inner"><a href="http://43.201.107.175:9090" target="_blank">43.201.107.175:9090</a></span></div>
-          </div>
+        <div class="browser-window" style="padding-top: 0;">
           <img src="images/sports.png" alt="AI.MATCH 사이트 미리보기" loading="lazy">
         </div>
       </div>
