@@ -1,11 +1,258 @@
 <html><head><meta charset="utf-8">
     <style>
-    body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
+    body { font-family:-apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, sans-serif; padding:24px; margin:0; background:#f9f9fa; }
     h2 { color:#111; margin:32px 0 16px; font-size:20px; border-bottom:2px solid #222; padding-bottom:8px; display:inline-block; }
-    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:4px; overflow:hidden; }
+    h2:first-of-type { margin-top: 8px; }
+    table { table-layout:auto; border-collapse:collapse; width:100%; max-width:1400px; font-size:13.5px; text-align:left; background:#fff; margin-bottom:48px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border-radius:6px; overflow:hidden; }
     th, td { border:1px solid #e0e0e0; padding:10px 14px; word-break:keep-all; vertical-align:middle; line-height:1.6; color:#333; }
     tr:nth-child(even) { background:#fafafa; }
     </style></head><body><h2>회원·인증</h2>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 121px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 294px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>Member</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>회원 기본 정보</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">member_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">회원 고유 식별자(Auto Increment)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">login_id</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1">UK</td>
+<td rowspan="1" colspan="1">로그인 아이디(소셜 로그인 시 NULL)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">password</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">암호화된 비밀번호(소셜 가입 시 NULL)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">email</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">이메일 주소</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">nickname</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">UK</td>
+<td rowspan="1" colspan="1">서비스 활동 닉네임</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">address</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">사용자 주소(선택 입력)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">role</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">유저 권한(MEMBER, ADMIN)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">8</td>
+<td rowspan="1" colspan="1">status</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">상태(일반, 정지 밴 등)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">9</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">최초 가입 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">10</td>
+<td rowspan="1" colspan="1">updated_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">최종 정보 수정 일시</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 121px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 294px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>SocialAccount</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>소셜 로그인으로 가입한 유저 정보</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">social_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">소셜 연동 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">member_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">연동된 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">provider</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">소셜 제공자(GOOGLE, KAKAO 등)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">provider_id</td>
+<td rowspan="1" colspan="1">VARCHAR(255)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">UK</td>
+<td rowspan="1" colspan="1">소셜 제공자가 발급해주는 유저 고유 ID값</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">최초 연동 일시</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 121px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 294px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AuthEmail</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>이메일 인증번호 유효성 검사 테이블</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">auth_email_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">이메일 인증 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">email</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">인증 요청을 보낸 이메일 주소</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">auth_code</td>
+<td rowspan="1" colspan="1">VARCHAR(10)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">생성된 인증 번호 6자리 숫자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">is_verified</td>
+<td rowspan="1" colspan="1">CHAR(1)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">인증 완료 여부</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">expired_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">인증번호 만료 예정 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">인증번호 생성 및 발송 일시</td>
+</tr>
+</table>
 <table>
 <colgroup>
 <col style="width: 104px;">
@@ -16,263 +263,23 @@
 <col style="width: 294px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>Member</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AuthToken</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>회원 기본 정보</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>로그인 유지를 위한 토큰 정보</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">member_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">회원 고유 식별자(Auto Increment)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">login_id</td>
-<td rowspan="1" colspan="1">VARCHAR(50)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1">UK</td>
-<td rowspan="1" colspan="1">로그인 아이디(소셜 로그인 시 NULL)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">password</td>
-<td rowspan="1" colspan="1">VARCHAR(255)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">암호화된 비밀번호(소셜 가입 시 NULL)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">email</td>
-<td rowspan="1" colspan="1">VARCHAR(255)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">이메일 주소</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">nickname</td>
-<td rowspan="1" colspan="1">VARCHAR(50)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">UK</td>
-<td rowspan="1" colspan="1">서비스 활동 닉네임</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">address</td>
-<td rowspan="1" colspan="1">VARCHAR(255)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">사용자 주소(선택 입력)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">role</td>
-<td rowspan="1" colspan="1">VARCHAR(20)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">유저 권한(MEMBER, ADMIN)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">8.0</td>
-<td rowspan="1" colspan="1">status</td>
-<td rowspan="1" colspan="1">VARCHAR(20)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">상태(일반, 정지 밴 등)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">9.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">최초 가입 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">10.0</td>
-<td rowspan="1" colspan="1">updated_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">최종 정보 수정 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>SocialAccount</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>소셜 로그인으로 가입한 유저 정보</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">social_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">소셜 연동 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">member_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">연동된 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">provider</td>
-<td rowspan="1" colspan="1">VARCHAR(255)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">소셜 제공자(GOOGLE, KAKAO 등)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">provider_id</td>
-<td rowspan="1" colspan="1">VARCHAR(255)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">UK</td>
-<td rowspan="1" colspan="1">소셜 제공자가 발급해주는 유저 고유 ID값</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">최초 연동 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>AuthEmail</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>이메일 인증번호 유효성 검사 테이블</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">auth_email_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">이메일 인증 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">email</td>
-<td rowspan="1" colspan="1">VARCHAR(100)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">인증 요청을 보낸 이메일 주소</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">auth_code</td>
-<td rowspan="1" colspan="1">VARCHAR(10)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">생성된 인증 번호 6자리 숫자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">is_verified</td>
-<td rowspan="1" colspan="1">CHAR(1)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">인증 완료 여부</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">expired_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">인증번호 만료 예정 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">인증번호 생성 및 발송 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>AuthToken</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>로그인 유지를 위한 토큰 정보</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">token_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -280,7 +287,7 @@
 <td rowspan="1" colspan="1">토큰 관리 고유 식별자(Auto Increment)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -288,7 +295,7 @@
 <td rowspan="1" colspan="1">토큰을 받은 회원 식별자(Member 테이블 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">refresh_token</td>
 <td rowspan="1" colspan="1">VARCHAR(255)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -296,7 +303,7 @@
 <td rowspan="1" colspan="1">실제 발급된 JWT Refresh Token 문자열</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">expired_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -304,7 +311,7 @@
 <td rowspan="1" colspan="1">토큰 만료 예정 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -313,6 +320,112 @@
 </tr>
 </table>
 <h2>관리자</h2>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 135px;">
+<col style="width: 121px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 263px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AdminReport</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>신고 내역 관리</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">report_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">신고 내역 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">reporter_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">신고를 접수한 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">group_target_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">모임방의 신고 대상의 고유 PK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">board_target_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">게시판의 신고 대상의 고유 PK</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">source_type</td>
+<td rowspan="1" colspan="1">VARCHAT(20)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">신고 접수 출처</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">reason_category</td>
+<td rowspan="1" colspan="1">VARCHAT(50)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">선택한 신고 사유</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">reason_detail</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">사용자가 입력한 세부 신고 사유</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">8</td>
+<td rowspan="1" colspan="1">status</td>
+<td rowspan="1" colspan="1">VARCHAT(20)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">처리상태</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">9</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">신고 접수 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">10</td>
+<td rowspan="1" colspan="1">updated_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">신고 처리(상태 변경)일시</td>
+</tr>
+</table>
 <table>
 <colgroup>
 <col style="width: 104px;">
@@ -323,127 +436,23 @@
 <col style="width: 263px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>AdminReport</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AdminSanction</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>신고 내역 관리</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>제재 회원 관리</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">report_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">신고 내역 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">reporter_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">신고를 접수한 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">group_target_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">모임방의 신고 대상의 고유 PK</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">board_target_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">게시판의 신고 대상의 고유 PK</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">source_type</td>
-<td rowspan="1" colspan="1">VARCHAT(20)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">신고 접수 출처</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">reason_category</td>
-<td rowspan="1" colspan="1">VARCHAT(50)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">선택한 신고 사유</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">reason_detail</td>
-<td rowspan="1" colspan="1">TEXT</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">사용자가 입력한 세부 신고 사유</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">8.0</td>
-<td rowspan="1" colspan="1">status</td>
-<td rowspan="1" colspan="1">VARCHAT(20)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">처리상태</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">9.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">신고 접수 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">10.0</td>
-<td rowspan="1" colspan="1">updated_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">신고 처리(상태 변경)일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>AdminSanction</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>제재 회원 관리</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">sanction_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -451,7 +460,7 @@
 <td rowspan="1" colspan="1">제재 이력 고유 식별자(Auto Increment)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -459,7 +468,7 @@
 <td rowspan="1" colspan="1">제재를 받은 회원 식별자(Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">accumulated_count</td>
 <td rowspan="1" colspan="1">INT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -467,7 +476,7 @@
 <td rowspan="1" colspan="1">해당 제재 시점의 누적 제재 횟수</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">source_type</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -475,7 +484,7 @@
 <td rowspan="1" colspan="1">제재 원인 출처</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">source_report_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -483,7 +492,7 @@
 <td rowspan="1" colspan="1">원본 신고 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">reason</td>
 <td rowspan="1" colspan="1">VARCHAR(255)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -491,7 +500,7 @@
 <td rowspan="1" colspan="1">제재 사유</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">start_date</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -499,7 +508,7 @@
 <td rowspan="1" colspan="1">제재 적용 시작 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">8.0</td>
+<td rowspan="1" colspan="1">8</td>
 <td rowspan="1" colspan="1">end_date</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -507,7 +516,7 @@
 <td rowspan="1" colspan="1">제재 종료 예정 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">9.0</td>
+<td rowspan="1" colspan="1">9</td>
 <td rowspan="1" colspan="1">status</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -515,7 +524,7 @@
 <td rowspan="1" colspan="1">상태(제재중, 제재 해제)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">10.0</td>
+<td rowspan="1" colspan="1">10</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -523,7 +532,7 @@
 <td rowspan="1" colspan="1">제재 등록 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">11.0</td>
+<td rowspan="1" colspan="1">11</td>
 <td rowspan="1" colspan="1">updated_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -542,23 +551,23 @@
 <col style="width: 321px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GoogleCalendar</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GoogleCalendar</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>구글 캘린더 연동 관리</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>구글 캘린더 연동 관리</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">google_calendar_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -566,7 +575,7 @@
 <td rowspan="1" colspan="1">구글 연동 고유 식별자(Auto Increment)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -574,7 +583,7 @@
 <td rowspan="1" colspan="1">연동한 회원 식별자(Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">google_email</td>
 <td rowspan="1" colspan="1">VARCHAR(100)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -582,7 +591,7 @@
 <td rowspan="1" colspan="1">연동된 구글 계정 이메일 주소</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">access_token</td>
 <td rowspan="1" colspan="1">VARCHAR(255)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -590,7 +599,7 @@
 <td rowspan="1" colspan="1">구글 캘린더 API 접근용 엑세스 토큰</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">refresh_token</td>
 <td rowspan="1" colspan="1">VARCHAR(255)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -598,7 +607,7 @@
 <td rowspan="1" colspan="1">엑세스 토큰 만료 시 재발급을 위한 토큰</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">sync_token</td>
 <td rowspan="1" colspan="1">VARCHAR(255)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -606,7 +615,7 @@
 <td rowspan="1" colspan="1">구글 캘린더 변경 사항만 가져오기 위한 동기화 토큰</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">auto_sync_yn</td>
 <td rowspan="1" colspan="1">CHAR(1)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -614,7 +623,7 @@
 <td rowspan="1" colspan="1">자동 동기화 설정 여부(Y: 자동, N: 수동(기본값))</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">8.0</td>
+<td rowspan="1" colspan="1">8</td>
 <td rowspan="1" colspan="1">last_sync_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -622,7 +631,7 @@
 <td rowspan="1" colspan="1">구글 캘린더와 최종 동기화가 이루어진 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">9.0</td>
+<td rowspan="1" colspan="1">9</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -630,7 +639,7 @@
 <td rowspan="1" colspan="1">최초 연동 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">10.0</td>
+<td rowspan="1" colspan="1">10</td>
 <td rowspan="1" colspan="1">updated_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -639,6 +648,160 @@
 </tr>
 </table>
 <h2>개인 캘린더</h2>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 150px;">
+<col style="width: 169px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 440px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>Schedule</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>일정</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">schedule_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">일정 고유 식별자 (자동 증가)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">user_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">일정을 등록한 사용자 ID (참조: User)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">title</td>
+<td rowspan="1" colspan="1">VARCHAR(50)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 제목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">description</td>
+<td rowspan="1" colspan="1">VARCHAR(400)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 상세 설명</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">schedule_type</td>
+<td rowspan="1" colspan="1">VARCHAR(10)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 유형 (당일/주간/월간/연간)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">start_date</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 시작 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">end_date</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 종료 일시 (당일 일정인 경우 NULL 허용)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">8</td>
+<td rowspan="1" colspan="1">is_public</td>
+<td rowspan="1" colspan="1">CHAR(1)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">공개 여부 (Y: 공개, N: 비공개(기본값))</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">9</td>
+<td rowspan="1" colspan="1">google_sync_yn</td>
+<td rowspan="1" colspan="1">CHAR(1)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">구글 캘린더 동기화 여부 (Y: 동기화, N: 비동기화(기본값))</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">10</td>
+<td rowspan="1" colspan="1">google_event_id</td>
+<td rowspan="1" colspan="1">VARCHAR(200)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">동기화된 구글 캘린더 이벤트 ID</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">11</td>
+<td rowspan="1" colspan="1">shared_group_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">공유된 모임 캘린더 ID (참조: Group, 미공유 시 NULL)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">12</td>
+<td rowspan="1" colspan="1">source_type</td>
+<td rowspan="1" colspan="1">VARCHAR(20)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 등록 경로 (MANUAL: 직접등록, AI_IMAGE: AI 이미지 분석 등록)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">13</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 등록 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">14</td>
+<td rowspan="1" colspan="1">updated_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 수정 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">15</td>
+<td rowspan="1" colspan="1">deleted_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">삭제 일시 (소프트 삭제, 삭제 전까지 NULL)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">16</td>
+<td rowspan="1" colspan="1">location</td>
+<td rowspan="1" colspan="1">VARCHAR(200)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 장소 (직접입력 또는 AI 추출값)</td>
+</tr>
+</table>
 <table>
 <colgroup>
 <col style="width: 104px;">
@@ -649,175 +812,23 @@
 <col style="width: 440px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>Schedule</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>ScheduleDeadline</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>일정</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>일정 마감 기한</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">schedule_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">일정 고유 식별자 (자동 증가)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">user_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">일정을 등록한 사용자 ID (참조: User)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">title</td>
-<td rowspan="1" colspan="1">VARCHAR(50)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 제목</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">description</td>
-<td rowspan="1" colspan="1">VARCHAR(400)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 상세 설명</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">schedule_type</td>
-<td rowspan="1" colspan="1">VARCHAR(10)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 유형 (당일/주간/월간/연간)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">start_date</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 시작 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">end_date</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 종료 일시 (당일 일정인 경우 NULL 허용)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">8.0</td>
-<td rowspan="1" colspan="1">is_public</td>
-<td rowspan="1" colspan="1">CHAR(1)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">공개 여부 (Y: 공개, N: 비공개(기본값))</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">9.0</td>
-<td rowspan="1" colspan="1">google_sync_yn</td>
-<td rowspan="1" colspan="1">CHAR(1)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">구글 캘린더 동기화 여부 (Y: 동기화, N: 비동기화(기본값))</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">10.0</td>
-<td rowspan="1" colspan="1">google_event_id</td>
-<td rowspan="1" colspan="1">VARCHAR(200)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">동기화된 구글 캘린더 이벤트 ID</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">11.0</td>
-<td rowspan="1" colspan="1">shared_group_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">공유된 모임 캘린더 ID (참조: Group, 미공유 시 NULL)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">12.0</td>
-<td rowspan="1" colspan="1">source_type</td>
-<td rowspan="1" colspan="1">VARCHAR(20)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 등록 경로 (MANUAL: 직접등록, AI_IMAGE: AI 이미지 분석 등록)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">13.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 등록 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">14.0</td>
-<td rowspan="1" colspan="1">updated_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 수정 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">15.0</td>
-<td rowspan="1" colspan="1">deleted_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">삭제 일시 (소프트 삭제, 삭제 전까지 NULL)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">16.0</td>
-<td rowspan="1" colspan="1">location</td>
-<td rowspan="1" colspan="1">VARCHAR(200)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 장소 (직접입력 또는 AI 추출값)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>ScheduleDeadline</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>일정 마감 기한</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">schedule_deadline_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -825,7 +836,7 @@
 <td rowspan="1" colspan="1">데드라인 고유 식별자 (자동 증가)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">schedule_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -833,7 +844,7 @@
 <td rowspan="1" colspan="1">대상 일정 ID (참조: Schedule, 1:1)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">deadline_date</td>
 <td rowspan="1" colspan="1">DATE</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -841,7 +852,7 @@
 <td rowspan="1" colspan="1">데드라인 날짜</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">notify_days_before</td>
 <td rowspan="1" colspan="1">INT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -849,7 +860,7 @@
 <td rowspan="1" colspan="1">데드라인 며칠 전 알림을 받을지 (일 단위)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -857,7 +868,7 @@
 <td rowspan="1" colspan="1">데드라인 등록 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">updated_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -876,23 +887,23 @@
 <col style="width: 361px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>AiImageSchedule</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AiImageSchedule</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>AI 이미지 스케줄</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AI 이미지 스케줄</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">ai_image_schedule_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -900,7 +911,7 @@
 <td rowspan="1" colspan="1">AI 이미지 일정 분석 고유 식별자 (자동 증가)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">user_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -908,7 +919,7 @@
 <td rowspan="1" colspan="1">요청한 사용자 ID (참조: User)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">image_url</td>
 <td rowspan="1" colspan="1">VARCHAR(500)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -916,7 +927,7 @@
 <td rowspan="1" colspan="1">업로드된 이미지 파일 경로 (jpg, png, jpeg)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">prompt_type</td>
 <td rowspan="1" colspan="1">VARCHAR(10)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -924,7 +935,7 @@
 <td rowspan="1" colspan="1">프롬프트 작성 방식 (예시 / 직접)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">prompt_text</td>
 <td rowspan="1" colspan="1">VARCHAR(500)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -932,7 +943,7 @@
 <td rowspan="1" colspan="1">사용자가 작성한 프롬프트 내용</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">status</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -940,7 +951,7 @@
 <td rowspan="1" colspan="1">처리 상태 (대기 / 분석중 / 완료 / 실패)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">extracted_title</td>
 <td rowspan="1" colspan="1">VARCHAR(50)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -948,7 +959,7 @@
 <td rowspan="1" colspan="1">AI가 추출한 일정 제목</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">8.0</td>
+<td rowspan="1" colspan="1">8</td>
 <td rowspan="1" colspan="1">extracted_start_date</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -956,7 +967,7 @@
 <td rowspan="1" colspan="1">AI가 추출한 일정 시작 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">9.0</td>
+<td rowspan="1" colspan="1">9</td>
 <td rowspan="1" colspan="1">extracted_end_date</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -964,7 +975,7 @@
 <td rowspan="1" colspan="1">AI가 추출한 일정 종료 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">10.0</td>
+<td rowspan="1" colspan="1">10</td>
 <td rowspan="1" colspan="1">extracted_location</td>
 <td rowspan="1" colspan="1">VARCHAR(200)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -972,7 +983,7 @@
 <td rowspan="1" colspan="1">AI가 추출한 장소 정보</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">11.0</td>
+<td rowspan="1" colspan="1">11</td>
 <td rowspan="1" colspan="1">confidence_score</td>
 <td rowspan="1" colspan="1">DECIMAL(5,2)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -980,7 +991,7 @@
 <td rowspan="1" colspan="1">AI 분석 결과 신뢰도 점수(%)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">12.0</td>
+<td rowspan="1" colspan="1">12</td>
 <td rowspan="1" colspan="1">fail_reason</td>
 <td rowspan="1" colspan="1">VARCHAR(200)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -988,7 +999,7 @@
 <td rowspan="1" colspan="1">일정 인식 실패 시 사유 메시지</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">13.0</td>
+<td rowspan="1" colspan="1">13</td>
 <td rowspan="1" colspan="1">schedule_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -996,7 +1007,7 @@
 <td rowspan="1" colspan="1">확정 등록된 일정 ID (참조: Schedule, 확정 전까지 NULL)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">14.0</td>
+<td rowspan="1" colspan="1">14</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1004,7 +1015,7 @@
 <td rowspan="1" colspan="1">업로드 요청 생성 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">15.0</td>
+<td rowspan="1" colspan="1">15</td>
 <td rowspan="1" colspan="1">analyzed_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1012,7 +1023,7 @@
 <td rowspan="1" colspan="1">AI 분석(또는 재분석) 완료 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">16.0</td>
+<td rowspan="1" colspan="1">16</td>
 <td rowspan="1" colspan="1">confirmed_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1021,33 +1032,33 @@
 </tr>
 </table>
 <h2>모임 캘린더</h2>
-<table>
+<table style="margin-bottom: 24px;">
 <colgroup>
 <col style="width: 104px;">
 <col style="width: 173px;">
 <col style="width: 221px;">
 <col style="width: 104px;">
 <col style="width: 104px;">
-<col style="width: 574px;">
+<col style="width: 520px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>Group</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>Group</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임방 정보</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임방 정보</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1055,7 +1066,7 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_name</td>
 <td rowspan="1" colspan="1">VARCHAR(30)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1063,7 +1074,7 @@
 <td rowspan="1" colspan="1">모임방 제목</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">owner_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1071,7 +1082,7 @@
 <td rowspan="1" colspan="1">모임 생성자(방장) 회원 ID (참조: Member)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">person_count</td>
 <td rowspan="1" colspan="1">INT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1079,47 +1090,41 @@
 <td rowspan="1" colspan="1">현재 인원 수</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">createdAt</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">모임방 생성 일시</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupMember</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임방 인원</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupMember</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임방 인원</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">group_member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1127,7 +1132,7 @@
 <td rowspan="1" colspan="1">모임 멤버 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1135,7 +1140,7 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자(Group 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1143,7 +1148,7 @@
 <td rowspan="1" colspan="1">회원 고유 식별자(Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">inviter_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1151,7 +1156,7 @@
 <td rowspan="1" colspan="1">초대한 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">nickname</td>
 <td rowspan="1" colspan="1">VARCHAR(30)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1159,7 +1164,7 @@
 <td rowspan="1" colspan="1">해당 모임 내 자신의 닉네임 (기본값: 회원 닉네임)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">member_status</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1167,47 +1172,41 @@
 <td rowspan="1" colspan="1">모임 내 상태 (WAITING / ACTIVE / EXILED/LEFT)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">joined_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">모임 참여(초대 수락) 일시</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupSchedule</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임방 공유 일정 (개인 공개 일정 모임방 인원들에게 공개)</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupSchedule</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임방 공유 일정 (개인 공개 일정 모임방 인원들에게 공개)</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">group_schedule_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1215,7 +1214,7 @@
 <td rowspan="1" colspan="1">모임 공유 일정 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1223,7 +1222,7 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자 (Group 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">sharer_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1231,7 +1230,7 @@
 <td rowspan="1" colspan="1">일정을 공유한 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">schedule_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1239,7 +1238,7 @@
 <td rowspan="1" colspan="1">공유 원본 개인 일정 ID (Schedule 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">is_visible</td>
 <td rowspan="1" colspan="1">BOOLEAN</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1247,7 +1246,7 @@
 <td rowspan="1" colspan="1">모임원 공개 여부 (true: 공개, false: 비공개(기본값))</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">shared_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1255,47 +1254,41 @@
 <td rowspan="1" colspan="1">공유 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">updated_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">최종 수정 일시</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupScheduleShareCard</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임방 개별 공유 카드 (개인 일부 일정 공유 / 타인이 자신의 캘린더로 복사해갈 수 있음)</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupScheduleShareCard</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임방 개별 공유 카드 (개인 일부 일정 공유 / 타인이 자신의 캘린더로 복사해갈 수 있음)</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">share_card_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1303,7 +1296,7 @@
 <td rowspan="1" colspan="1">공유 카드 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1311,7 +1304,7 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자 (Group 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">schedule_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1319,7 +1312,7 @@
 <td rowspan="1" colspan="1">공유 원본 개인 일정 ID (Schedule 참조 / ON DELETE CASCADE - 원본 삭제 시 연동 삭제)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">sharer_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1327,7 +1320,7 @@
 <td rowspan="1" colspan="1">카드를 공유한 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">shared_title</td>
 <td rowspan="1" colspan="1">VARCHAR(100)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1335,7 +1328,7 @@
 <td rowspan="1" colspan="1">공유 시 노출하기로 선택한 제목</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">shared_memo</td>
 <td rowspan="1" colspan="1">VARCHAR(500)</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1343,47 +1336,41 @@
 <td rowspan="1" colspan="1">공유 시 노출하기로 선택한 시작 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">8.0</td>
+<td rowspan="1" colspan="1">8</td>
 <td rowspan="1" colspan="1">updated_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">마지막으로 업데이트한 일시</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupRecommendation</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임 일정 AI 추천 요청</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupRecommendation</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임 일정 AI 추천 요청</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">recommendation_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1391,7 +1378,7 @@
 <td rowspan="1" colspan="1">추천 요청 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1399,7 +1386,7 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자 (Group 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">requested_by</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1407,7 +1394,7 @@
 <td rowspan="1" colspan="1">추천을 요청(트리거)한 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">status</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1415,7 +1402,7 @@
 <td rowspan="1" colspan="1">처리 상태 (ANALYZING / COMPLETED / CONFIRMED / FAILED)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">requested_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1423,7 +1410,7 @@
 <td rowspan="1" colspan="1">추천 트리거 요청 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">completed_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1431,47 +1418,41 @@
 <td rowspan="1" colspan="1">AI 분석 완료 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">confirmed_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">검토 후 캘린더 확정 등록 일시</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupRecommendationSlot</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>AI 추천 후보 시간대</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupRecommendationSlot</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>AI 추천 후보 시간대</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">recommendation_slot_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1479,7 +1460,7 @@
 <td rowspan="1" colspan="1">추천 후보 시간대 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">recommendation_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1487,7 +1468,7 @@
 <td rowspan="1" colspan="1">추천 요청 ID (GroupRecommendation 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">start_time</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1495,7 +1476,7 @@
 <td rowspan="1" colspan="1">후보 시작 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">end_time</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1503,7 +1484,7 @@
 <td rowspan="1" colspan="1">후보 종료 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">available_count</td>
 <td rowspan="1" colspan="1">INT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1511,7 +1492,7 @@
 <td rowspan="1" colspan="1">해당 시간대 참여 가능 인원 수</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">is_all_available</td>
 <td rowspan="1" colspan="1">TINYINT(1)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1519,47 +1500,41 @@
 <td rowspan="1" colspan="1">전원 참여 가능 여부 (1: 전원가능, 0: 일부만가능)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">is_selected</td>
 <td rowspan="1" colspan="1">TINYINT(1)</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">검토 후 최종 선택한 후보 여부 (기본값 0)</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupChatRoom</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임 채팅방</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupChatRoom</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임 채팅방</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">group_chat_room_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1567,7 +1542,7 @@
 <td rowspan="1" colspan="1">채팅방 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1575,47 +1550,41 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자 (Group 참조, 1:1)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">채팅방 생성 일시</td>
 </tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>ChatMessage</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
-<td rowspan="1" colspan="1"><b></b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임 채팅 메시지</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>ChatMessage</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임 채팅 메시지</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">chat_message_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1623,7 +1592,7 @@
 <td rowspan="1" colspan="1">채팅 메시지 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_chat_room_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1631,7 +1600,7 @@
 <td rowspan="1" colspan="1">채팅방 고유 식별자 (GroupChatRoom 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">sender_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1639,7 +1608,7 @@
 <td rowspan="1" colspan="1">발신자 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">content</td>
 <td rowspan="1" colspan="1">VARCHAR(1000)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1647,7 +1616,7 @@
 <td rowspan="1" colspan="1">채팅 메시지 내용</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1655,47 +1624,41 @@
 <td rowspan="1" colspan="1">전송 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">is_deleted</td>
 <td rowspan="1" colspan="1">TINYINT(1)</td>
 <td rowspan="1" colspan="1">Not Null</td>
 <td rowspan="1" colspan="1"></td>
 <td rowspan="1" colspan="1">삭제(신고 처리 등) 여부 (기본값 0)</td>
 </tr>
+</table>
+<table>
+<colgroup>
+<col style="width: 104px;">
+<col style="width: 173px;">
+<col style="width: 221px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 520px;">
+</colgroup>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupReport</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임 채팅방 신고</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupReport</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임 채팅방 신고</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">report_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1703,7 +1666,7 @@
 <td rowspan="1" colspan="1">모임방 신고 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1711,7 +1674,7 @@
 <td rowspan="1" colspan="1">모임방 고유 식별자 (Group 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">chat_message_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1719,7 +1682,7 @@
 <td rowspan="1" colspan="1">신고 대상 채팅 메시지 고유 식별자 (ChatMessage 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1727,7 +1690,7 @@
 <td rowspan="1" colspan="1">신고한 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">reported_member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1735,7 +1698,7 @@
 <td rowspan="1" colspan="1">신고당한(피신고) 회원 ID (Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">reason</td>
 <td rowspan="1" colspan="1">VARCHAR(30)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1743,7 +1706,7 @@
 <td rowspan="1" colspan="1">신고 사유</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">reason_detail</td>
 <td rowspan="1" colspan="1">TEXT</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1751,7 +1714,7 @@
 <td rowspan="1" colspan="1">신고 상세 사유</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">8.0</td>
+<td rowspan="1" colspan="1">8</td>
 <td rowspan="1" colspan="1">status</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1759,7 +1722,7 @@
 <td rowspan="1" colspan="1">처리 여부 (WATING / PROCESSED)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">9.0</td>
+<td rowspan="1" colspan="1">9</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -1767,7 +1730,7 @@
 <td rowspan="1" colspan="1">신고 접수 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">10.0</td>
+<td rowspan="1" colspan="1">10</td>
 <td rowspan="1" colspan="1">processed_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -1776,6 +1739,400 @@
 </tr>
 </table>
 <h2>모임 게시판</h2>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 67px;">
+<col style="width: 146px;">
+<col style="width: 165px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 286px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>Board</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>게시글 목록</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">board_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">게시글 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">writer_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">게시글 작성 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">title</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">게시글 제목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">content</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">게시글 내용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">view_count</td>
+<td rowspan="1" colspan="1">INT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">게시글 조회 수, 기본값 0</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">board_type</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">게시글 게시판 유형</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">board_status</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">게시글 상태, 기본값 ACTIVE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">8</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">작성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">9</td>
+<td rowspan="1" colspan="1">updated_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">수정 일시</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 67px;">
+<col style="width: 146px;">
+<col style="width: 165px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 286px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>BoardFile</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>게시글 이미지</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">file_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">게시글 이미지 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">board_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">이미지가 첨부된 게시글 식별자(Board 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">file_url</td>
+<td rowspan="1" colspan="1">VARCHAR(200)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">업로드된 이미지 파일 저장 경로</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">등록 일시</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 67px;">
+<col style="width: 146px;">
+<col style="width: 165px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 286px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>BoardComment</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>댓글 목록</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">comment_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">댓글 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">board_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">댓글이 작성된 게시글 식별자(Board 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">writer_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">댓글 작성 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">content</td>
+<td rowspan="1" colspan="1">TEXT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">댓글 내용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">comment_status</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">댓글 상태, 기본값 ACTIVE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">작성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">updated_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">수정 일시</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 67px;">
+<col style="width: 146px;">
+<col style="width: 165px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 286px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>BoardApplication</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>게시글 모임 참가 신청</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">application_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">게시글 참가 신청 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">board_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">참가 신청 대상 게시글 식별자(Board 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">applicant_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">참가 신청 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">application_status</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">참가 신청 처리 상태, 기본값 PENDING</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">참가 신청 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">responded_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">참가 신청 처리 일시, 처리 전까지 NULL</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 67px;">
+<col style="width: 146px;">
+<col style="width: 165px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 286px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>BoardInvitation</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>게시글 초대 목록</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">invitation_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">게시글 초대 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">board_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">초대 대상 게시글 식별자(Board 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">inviter_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">초대 발송 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">invitee_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">초대 수신 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">invitation_status</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">초대 응답 상태, 기본값 PENDING</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">초대 발송 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">responded_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">초대 응답 일시, 응답 전까지 NULL</td>
+</tr>
+</table>
 <table>
 <colgroup>
 <col style="width: 67px;">
@@ -1786,447 +2143,23 @@
 <col style="width: 286px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>Board</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>BoardReport</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>게시글 목록</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>게시판 신고</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">board_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">게시글 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">writer_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">게시글 작성 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">title</td>
-<td rowspan="1" colspan="1">VARCHAR(100)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">게시글 제목</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">content</td>
-<td rowspan="1" colspan="1">TEXT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">게시글 내용</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">view_count</td>
-<td rowspan="1" colspan="1">INT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">게시글 조회 수, 기본값 0</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">board_type</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">게시글 게시판 유형</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">board_status</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">게시글 상태, 기본값 ACTIVE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">8.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">작성 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">9.0</td>
-<td rowspan="1" colspan="1">updated_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">수정 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>BoardFile</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>게시글 이미지</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">file_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">게시글 이미지 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">board_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">이미지가 첨부된 게시글 식별자(Board 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">file_url</td>
-<td rowspan="1" colspan="1">VARCHAR(200)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">업로드된 이미지 파일 저장 경로</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">등록 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>BoardComment</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>댓글 목록</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">comment_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">댓글 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">board_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">댓글이 작성된 게시글 식별자(Board 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">writer_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">댓글 작성 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">content</td>
-<td rowspan="1" colspan="1">TEXT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">댓글 내용</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">comment_status</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">댓글 상태, 기본값 ACTIVE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">작성 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">updated_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">수정 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>BoardApplication</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>게시글 모임 참가 신청</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">application_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">게시글 참가 신청 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">board_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">참가 신청 대상 게시글 식별자(Board 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">applicant_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">참가 신청 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">application_status</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">참가 신청 처리 상태, 기본값 PENDING</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">참가 신청 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">responded_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">참가 신청 처리 일시, 처리 전까지 NULL</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>BoardInvitation</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>게시글 초대 목록</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">invitation_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">게시글 초대 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">board_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">초대 대상 게시글 식별자(Board 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">inviter_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">초대 발송 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">invitee_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">초대 수신 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">invitation_status</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">초대 응답 상태, 기본값 PENDING</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">초대 발송 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">responded_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">초대 응답 일시, 응답 전까지 NULL</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>BoardReport</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>게시판 신고</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">report_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2234,7 +2167,7 @@
 <td rowspan="1" colspan="1">게시판 신고 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">reporter_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2242,7 +2175,7 @@
 <td rowspan="1" colspan="1">신고 접수 회원 식별자(Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">reported_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2250,7 +2183,7 @@
 <td rowspan="1" colspan="1">신고 대상 회원 식별자(Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">target_type</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2258,7 +2191,7 @@
 <td rowspan="1" colspan="1">신고 대상 유형</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">target_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2266,7 +2199,7 @@
 <td rowspan="1" colspan="1">신고 대상 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">6.0</td>
+<td rowspan="1" colspan="1">6</td>
 <td rowspan="1" colspan="1">reason</td>
 <td rowspan="1" colspan="1">VARCHAR(30)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2274,7 +2207,7 @@
 <td rowspan="1" colspan="1">선택한 신고 사유</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">7.0</td>
+<td rowspan="1" colspan="1">7</td>
 <td rowspan="1" colspan="1">reason_detail</td>
 <td rowspan="1" colspan="1">TEXT</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -2282,7 +2215,7 @@
 <td rowspan="1" colspan="1">사용자가 입력한 세부 신고 사유</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">8.0</td>
+<td rowspan="1" colspan="1">8</td>
 <td rowspan="1" colspan="1">status</td>
 <td rowspan="1" colspan="1">VARCHAR(20)</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2290,7 +2223,7 @@
 <td rowspan="1" colspan="1">신고 처리 상태, 기본값 PENDING</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">9.0</td>
+<td rowspan="1" colspan="1">9</td>
 <td rowspan="1" colspan="1">created_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2298,7 +2231,7 @@
 <td rowspan="1" colspan="1">신고 접수 일시</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">10.0</td>
+<td rowspan="1" colspan="1">10</td>
 <td rowspan="1" colspan="1">processed_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Null</td>
@@ -2307,6 +2240,210 @@
 </tr>
 </table>
 <h2>알림</h2>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 51px;">
+<col style="width: 149px;">
+<col style="width: 129px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 414px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>Notification</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>알림 목록</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">notification_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">알림 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">receiver_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">알림 수신 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">notification_type</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">알림 유형</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">title</td>
+<td rowspan="1" colspan="1">VARCHAR(100)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">알림 제목</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">content</td>
+<td rowspan="1" colspan="1">VARCHAR(200)</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">알림 내용</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">target_type</td>
+<td rowspan="1" colspan="1">VARCHAR(30)</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">알림 클릭 시 이동 대상 유형, 이동 대상 없으면 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">target_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">알림 클릭 시 이동 대상 고유 식별자, 이동 대상 없으면 NULL</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">8</td>
+<td rowspan="1" colspan="1">is_read</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">알림 읽음 여부, 기본값 FALSE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">9</td>
+<td rowspan="1" colspan="1">created_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">생성 일시</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">10</td>
+<td rowspan="1" colspan="1">read_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">읽음 처리 일시, 읽기 전 NULL</td>
+</tr>
+</table>
+<table style="margin-bottom: 24px;">
+<colgroup>
+<col style="width: 51px;">
+<col style="width: 149px;">
+<col style="width: 129px;">
+<col style="width: 104px;">
+<col style="width: 104px;">
+<col style="width: 414px;">
+</colgroup>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>NotificationSetting</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>알림 수신 설정</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">1</td>
+<td rowspan="1" colspan="1">notification_setting_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">PK</td>
+<td rowspan="1" colspan="1">알림 수신 설정 고유 식별자</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">2</td>
+<td rowspan="1" colspan="1">member_id</td>
+<td rowspan="1" colspan="1">BIGINT</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1">FK</td>
+<td rowspan="1" colspan="1">알림 설정 대상 회원 식별자(Member 참조)</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">3</td>
+<td rowspan="1" colspan="1">all_enabled</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">전체 알림 수신 여부, 기본값 TRUE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">4</td>
+<td rowspan="1" colspan="1">group_enabled</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">모임 관련 알림 수신 여부, 기본값 TRUE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">5</td>
+<td rowspan="1" colspan="1">schedule_enabled</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 관련 알림 수신 여부, 기본값 TRUE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">6</td>
+<td rowspan="1" colspan="1">board_enabled</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">게시판 관련 알림 수신 여부, 기본값 TRUE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">7</td>
+<td rowspan="1" colspan="1">application_enabled</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">신청 및 초대 관련 알림 수신 여부, 기본값 TRUE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">8</td>
+<td rowspan="1" colspan="1">reminder_enabled</td>
+<td rowspan="1" colspan="1">BOOLEAN</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">일정 시작 전 알림 수신 여부, 기본값 TRUE</td>
+</tr>
+<tr>
+<td rowspan="1" colspan="1">9</td>
+<td rowspan="1" colspan="1">updated_at</td>
+<td rowspan="1" colspan="1">DATETIME</td>
+<td rowspan="1" colspan="1">Not Null</td>
+<td rowspan="1" colspan="1"></td>
+<td rowspan="1" colspan="1">수정 일시</td>
+</tr>
+</table>
 <table>
 <colgroup>
 <col style="width: 51px;">
@@ -2317,239 +2454,23 @@
 <col style="width: 414px;">
 </colgroup>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>Notification</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>GroupNotificationSetting</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>알림 목록</b></td>
+<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight: 600;"><b>테이블 설명</b></td>
+<td rowspan="1" colspan="4" style="font-weight: 600;"><b>모임별 알림 수신 설정</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>번호</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>컬럼명</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>데이터 타입</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>Null 여부</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>키 유형</b></td>
+<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight: 600;"><b>설명</b></td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">notification_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">알림 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">receiver_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">알림 수신 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">notification_type</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">알림 유형</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">title</td>
-<td rowspan="1" colspan="1">VARCHAR(100)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">알림 제목</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">content</td>
-<td rowspan="1" colspan="1">VARCHAR(200)</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">알림 내용</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">target_type</td>
-<td rowspan="1" colspan="1">VARCHAR(30)</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">알림 클릭 시 이동 대상 유형, 이동 대상 없으면 NULL</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">target_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">알림 클릭 시 이동 대상 고유 식별자, 이동 대상 없으면 NULL</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">8.0</td>
-<td rowspan="1" colspan="1">is_read</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">알림 읽음 여부, 기본값 FALSE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">9.0</td>
-<td rowspan="1" colspan="1">created_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">생성 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">10.0</td>
-<td rowspan="1" colspan="1">read_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">읽음 처리 일시, 읽기 전 NULL</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>NotificationSetting</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>알림 수신 설정</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
-<td rowspan="1" colspan="1">notification_setting_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">PK</td>
-<td rowspan="1" colspan="1">알림 수신 설정 고유 식별자</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">2.0</td>
-<td rowspan="1" colspan="1">member_id</td>
-<td rowspan="1" colspan="1">BIGINT</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1">FK</td>
-<td rowspan="1" colspan="1">알림 설정 대상 회원 식별자(Member 참조)</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">3.0</td>
-<td rowspan="1" colspan="1">all_enabled</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">전체 알림 수신 여부, 기본값 TRUE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">4.0</td>
-<td rowspan="1" colspan="1">group_enabled</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">모임 관련 알림 수신 여부, 기본값 TRUE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">5.0</td>
-<td rowspan="1" colspan="1">schedule_enabled</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 관련 알림 수신 여부, 기본값 TRUE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">6.0</td>
-<td rowspan="1" colspan="1">board_enabled</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">게시판 관련 알림 수신 여부, 기본값 TRUE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">7.0</td>
-<td rowspan="1" colspan="1">application_enabled</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">신청 및 초대 관련 알림 수신 여부, 기본값 TRUE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">8.0</td>
-<td rowspan="1" colspan="1">reminder_enabled</td>
-<td rowspan="1" colspan="1">BOOLEAN</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">일정 시작 전 알림 수신 여부, 기본값 TRUE</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">9.0</td>
-<td rowspan="1" colspan="1">updated_at</td>
-<td rowspan="1" colspan="1">DATETIME</td>
-<td rowspan="1" colspan="1">Not Null</td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1">수정 일시</td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-<td rowspan="1" colspan="1"></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 명</b></td>
-<td rowspan="1" colspan="4"><b>GroupNotificationSetting</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="2" style="background-color: #D0CECE; font-weight:600;"><b>테이블 설명</b></td>
-<td rowspan="1" colspan="4"><b>모임별 알림 수신 설정</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>번호</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>컬럼명</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>데이터 타입</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>Null 여부</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>키 유형</b></td>
-<td rowspan="1" colspan="1" style="background-color: #D0CECE; font-weight:600;"><b>설명</b></td>
-</tr>
-<tr>
-<td rowspan="1" colspan="1">1.0</td>
+<td rowspan="1" colspan="1">1</td>
 <td rowspan="1" colspan="1">group_setting_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2557,7 +2478,7 @@
 <td rowspan="1" colspan="1">모임별 알림 설정 고유 식별자</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">2.0</td>
+<td rowspan="1" colspan="1">2</td>
 <td rowspan="1" colspan="1">group_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2565,7 +2486,7 @@
 <td rowspan="1" colspan="1">알림 설정 대상 모임 식별자(CalendarGroup 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">3.0</td>
+<td rowspan="1" colspan="1">3</td>
 <td rowspan="1" colspan="1">member_id</td>
 <td rowspan="1" colspan="1">BIGINT</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2573,7 +2494,7 @@
 <td rowspan="1" colspan="1">알림 설정 대상 회원 식별자(Member 참조)</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">4.0</td>
+<td rowspan="1" colspan="1">4</td>
 <td rowspan="1" colspan="1">is_enabled</td>
 <td rowspan="1" colspan="1">BOOLEAN</td>
 <td rowspan="1" colspan="1">Not Null</td>
@@ -2581,7 +2502,7 @@
 <td rowspan="1" colspan="1">해당 모임 알림 수신 여부, 기본값 TRUE</td>
 </tr>
 <tr>
-<td rowspan="1" colspan="1">5.0</td>
+<td rowspan="1" colspan="1">5</td>
 <td rowspan="1" colspan="1">updated_at</td>
 <td rowspan="1" colspan="1">DATETIME</td>
 <td rowspan="1" colspan="1">Not Null</td>
