@@ -609,10 +609,16 @@
       .contact-footer { display:none; }
       footer { display:none; }
 
-      /* Force details to closed state in PDF */
-      .proj-details > summary { padding: 12pt 20pt !important; }
+      /* Ensure scroll-reveal elements are always visible in PDF */
+      .rv { opacity: 1 !important; transform: none !important; }
+
+      /* Show details content in PDF */
+      .proj-details > summary { padding: 10pt 20pt !important; }
       .proj-details > summary::after { display: none !important; }
-      .pd-content { display: none !important; }
+      .pd-content { display: block !important; padding: 16pt 20pt !important; }
+      .pd-section { padding-bottom: 20pt !important; margin-bottom: 20pt !important; }
+      .pd-section:last-child { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+      .drow { break-inside: avoid; }
 
       /* print header */
       .print-header {
@@ -1261,9 +1267,15 @@
   }, { threshold: 0.1 });
   els.forEach(el => io.observe(el));
   // Ensure details are open on print
-  window.addEventListener('beforeprint', () => {
+  function openAllDetailsForPrint() {
     document.querySelectorAll('details').forEach(d => d.setAttribute('open', 'true'));
-  });
+  }
+  window.addEventListener('beforeprint', openAllDetailsForPrint);
+  if (window.matchMedia) {
+    window.matchMedia('print').addEventListener('change', e => {
+      if (e.matches) openAllDetailsForPrint();
+    });
+  }
 </script>
 
 <!-- Document Modal -->
