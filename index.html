@@ -504,7 +504,7 @@
     
     .doc-btn {
       display:inline-flex; align-items:center; border-radius:980px; padding:8px 18px; 
-      font-size:14px; font-weight:600; border:1px solid var(--line); background:#fff; 
+      font-size:14px; font-weight:600; font-family:var(--sans); border:1px solid var(--line); background:#fff; 
       color:var(--ink); transition:all 0.2s; cursor:pointer; justify-content:center;
     }
     .doc-btn:hover { background:#f5f5f7; border-color:var(--muted); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
@@ -1213,11 +1213,11 @@
                 <div class="v">
                   <div style="background:var(--gray); padding:16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--line);">
                     <div style="color:#d9534f; font-weight:700; margin-bottom:6px; font-size:14px;">🚨 문제 상황</div>
-                    <p style="margin:0; font-size:14.5px; color:var(--sub);">게시판 AI 욕설 필터링 기능 동작 중 OpenAI API 토큰(크레딧)이 전부 소모되었을 때, API 호출 에러(<code>429 Too Many Requests</code>)로 인해 게시글 및 댓글 자체가 등록되지 않는 문제 발생</p>
+                    <p style="margin:0; font-size:14.5px; color:var(--sub);">게시판 AI 욕설 필터링 기능 동작 중 OpenAI API 토큰(크레딧)이 전부 소모되었을 때, API 호출 에러(429 Too Many Requests)로 인해 게시글 및 댓글 자체가 등록되지 않는 문제 발생</p>
                   </div>
                   <div style="background:#f0f8ff; padding:16px; border-radius:12px; border:1px solid #cce5ff;">
                     <div style="color:#0056b3; font-weight:700; margin-bottom:6px; font-size:14px;">💡 해결 방안</div>
-                    <p style="margin:0; font-size:14.5px; color:#333;">게시글·댓글을 선 저장 후 <code>@Async</code> 비동기로 AI 필터링을 시도하되, 토큰 소진 등 API 문제로 검수가 실패할 경우 예외 처리(Fallback)를 통해 글이 정상 등록되도록 개선하여 서비스 중단 방지</p>
+                    <p style="margin:0; font-size:14.5px; color:#333;">게시글·댓글을 선 저장 후 @Async 비동기로 AI 필터링을 시도하되, 토큰 소진 등 API 문제로 검수가 실패할 경우 예외 처리(Fallback)를 통해 글이 정상 등록되도록 개선하여 서비스 중단 방지</p>
                   </div>
                 </div>
               </div>
@@ -1231,10 +1231,10 @@
                 <div class="k">백엔드 주요 개발</div>
                 <div class="v">
                   <ul style="padding-left:20px; margin:0; line-height:1.8; color:var(--ink);">
-                    <li style="margin-bottom:12px;"><b>종목별 커뮤니티 게시판 및 대댓글 구현:</b> 게시글 CRUD, 다중 이미지 첨부(최대 5장), 일반 댓글 및 1단계 대댓글 작성·수정·삭제(Soft Delete) 기능 개발 및 대댓글 목록 일괄 조회(<code>IN</code> 쿼리)를 통한 N+1 문제 해결</li>
-                    <li style="margin-bottom:12px;"><b>게시판 다중 검색·정렬 및 인기글 구현:</b> QueryDSL을 활용한 제목·내용·작성자 조건 검색, 최신순·조회수순·좋아요순 정렬, 상단 공지 고정 및 일간 조회수 Top 5 인기글 집계 기능 구현</li>
-                    <li style="margin-bottom:12px;"><b>커뮤니티 추천(좋아요) 및 신고·블라인드 관리:</b> 게시글·댓글 1인 1회 추천 토글 처리, 중복·본인 글·공지글 신고 차단 로직 및 관리자 블라인드 제어 기능 구현</li>
-                    <li style="margin-bottom:12px;"><b>OpenAI API 기반 게시글·댓글 AI 욕설 필터링(클린봇):</b> Spring <code>@Async</code> 비동기 방식으로 게시글·댓글 등록 시 욕설 및 비하 표현을 감지해 자동 블라인드 처리하고, API 토큰 소진 시에도 글 작성이 정상 처리되도록 예외 처리(Fallback) 구현</li>
+                    <li style="margin-bottom:6px;"><b>종목별 커뮤니티 게시판 및 대댓글 구현:</b> 게시글 CRUD, 다중 이미지 첨부(최대 5장), 일반 댓글 및 1단계 대댓글 작성·수정·삭제(Soft Delete) 기능 개발 및 대댓글 목록 일괄 조회(IN 쿼리)를 통한 N+1 문제 해결</li>
+                    <li style="margin-bottom:6px;"><b>게시판 다중 검색·정렬 및 인기글 구현:</b> QueryDSL을 활용한 제목·내용·작성자 조건 검색, 최신순·조회수순·좋아요순 정렬, 상단 공지 고정 및 일간 조회수 Top 5 인기글 집계 기능 구현</li>
+                    <li style="margin-bottom:6px;"><b>커뮤니티 추천(좋아요) 및 신고·블라인드 관리:</b> 게시글·댓글 1인 1회 추천 토글 처리, 중복·본인 글·공지글 신고 차단 로직 및 관리자 블라인드 제어 기능 구현</li>
+                    <li><b>OpenAI API 기반 게시글·댓글 AI 욕설 필터링(클린봇):</b> Spring @Async 비동기 방식으로 게시글·댓글 등록 시 욕설 및 비하 표현을 감지해 자동 블라인드 처리하고, API 토큰 소진 시에도 글 작성이 정상 처리되도록 예외 처리(Fallback) 구현</li>
                   </ul>
                 </div>
               </div>
